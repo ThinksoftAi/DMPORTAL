@@ -1,13 +1,20 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import tailwindcss from '@tailwindcss/vite';
+import { resolve } from 'path';
 
-// https://vitejs.dev/config/
+// Multi-Page Application (MPA) configuration for Deepali Minerals
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
   server: {
     host: '0.0.0.0',
     port: 3000,
     allowedHosts: 'all'
+  },
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        product: resolve(__dirname, 'product.html'),
+        products: resolve(__dirname, 'products/index.html')
+      }
+    }
   }
 });
