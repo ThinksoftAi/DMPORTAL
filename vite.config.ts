@@ -13,29 +13,35 @@ function deploymentRobotsPlugin(): Plugin {
         const url = (req.url || '').split('?')[0];
 
         if (url === '/robots.txt') {
-          if (host.includes('preview.deepaliminerals.in')) {
+          if (host.includes('deepaliminerals.in') && !host.includes('preview.')) {
+            const prodRobotsPath = resolve(__dirname, 'robots.prod.txt');
+            if (fs.existsSync(prodRobotsPath)) {
+              res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+              res.end(fs.readFileSync(prodRobotsPath, 'utf8'));
+              return;
+            }
             res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-            res.end('User-agent: *\nDisallow: /\n');
+            res.end('User-agent: *\nAllow: /\n\nSitemap: https://deepaliminerals.in/sitemap.xml\n');
             return;
           }
           res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-          res.end('User-agent: *\nAllow: /\n\nSitemap: https://deepaliminerals.in/sitemap.xml\n');
+          res.end('User-agent: *\nDisallow: /\n');
           return;
         }
 
         if (url === '/sitemap.xml') {
-          if (host.includes('preview.deepaliminerals.in')) {
-            res.statusCode = 404;
-            res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-            res.end('Not Found on preview deployment\n');
-            return;
+          if (host.includes('deepaliminerals.in') && !host.includes('preview.')) {
+            const sitemapPath = resolve(__dirname, 'sitemap.xml');
+            if (fs.existsSync(sitemapPath)) {
+              res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+              res.end(fs.readFileSync(sitemapPath, 'utf8'));
+              return;
+            }
           }
-          const sitemapPath = resolve(__dirname, 'sitemap.xml');
-          if (fs.existsSync(sitemapPath)) {
-            res.setHeader('Content-Type', 'application/xml; charset=utf-8');
-            res.end(fs.readFileSync(sitemapPath, 'utf8'));
-            return;
-          }
+          res.statusCode = 404;
+          res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+          res.end('Not Found on preview deployment\n');
+          return;
         }
 
         next();
@@ -48,29 +54,35 @@ function deploymentRobotsPlugin(): Plugin {
         const url = (req.url || '').split('?')[0];
 
         if (url === '/robots.txt') {
-          if (host.includes('preview.deepaliminerals.in')) {
+          if (host.includes('deepaliminerals.in') && !host.includes('preview.')) {
+            const prodRobotsPath = resolve(__dirname, 'robots.prod.txt');
+            if (fs.existsSync(prodRobotsPath)) {
+              res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+              res.end(fs.readFileSync(prodRobotsPath, 'utf8'));
+              return;
+            }
             res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-            res.end('User-agent: *\nDisallow: /\n');
+            res.end('User-agent: *\nAllow: /\n\nSitemap: https://deepaliminerals.in/sitemap.xml\n');
             return;
           }
           res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-          res.end('User-agent: *\nAllow: /\n\nSitemap: https://deepaliminerals.in/sitemap.xml\n');
+          res.end('User-agent: *\nDisallow: /\n');
           return;
         }
 
         if (url === '/sitemap.xml') {
-          if (host.includes('preview.deepaliminerals.in')) {
-            res.statusCode = 404;
-            res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-            res.end('Not Found on preview deployment\n');
-            return;
+          if (host.includes('deepaliminerals.in') && !host.includes('preview.')) {
+            const sitemapPath = resolve(__dirname, 'sitemap.xml');
+            if (fs.existsSync(sitemapPath)) {
+              res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+              res.end(fs.readFileSync(sitemapPath, 'utf8'));
+              return;
+            }
           }
-          const sitemapPath = resolve(__dirname, 'sitemap.xml');
-          if (fs.existsSync(sitemapPath)) {
-            res.setHeader('Content-Type', 'application/xml; charset=utf-8');
-            res.end(fs.readFileSync(sitemapPath, 'utf8'));
-            return;
-          }
+          res.statusCode = 404;
+          res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+          res.end('Not Found on preview deployment\n');
+          return;
         }
 
         next();
