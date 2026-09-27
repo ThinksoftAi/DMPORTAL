@@ -10,7 +10,6 @@ import {
   Package, 
   Sparkles, 
   ChevronDown,
-  Layers,
   ArrowRight
 } from 'lucide-react';
 import { COMPANY_DETAILS } from '../data/minerals';
@@ -49,7 +48,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="flex flex-wrap items-center gap-4 sm:gap-6">
             <span className="flex items-center gap-1.5 text-slate-300">
               <MapPin className="w-3.5 h-3.5 text-amber-500" />
-              Lawrence Road, New Delhi - 110035
+              C2/29C Lawrence Road, Keshav Puram, Delhi-110035
             </span>
             <span className="hidden md:flex items-center gap-1.5 text-slate-300">
               <Clock className="w-3.5 h-3.5 text-amber-500" />
@@ -96,19 +95,19 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={() => scrollTo('hero')} 
             className="flex items-center gap-3 text-left group focus:outline-none"
           >
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
-              <Layers className="w-6 h-6 text-slate-950 stroke-[2.2]" />
+            <div className="bg-white px-2.5 py-1.5 rounded-lg shadow-md group-hover:scale-105 transition-transform flex items-center justify-center">
+              <img 
+                src="/assets/images/logo.png?v=dm2026" 
+                alt="DEEPALI MINERALS Logo" 
+                className="w-full h-auto max-h-11 max-w-[170px] object-contain block" 
+                referrerPolicy="no-referrer"
+              />
             </div>
-            <div>
-              <div className="flex items-center gap-1.5">
-                <span className="font-heading text-xl font-bold tracking-tight text-white group-hover:text-amber-400 transition-colors">
-                  DEEPALI
-                </span>
-                <span className="text-xl font-semibold tracking-tight text-amber-500">
-                  MINERALS
-                </span>
-              </div>
-              <span className="block text-[10px] tracking-wider uppercase text-slate-400 font-medium">
+            <div className="hidden sm:block">
+              <span className="block text-[10px] tracking-wider uppercase text-slate-400 font-semibold">
+                Industrial Materials Leader
+              </span>
+              <span className="block text-[9px] text-amber-400/90 font-mono">
                 Mfg. & Supplier Since 2004
               </span>
             </div>

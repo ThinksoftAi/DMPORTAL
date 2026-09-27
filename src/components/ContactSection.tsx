@@ -105,7 +105,7 @@ export const ContactSection: React.FC = () => {
                     <Phone className="w-4 h-4 text-amber-400 group-hover:scale-110 transition-transform" />
                     <div>
                       <div className="font-semibold text-slate-200">{COMPANY_DETAILS.phonePrimary}</div>
-                      <div className="text-[10px] text-slate-400">Primary Commercial Mobile / Mr. Neeraj Monga</div>
+                      <div className="text-[10px] text-slate-400">Primary Mobile / Mr. Neeraj Monga (CEO)</div>
                     </div>
                   </div>
                   <span className="text-[10px] text-amber-400 font-bold">Call Now</span>
@@ -119,10 +119,10 @@ export const ContactSection: React.FC = () => {
                     <Phone className="w-4 h-4 text-slate-400 group-hover:scale-110 transition-transform" />
                     <div>
                       <div className="font-semibold text-slate-200">{COMPANY_DETAILS.phoneOffice}</div>
-                      <div className="text-[10px] text-slate-400">Lawrence Road Office Landline</div>
+                      <div className="text-[10px] text-slate-400">Direct Sales & Dispatch Line</div>
                     </div>
                   </div>
-                  <span className="text-[10px] text-slate-400">Office</span>
+                  <span className="text-[10px] text-slate-400">Call</span>
                 </a>
 
                 <a 

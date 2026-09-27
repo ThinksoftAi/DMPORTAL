@@ -62,8 +62,7 @@
       <header class="site-header">
         <div class="shell header-inner">
           <a class="brand" href="${root}/" aria-label="Deepali Minerals home">
-            <span class="brand-mark">DM</span>
-            <span>Deepali<br>Minerals</span>
+            <img src="${root}/assets/images/logo.png?v=dm2026" alt="Deepali Minerals Logo" class="brand-logo" width="200" height="100" referrerpolicy="no-referrer" />
           </a>
           <nav class="nav-links" aria-label="Primary navigation">${links}</nav>
           <a class="button header-cta" href="#rfq">Request a Quote</a>
@@ -97,16 +96,16 @@
       <footer class="footer" id="contact">
         <div class="shell footer-grid">
           <div>
-            <a class="brand" href="${root}/">
-              <span class="brand-mark">DM</span>
-              <span>Deepali<br>Minerals</span>
+            <a class="brand" href="${root}/" aria-label="Deepali Minerals home">
+              <img src="${root}/assets/images/logo.png?v=dm2026" alt="Deepali Minerals Logo" class="brand-logo-footer" width="200" height="100" referrerpolicy="no-referrer" />
             </a>
             <p style="margin-top: .75rem;">${company.tagline}</p>
             <div style="font-size: .84rem; color: #a99f8f; margin-top: .75rem; line-height: 1.5;">
-              <p><strong>Office & Depot:</strong><br>${company.headquarters}</p>
-              <p style="margin-top: .4rem;"><strong>Phone:</strong> ${company.phonePrimary || '+91-98110-45321'} | ${company.phoneOffice || '+91-11-2718-4902'}</p>
-              <p style="margin-top: .4rem;"><strong>Email:</strong> ${company.emailSales || 'sales@deepaliminerals.com'}</p>
-              <p style="margin-top: .4rem;"><strong>GSTIN:</strong> ${company.gstNumber || '07AAAPM4981C1Z8'}</p>
+              <p><strong>CEO:</strong> ${company.ceo || 'Mr. Neeraj Monga (CEO)'}</p>
+              <p style="margin-top: .4rem;"><strong>Office & Depot:</strong><br>${company.headquarters || 'C2/29C Lawrence Road, Keshav Puram, Delhi-110035'}</p>
+              <p style="margin-top: .4rem;"><strong>Phone:</strong> <a href="tel:+919810516065" style="color:inherit;">9810516065</a>, <a href="tel:+919810715129" style="color:inherit;">9810715129</a></p>
+              <p style="margin-top: .4rem;"><strong>Email:</strong> <a href="mailto:${company.emailSales || 'deepaliminerals@gmail.com'}" style="color:inherit;">${company.emailSales || 'deepaliminerals@gmail.com'}</a></p>
+              <p style="margin-top: .4rem;"><strong>GST:</strong> ${company.gstNumber || '07AIMPM0458Q1ZL'}</p>
             </div>
           </div>
           <div>
@@ -120,7 +119,7 @@
             <h3>Enquiries</h3>
             <a href="#rfq">Request a Quote</a>
             <a href="${root}/#contact">Contact Commercial Desk</a>
-            <a href="https://wa.me/${(company.whatsappNumber || '919811045321').replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hello Deepali Minerals, I would like to inquire about industrial mineral procurement.')}" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/${(company.whatsappNumber || '919810516065').replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hello Deepali Minerals, I would like to inquire about industrial mineral procurement.')}" target="_blank" rel="noopener noreferrer">
               WhatsApp Sales Desk
             </a>
           </div>
@@ -275,7 +274,7 @@
         <div class="discovery-engine-box">
           <div class="discovery-engine-head">
             <h2 class="discovery-title">
-              <span class="brand-mark" style="width: 24px; height: 24px; font-size: .65rem; margin-right: .3rem;">DM</span>
+              <img src="${root}/assets/images/logo.png?v=dm2026" alt="DM" style="height: 28px; width: auto; vertical-align: middle; margin-right: .5rem; display: inline-block;" referrerpolicy="no-referrer" />
               Find Your Material
             </h2>
             <div class="discovery-mode-nav">
@@ -520,9 +519,11 @@
             <p class="lede">Product, intended application, grade or specification requirement, quantity, packaging preference, and delivery location are the useful starting points for commercial discussions.</p>
             <div style="margin-top: 2rem;">
               <p style="font-size: .88rem; color: var(--slate); line-height: 1.6;">
-                <strong>Lawrence Road Depot:</strong> C-2/29-C, Lawrence Road Industrial Area, New Delhi - 110035.<br>
-                <strong>Direct Sales Line:</strong> <a href="tel:+919811045321" style="color: var(--blue); font-weight: 700;">+91-98110-45321</a><br>
-                <strong>GST Number:</strong> 07AAAPM4981C1Z8
+                <strong>CEO:</strong> Mr. Neeraj Monga<br>
+                <strong>Lawrence Road Depot:</strong> C2/29C Lawrence Road, Keshav Puram, Delhi-110035.<br>
+                <strong>Direct Sales Line:</strong> <a href="tel:+919810516065" style="color: var(--blue); font-weight: 700;">9810516065</a>, <a href="tel:+919810715129" style="color: var(--blue); font-weight: 700;">9810715129</a><br>
+                <strong>Email:</strong> <a href="mailto:deepaliminerals@gmail.com" style="color: var(--blue);">deepaliminerals@gmail.com</a><br>
+                <strong>GST:</strong> 07AIMPM0458Q1ZL
               </p>
             </div>
           </div>
@@ -963,8 +964,11 @@
             <h2 class="section-title">Can't find your exact industry specification?</h2>
             <p class="lede">Our technical commercial desk handles custom particle gradations, surface treatments, and specialized packaging for high-throughput manufacturing lines.</p>
             <div style="margin-top: 2rem; font-size: .88rem; color: var(--slate); line-height: 1.6;">
-              <p><strong>Direct Commercial Desk:</strong> <a href="tel:+919811045321" style="color: var(--blue); font-weight: 700;">+91-98110-45321</a></p>
-              <p><strong>Wholesale Dispatch:</strong> C-2/29-C, Lawrence Road Industrial Area, Delhi - 110035.</p>
+              <p><strong>CEO:</strong> Mr. Neeraj Monga</p>
+              <p><strong>Direct Commercial Desk:</strong> <a href="tel:+919810516065" style="color: var(--blue); font-weight: 700;">9810516065</a>, <a href="tel:+919810715129" style="color: var(--blue); font-weight: 700;">9810715129</a></p>
+              <p><strong>Email:</strong> <a href="mailto:deepaliminerals@gmail.com" style="color: var(--blue);">deepaliminerals@gmail.com</a></p>
+              <p><strong>Wholesale Dispatch:</strong> C2/29C Lawrence Road, Keshav Puram, Delhi-110035.</p>
+              <p><strong>GST:</strong> 07AIMPM0458Q1ZL</p>
             </div>
           </div>
           ${rfq(null, { industry: 'Industrial Manufacturing' })}
@@ -1115,7 +1119,7 @@
               <!-- Primary Buyer Actions -->
               <div class="detail-actions">
                 <a class="button" href="#rfq">Request a quote</a>
-                <a class="button alt" href="https://wa.me/${(data.company.whatsappNumber || '919811045321').replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hello Deepali Minerals, I would like to request commercial pricing and specifications for ${p.name}${industryCtx ? ' for ' + industryCtx + ' application' : (reqText ? ' for requirement: ' + reqText : '')}.`)}" target="_blank" rel="noopener noreferrer">
+                <a class="button alt" href="https://wa.me/${(data.company.whatsappNumber || '919810516065').replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hello Deepali Minerals, I would like to request commercial pricing and specifications for ${p.name}${industryCtx ? ' for ' + industryCtx + ' application' : (reqText ? ' for requirement: ' + reqText : '')}.`)}" target="_blank" rel="noopener noreferrer">
                   WhatsApp Enquiry
                 </a>
               </div>
@@ -1257,8 +1261,11 @@
             <h2 class="section-title">Turn this material into a qualified enquiry.</h2>
             <p class="lede">Include your target application, specification or mesh requirement, estimated tonnage, packaging preference, and delivery location.</p>
             <div style="margin-top: 2rem; font-size: .88rem; color: var(--slate); line-height: 1.6;">
-              <p><strong>Wholesale Dispatch:</strong> From C-2/29-C, Lawrence Road Industrial Area, Delhi - 110035.</p>
-              <p><strong>Direct Sales Desk:</strong> <a href="tel:+919811045321" style="color: var(--blue); font-weight: 700;">+91-98110-45321</a></p>
+              <p><strong>CEO:</strong> Mr. Neeraj Monga</p>
+              <p><strong>Wholesale Dispatch:</strong> From C2/29C Lawrence Road, Keshav Puram, Delhi-110035.</p>
+              <p><strong>Direct Sales Desk:</strong> <a href="tel:+919810516065" style="color: var(--blue); font-weight: 700;">9810516065</a>, <a href="tel:+919810715129" style="color: var(--blue); font-weight: 700;">9810715129</a></p>
+              <p><strong>Email:</strong> <a href="mailto:deepaliminerals@gmail.com" style="color: var(--blue);">deepaliminerals@gmail.com</a></p>
+              <p><strong>GST:</strong> 07AIMPM0458Q1ZL</p>
               <p><strong>Response Time:</strong> Commercial enquiries are reviewed same-day during business hours.</p>
             </div>
           </div>
@@ -1498,7 +1505,7 @@ ${notesVal ? 'Notes: ' + notesVal : ''}`;
               <p>Reference: <strong style="font-family: var(--mono); color: var(--aqua);">${refId}</strong></p>
               <p>Your requirement for <strong>${esc(productVal)}</strong> has been recorded for review by our Lawrence Road commercial desk. We will respond with pricing and dispatch terms shortly.</p>
               <div>
-                <a href="https://wa.me/${(data.company.whatsappNumber || '919811045321').replace(/[^0-9]/g, '')}?text=${encodeURIComponent(whatsappText)}" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
+                <a href="https://wa.me/${(data.company.whatsappNumber || '919810516065').replace(/[^0-9]/g, '')}?text=${encodeURIComponent(whatsappText)}" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
                   Send directly via WhatsApp →
                 </a>
               </div>

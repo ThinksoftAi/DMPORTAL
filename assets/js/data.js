@@ -8,18 +8,20 @@
   'use strict';
 
   const company = {
-    name: 'Deepali Minerals',
-    legalName: 'Deepali Minerals',
+    name: 'DEEPALI MINERALS',
+    legalName: 'DEEPALI MINERALS',
     constitution: 'Proprietorship',
+    ceo: 'Mr. Neeraj Monga (CEO)',
     tagline: 'Industrial materials, clearly connected.',
     establishedYear: 2004,
-    headquarters: 'C-2/29-C, Lawrence Road Industrial Area, New Delhi - 110035, Delhi, India',
-    phonePrimary: '+91-98110-45321',
-    phoneOffice: '+91-11-2718-4902',
-    whatsappNumber: '+919811045321',
-    emailSales: 'sales@deepaliminerals.com',
-    emailInquiry: 'info@deepaliminerals.com',
-    gstNumber: '07AAAPM4981C1Z8',
+    headquarters: 'C2/29C Lawrence Road, Keshav Puram, Delhi-110035',
+    phonePrimary: '9810516065',
+    phoneSecondary: '9810715129',
+    phoneOffice: '9810715129',
+    whatsappNumber: '+919810516065',
+    emailSales: 'deepaliminerals@gmail.com',
+    emailInquiry: 'deepaliminerals@gmail.com',
+    gstNumber: '07AIMPM0458Q1ZL',
     businessHours: 'Monday – Saturday: 9:00 AM – 7:30 PM IST',
     targetDomain: 'https://deepaliminerals.in'
   };

@@ -1,6 +1,5 @@
 import React from 'react';
 import { 
-  Layers, 
   MapPin, 
   Phone, 
   Mail, 
@@ -67,17 +66,14 @@ export const Footer: React.FC<FooterProps> = ({
         
         {/* Brand Column */}
         <div className="lg:col-span-2 space-y-4">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center shadow-lg">
-              <Layers className="w-5 h-5 text-slate-950 stroke-[2.2]" />
-            </div>
-            <div>
-              <span className="font-heading text-lg font-bold text-white tracking-tight">
-                DEEPALI <span className="text-amber-500">MINERALS</span>
-              </span>
-              <span className="block text-[10px] uppercase tracking-wider text-slate-500 font-medium">
-                Proprietor: {COMPANY_DETAILS.ceo}
-              </span>
+          <div className="flex items-center gap-3">
+            <div className="bg-white px-3 py-1.5 rounded-lg shadow-md flex items-center justify-center">
+              <img 
+                src="/assets/images/logo.png?v=dm2026" 
+                alt="DEEPALI MINERALS Logo" 
+                className="w-full h-auto max-h-14 max-w-[185px] object-contain block" 
+                referrerPolicy="no-referrer"
+              />
             </div>
           </div>
 
@@ -184,7 +180,7 @@ export const Footer: React.FC<FooterProps> = ({
           </p>
 
           <div className="flex items-center gap-4">
-            <span>Proprietor: Mr. Neeraj Monga</span>
+            <span>Mr. Neeraj Monga (CEO)</span>
             <span>•</span>
             <button
               onClick={scrollToTop}

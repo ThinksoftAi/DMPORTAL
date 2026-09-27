@@ -81,9 +81,11 @@ ${mineral.packagingOptions.join('\n')}
 
 ===================================================================
 Issued by: Quality Assurance & Technical Services Lab
-Deepali Minerals, Lawrence Road Industrial Area, New Delhi - 110035
-Phone: ${COMPANY_DETAILS.phonePrimary} | Email: ${COMPANY_DETAILS.emailSales}
-Website: www.deepaliminerals.com
+DEEPALI MINERALS - Mr. Neeraj Monga (CEO)
+C2/29C Lawrence Road, Keshav Puram, Delhi-110035
+Phone: ${COMPANY_DETAILS.phonePrimary}, ${COMPANY_DETAILS.phoneOffice}
+Email: ${COMPANY_DETAILS.emailSales} | GSTIN: ${COMPANY_DETAILS.gstNumber}
+Website: https://deepaliminerals.in
 ===================================================================
 `;
 

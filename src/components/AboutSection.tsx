@@ -37,12 +37,12 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                 Two Decades of Excellence in Industrial Minerals
               </h2>
               <p className="text-base text-slate-300 leading-relaxed font-normal">
-                Founded in <strong>2004</strong> under the visionary leadership of <strong>Mr. Neeraj Monga</strong> (CEO & Proprietor), <strong>Deepali Minerals</strong> has grown from a specialized mineral trading house in Delhi to a comprehensive manufacturer, processor, and bulk exporter of non-metallic industrial minerals.
+                Founded in <strong>2004</strong> under the leadership of <strong>Mr. Neeraj Monga (CEO)</strong>, <strong>DEEPALI MINERALS</strong> has grown from a specialized mineral trading house in Delhi to a comprehensive manufacturer, processor, and bulk exporter of non-metallic industrial minerals.
               </p>
             </div>
 
             <p className="text-sm text-slate-400 leading-relaxed">
-              Operating out of our prime headquarters in the <strong>Lawrence Road Industrial Area, New Delhi</strong>, we maintain integrated grinding and air-classification facilities across the rich mineral belts of Rajasthan and Gujarat. We process over <strong>50,000 Metric Tons</strong> of mineral powders annually, fulfilling rigorous technical standards for cosmetic formulations, high-impact polymers, architectural coatings, and rubber products.
+              Operating out of our prime headquarters at <strong>C2/29C Lawrence Road, Keshav Puram, Delhi-110035</strong>, we maintain integrated grinding and air-classification facilities across the rich mineral belts of Rajasthan and Gujarat. We process over <strong>50,000 Metric Tons</strong> of mineral powders annually, fulfilling rigorous technical standards for cosmetic formulations, high-impact polymers, architectural coatings, and rubber products.
             </p>
 
             {/* Quick stats checklist */}
