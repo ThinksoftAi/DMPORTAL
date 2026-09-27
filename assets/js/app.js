@@ -104,7 +104,7 @@
               <p><strong>CEO:</strong> ${company.ceo || 'Mr. Neeraj Monga (CEO)'}</p>
               <p style="margin-top: .4rem;"><strong>Office & Depot:</strong><br>${company.headquarters || 'C2/29C Lawrence Road, Keshav Puram, Delhi-110035'}</p>
               <p style="margin-top: .4rem;"><strong>Phone:</strong> <a href="tel:+919810516065" style="color:inherit;">9810516065</a>, <a href="tel:+919810715129" style="color:inherit;">9810715129</a></p>
-              <p style="margin-top: .4rem;"><strong>Email:</strong> <a href="mailto:${company.emailSales || 'deepaliminerals@gmail.com'}" style="color:inherit;">${company.emailSales || 'deepaliminerals@gmail.com'}</a></p>
+              <p style="margin-top: .4rem;"><strong>Email:</strong> <a href="mailto:${company.emailSales || 'info@deepaliminerals.in'}" style="color:inherit;">${company.emailSales || 'info@deepaliminerals.in'}</a></p>
               <p style="margin-top: .4rem;"><strong>GST:</strong> ${company.gstNumber || '07AIMPM0458Q1ZL'}</p>
             </div>
           </div>
@@ -522,7 +522,7 @@
                 <strong>CEO:</strong> Mr. Neeraj Monga<br>
                 <strong>Lawrence Road Depot:</strong> C2/29C Lawrence Road, Keshav Puram, Delhi-110035.<br>
                 <strong>Direct Sales Line:</strong> <a href="tel:+919810516065" style="color: var(--blue); font-weight: 700;">9810516065</a>, <a href="tel:+919810715129" style="color: var(--blue); font-weight: 700;">9810715129</a><br>
-                <strong>Email:</strong> <a href="mailto:deepaliminerals@gmail.com" style="color: var(--blue);">deepaliminerals@gmail.com</a><br>
+                <strong>Email:</strong> <a href="mailto:info@deepaliminerals.in" style="color: var(--blue);">info@deepaliminerals.in</a><br>
                 <strong>GST:</strong> 07AIMPM0458Q1ZL
               </p>
             </div>
@@ -966,7 +966,7 @@
             <div style="margin-top: 2rem; font-size: .88rem; color: var(--slate); line-height: 1.6;">
               <p><strong>CEO:</strong> Mr. Neeraj Monga</p>
               <p><strong>Direct Commercial Desk:</strong> <a href="tel:+919810516065" style="color: var(--blue); font-weight: 700;">9810516065</a>, <a href="tel:+919810715129" style="color: var(--blue); font-weight: 700;">9810715129</a></p>
-              <p><strong>Email:</strong> <a href="mailto:deepaliminerals@gmail.com" style="color: var(--blue);">deepaliminerals@gmail.com</a></p>
+              <p><strong>Email:</strong> <a href="mailto:info@deepaliminerals.in" style="color: var(--blue);">info@deepaliminerals.in</a></p>
               <p><strong>Wholesale Dispatch:</strong> C2/29C Lawrence Road, Keshav Puram, Delhi-110035.</p>
               <p><strong>GST:</strong> 07AIMPM0458Q1ZL</p>
             </div>
@@ -1264,7 +1264,7 @@
               <p><strong>CEO:</strong> Mr. Neeraj Monga</p>
               <p><strong>Wholesale Dispatch:</strong> From C2/29C Lawrence Road, Keshav Puram, Delhi-110035.</p>
               <p><strong>Direct Sales Desk:</strong> <a href="tel:+919810516065" style="color: var(--blue); font-weight: 700;">9810516065</a>, <a href="tel:+919810715129" style="color: var(--blue); font-weight: 700;">9810715129</a></p>
-              <p><strong>Email:</strong> <a href="mailto:deepaliminerals@gmail.com" style="color: var(--blue);">deepaliminerals@gmail.com</a></p>
+              <p><strong>Email:</strong> <a href="mailto:info@deepaliminerals.in" style="color: var(--blue);">info@deepaliminerals.in</a></p>
               <p><strong>GST:</strong> 07AIMPM0458Q1ZL</p>
               <p><strong>Response Time:</strong> Commercial enquiries are reviewed same-day during business hours.</p>
             </div>

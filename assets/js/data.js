@@ -19,8 +19,8 @@
     phoneSecondary: '9810715129',
     phoneOffice: '9810715129',
     whatsappNumber: '+919810516065',
-    emailSales: 'deepaliminerals@gmail.com',
-    emailInquiry: 'deepaliminerals@gmail.com',
+    emailSales: 'info@deepaliminerals.in',
+    emailInquiry: 'info@deepaliminerals.in',
     gstNumber: '07AIMPM0458Q1ZL',
     businessHours: 'Monday – Saturday: 9:00 AM – 7:30 PM IST',
     targetDomain: 'https://deepaliminerals.in'
