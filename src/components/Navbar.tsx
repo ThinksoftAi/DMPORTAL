@@ -102,12 +102,12 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>{COMPANY_DETAILS.emailSales}</span>
             </a>
             <a
-              href={`https://wa.me/${COMPANY_DETAILS.whatsappNumber.replace(/[^0-9]/g, '')}?text=Hello%20Deepali%20Minerals,%20I%20would%20like%20to%20inquire%20about%20industrial%20minerals.`}
+              href={`https://wa.me/${COMPANY_DETAILS.whatsappNumber.replace(/[^0-9]/g, '')}?text=Hello%20Deepali%20Minerals,%20I%20would%20like%20to%20discuss%20my%20industrial%20mineral%20requirement.`}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-[11px] px-2.5 py-1 rounded flex items-center gap-1.5 transition-colors"
             >
-              <span>WhatsApp</span>
+              <span>WhatsApp Sales Desk</span>
             </a>
           </div>
         </div>

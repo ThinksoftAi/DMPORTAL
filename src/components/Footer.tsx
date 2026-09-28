@@ -64,8 +64,8 @@ export const Footer: React.FC<FooterProps> = ({
       {/* Main Footer Columns */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
         
-        {/* Brand Column */}
-        <div className="lg:col-span-2 space-y-4">
+        {/* Column 1: Brand */}
+        <div className="space-y-4">
           <div className="flex items-center gap-3">
             <div className="dm-interactive-logo rounded-lg shadow-md flex items-center justify-center overflow-hidden cursor-pointer" data-dm-logo="true">
               <img 
@@ -78,94 +78,160 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
 
           <p className="text-slate-400 text-xs leading-relaxed max-w-sm">
-            Leading processor, manufacturer, and bulk supplier of non-metallic industrial minerals and functional chemical extenders since 2004. Supplying cosmetic, polymer, paint, rubber, cable, and ceramic manufacturing facilities across India and worldwide.
+            Reliable processor, manufacturer, and bulk supplier of non-metallic industrial minerals and functional chemical extenders since 2004. B2B material supply for industrial manufacturing across India and worldwide.
           </p>
 
-          <div className="space-y-1.5 text-xs text-slate-300">
-            <p className="flex items-start gap-2">
-              <MapPin className="w-3.5 h-3.5 text-amber-500 shrink-0 mt-0.5" />
-              <span>{COMPANY_DETAILS.registeredAddress}</span>
-            </p>
-            <p className="flex items-center gap-2">
-              <Phone className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-              <span>{COMPANY_DETAILS.phonePrimary} / {COMPANY_DETAILS.phoneOffice}</span>
-            </p>
-            <p className="flex items-center gap-2">
-              <Mail className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-              <span>{COMPANY_DETAILS.emailSales}</span>
-            </p>
+          <div className="p-3 rounded bg-slate-900/60 border border-slate-800 text-[11px] text-slate-400 space-y-1">
+            <p><strong className="text-slate-200">CEO:</strong> {COMPANY_DETAILS.ceo}</p>
+            <p><strong className="text-slate-200">GST:</strong> {COMPANY_DETAILS.gstNumber}</p>
+            <p><strong className="text-slate-200">Business:</strong> Industrial Minerals • B2B Supply</p>
           </div>
         </div>
 
-        {/* Quick Links */}
+        {/* Column 2: Materials */}
         <div className="space-y-3">
-          <h4 className="font-heading font-bold text-white uppercase tracking-wider text-xs">
-            Quick Navigation
+          <h4 className="font-heading font-bold text-teal-400 uppercase tracking-wider text-xs">
+            Materials
           </h4>
-          <ul className="space-y-2">
-            {[
-              { name: 'Mineral Products Catalog', id: 'products' },
-              { name: 'Grade & Mesh Finder', id: 'finder' },
-              { name: 'Industries Served', id: 'industries' },
-              { name: 'Quality Lab & Testing', id: 'quality' },
-              { name: 'About Deepali Minerals', id: 'about' },
-              { name: 'Commercial Desk Contact', id: 'contact' }
-            ].map((link, idx) => (
-              <li key={idx}>
-                <button
-                  onClick={() => scrollTo(link.id)}
-                  className="hover:text-amber-400 transition-colors text-slate-400 text-left"
-                >
-                  {link.name}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Key Mineral Products */}
-        <div className="space-y-3">
-          <h4 className="font-heading font-bold text-white uppercase tracking-wider text-xs">
-            Core Products
-          </h4>
-          <ul className="space-y-1.5">
-            {MINERALS_DATA.slice(0, 6).map((m) => (
+          <ul className="space-y-1.5 text-xs text-slate-400">
+            {MINERALS_DATA.slice(0, 10).map((m) => (
               <li key={m.id}>
                 <button
                   onClick={() => {
                     scrollTo('products');
                     onSelectMineral(m.id);
                   }}
-                  className="hover:text-amber-400 transition-colors text-slate-400 text-left truncate block max-w-full"
+                  className="hover:text-teal-300 transition-colors text-left truncate block max-w-full"
                 >
                   {m.name}
                 </button>
               </li>
             ))}
+            <li>
+              <button
+                onClick={() => scrollTo('products')}
+                className="text-teal-400 font-semibold hover:text-teal-300 transition-colors text-left"
+              >
+                View All Materials →
+              </button>
+            </li>
           </ul>
         </div>
 
-        {/* Compliances & Operations */}
+        {/* Column 3: Industries & Applications */}
         <div className="space-y-3">
-          <h4 className="font-heading font-bold text-white uppercase tracking-wider text-xs">
-            Compliance & Units
+          <h4 className="font-heading font-bold text-teal-400 uppercase tracking-wider text-xs">
+            Industries &amp; Applications
           </h4>
-          <div className="space-y-2 text-slate-400 text-[11px]">
+          <ul className="space-y-1.5 text-xs text-slate-400">
+            {['Paints', 'Plastic', 'Rubber', 'Master Batch', 'PVC', 'Paper', 'Ceramics', 'Cosmetics', 'Pharmaceutical', 'Construction'].map((ind) => (
+              <li key={ind}>
+                <button
+                  onClick={() => scrollTo('industries')}
+                  className="hover:text-teal-300 transition-colors text-left"
+                >
+                  {ind === 'Master Batch' ? 'Masterbatch' : ind}
+                </button>
+              </li>
+            ))}
+            <li>
+              <button
+                onClick={() => scrollTo('industries')}
+                className="text-teal-400 font-semibold hover:text-teal-300 transition-colors text-left"
+              >
+                Explore Industries →
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        {/* Column 4: Buy / Technical */}
+        <div className="space-y-3">
+          <h4 className="font-heading font-bold text-teal-400 uppercase tracking-wider text-xs">
+            Buy / Technical
+          </h4>
+          <ul className="space-y-2 text-xs text-slate-400">
+            <li>
+              <button onClick={() => scrollTo('finder')} className="hover:text-teal-300 transition-colors text-left">
+                Find Your Material
+              </button>
+            </li>
+            <li>
+              <button onClick={() => scrollTo('contact')} className="hover:text-teal-300 transition-colors text-left">
+                Request a Quote
+              </button>
+            </li>
+            <li>
+              <button onClick={() => scrollTo('quality')} className="hover:text-teal-300 transition-colors text-left">
+                Technical Resources
+              </button>
+            </li>
+            <li>
+              <button onClick={() => scrollTo('products')} className="hover:text-teal-300 transition-colors text-left">
+                Product Catalogue
+              </button>
+            </li>
+            <li>
+              <button onClick={() => scrollTo('about')} className="hover:text-teal-300 transition-colors text-left">
+                About Deepali Minerals
+              </button>
+            </li>
+            <li>
+              <button onClick={() => scrollTo('contact')} className="hover:text-teal-300 transition-colors text-left">
+                Commercial Desk
+              </button>
+            </li>
+            <li>
+              <a
+                href={`https://wa.me/${COMPANY_DETAILS.whatsappNumber.replace(/[^0-9]/g, '')}?text=Hello%20Deepali%20Minerals,%20I%20would%20like%20to%20discuss%20my%20industrial%20mineral%20requirement.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-emerald-400 font-semibold hover:text-emerald-300 flex items-center gap-1.5 transition-colors"
+              >
+                <span>WhatsApp Sales Desk</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Column 5: Contact */}
+        <div className="space-y-3">
+          <h4 className="font-heading font-bold text-teal-400 uppercase tracking-wider text-xs">
+            Contact
+          </h4>
+          <div className="space-y-2 text-xs text-slate-400">
             <div>
-              <span className="text-slate-500 block">GST Number:</span>
-              <span className="font-mono text-slate-300 font-bold">{COMPANY_DETAILS.gstNumber}</span>
+              <span className="text-slate-500 uppercase tracking-wider text-[10px] font-mono block">Email:</span>
+              <a href={`mailto:${COMPANY_DETAILS.emailSales}`} className="text-slate-300 hover:text-amber-400 transition-colors">
+                {COMPANY_DETAILS.emailSales}
+              </a>
             </div>
             <div>
-              <span className="text-slate-500 block">Certification:</span>
-              <span className="text-slate-300">ISO 9001:2015 & Asbestos-Free</span>
+              <span className="text-slate-500 uppercase tracking-wider text-[10px] font-mono block">Phone:</span>
+              <a href={`tel:${COMPANY_DETAILS.phonePrimary.replace(/[^0-9+]/g, '')}`} className="text-slate-300 hover:text-amber-400 transition-colors">
+                {COMPANY_DETAILS.phonePrimary}
+              </a>,{' '}
+              <a href={`tel:${COMPANY_DETAILS.phoneOffice.replace(/[^0-9+]/g, '')}`} className="text-slate-300 hover:text-amber-400 transition-colors">
+                {COMPANY_DETAILS.phoneOffice}
+              </a>
             </div>
             <div>
-              <span className="text-slate-500 block">Mining & Milling Hubs:</span>
-              <span className="text-slate-300">Delhi • Rajasthan • Gujarat</span>
+              <span className="text-slate-500 uppercase tracking-wider text-[10px] font-mono block">Depot &amp; Office:</span>
+              <span className="text-slate-300 block">{COMPANY_DETAILS.registeredAddress}</span>
             </div>
             <div>
-              <span className="text-slate-500 block">Working Hours:</span>
-              <span className="text-slate-300">Mon - Sat: 9:00 AM - 7:30 PM IST</span>
+              <span className="text-slate-500 uppercase tracking-wider text-[10px] font-mono block">Hours:</span>
+              <span className="text-slate-300 block">{COMPANY_DETAILS.businessHours}</span>
+            </div>
+            <div className="pt-2">
+              <a
+                href={`https://wa.me/${COMPANY_DETAILS.whatsappNumber.replace(/[^0-9]/g, '')}?text=Hello%20Deepali%20Minerals,%20I%20would%20like%20to%20discuss%20my%20industrial%20mineral%20requirement.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-emerald-600/20 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-600 hover:text-white transition-colors text-[11px] font-bold uppercase tracking-wider"
+              >
+                <span>WhatsApp Sales Desk</span>
+              </a>
             </div>
           </div>
         </div>

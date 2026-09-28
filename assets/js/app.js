@@ -28,6 +28,20 @@
   const root = document.body.dataset.root || '.';
   const page = document.body.dataset.page;
   const esc = (value) => String(value || '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char]));
+  
+  const whatsappIconSvg = (w = 16, h = 16) => `
+    <svg class="whatsapp-icon" viewBox="0 0 24 24" width="${w}" height="${h}" fill="currentColor" aria-hidden="true">
+      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8.01 12.27C8.14 12.44 9.76 14.94 12.24 16.01C12.83 16.27 13.28 16.42 13.64 16.53C14.23 16.72 14.77 16.69 15.2 16.63C15.68 16.56 16.68 16.03 16.89 15.45C17.1 14.87 17.1 14.38 17.04 14.27C16.97 14.17 16.81 14.11 16.56 13.98C16.32 13.86 15.12 13.27 14.9 13.19C14.68 13.1 14.52 13.06 14.36 13.3C14.19 13.55 13.73 14.09 13.59 14.25C13.45 14.41 13.31 14.43 13.07 14.31C12.82 14.18 11.78 13.84 10.56 12.75C9.61 11.9 8.97 10.86 8.84 10.64C8.72 10.42 8.83 10.3 8.95 10.18C9.06 10.07 9.2 9.89 9.32 9.75C9.45 9.61 9.49 9.5 9.57 9.34C9.65 9.17 9.61 9.03 9.55 8.91C9.49 8.78 9.03 7.65 8.84 7.2C8.65 6.75 8.46 6.82 8.32 6.81C8.18 6.81 8.02 6.81 7.85 6.81"/>
+    </svg>
+  `;
+
+  const getWhatsAppUrl = (msg) => {
+    const rawNumber = (data && data.company && data.company.whatsappNumber) || '919810516065';
+    const cleanNumber = String(rawNumber).replace(/[^0-9]/g, '') || '919810516065';
+    const text = msg || 'Hello Deepali Minerals, I would like to discuss my industrial mineral requirement.';
+    return `https://wa.me/${cleanNumber}?text=${encodeURIComponent(text)}`;
+  };
+
   const productUrl = (product, industryCtx, appCtx, routeCtx) => {
     let url = `${root}/product.html?product=${encodeURIComponent(product.slug || product.id)}`;
     if (industryCtx) url += `&industry=${encodeURIComponent(industryCtx)}`;
@@ -65,12 +79,22 @@
             <img src="${root}/assets/images/brand/logo.jpg" alt="Deepali Minerals Logo" class="brand-logo" width="200" height="100" referrerpolicy="no-referrer" />
           </a>
           <nav class="nav-links" aria-label="Primary navigation">${links}</nav>
-          <a class="button header-cta" href="#rfq">Request a Quote</a>
-          <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav">Menu</button>
+          <div class="header-actions">
+            <a class="header-whatsapp" href="${getWhatsAppUrl()}" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Sales Desk">
+              ${whatsappIconSvg(15, 15)}
+              <span>WhatsApp Sales Desk</span>
+            </a>
+            <a class="button header-cta" href="${root}/#rfq">Request a Quote</a>
+            <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav">Menu</button>
+          </div>
         </div>
         <nav class="shell mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
           ${links}
-          <a class="button" href="#rfq">Request a Quote</a>
+          <a class="mobile-whatsapp" href="${getWhatsAppUrl()}" target="_blank" rel="noopener noreferrer">
+            ${whatsappIconSvg(18, 18)}
+            <span>WhatsApp Sales Desk</span>
+          </a>
+          <a class="button" href="${root}/#rfq">Request a Quote</a>
         </nav>
       </header>
     `;
@@ -284,43 +308,146 @@
     const footerEl = document.querySelector('#site-footer');
     if (!footerEl) return;
 
-    const company = data.company;
+    const company = data.company || {};
+
+    // Contextual message for floating WhatsApp button
+    let floatingMsg = 'Hello Deepali Minerals, I would like to discuss my industrial mineral requirement.';
+    if (page === 'product') {
+      const params = new URLSearchParams(location.search);
+      const slug = params.get('product');
+      const p = data.getProductBySlug(slug);
+      if (p) {
+        floatingMsg = `Hello Deepali Minerals, I would like to discuss my requirement for ${p.name}.`;
+      }
+    }
+    const floatingWhatsAppUrl = getWhatsAppUrl(floatingMsg);
+    const whatsappGeneralUrl = getWhatsAppUrl();
+
     footerEl.innerHTML = `
-      <a class="contact-float" href="#rfq" aria-label="Open quote request">RFQ</a>
+      <a class="contact-float" href="${root}/#rfq" aria-label="Open quote request">RFQ</a>
+      <a class="dm-floating-whatsapp" href="${floatingWhatsAppUrl}" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Sales Desk">
+        ${whatsappIconSvg(20, 20)}
+        <span class="floating-label">WhatsApp Sales Desk</span>
+      </a>
       <footer class="footer" id="contact">
         <div class="shell footer-grid">
-          <div>
+          <!-- COLUMN 1: DEEPALI MINERALS -->
+          <div class="footer-col footer-col-brand">
             <a class="brand dm-interactive-logo" href="${root}/" aria-label="Deepali Minerals home" data-dm-logo="true">
               <img src="${root}/assets/images/brand/logo.jpg" alt="Deepali Minerals Logo" class="brand-logo-footer" width="200" height="100" referrerpolicy="no-referrer" />
             </a>
-            <p style="margin-top: .75rem;">${company.tagline}</p>
-            <div style="font-size: .84rem; color: #a99f8f; margin-top: .75rem; line-height: 1.5;">
+            <p class="footer-tagline">${company.tagline || 'Industrial materials, clearly connected.'}</p>
+            <p class="footer-desc">
+              Reliable processor, manufacturer, and bulk supplier of non-metallic industrial minerals and functional chemical extenders since 2004. B2B material supply for industrial manufacturing across India and worldwide.
+            </p>
+            <div class="footer-meta-box">
               <p><strong>CEO:</strong> ${company.ceo || 'Mr. Neeraj Monga (CEO)'}</p>
-              <p style="margin-top: .4rem;"><strong>Office & Depot:</strong><br>${company.headquarters || 'C2/29C Lawrence Road, Keshav Puram, Delhi-110035'}</p>
-              <p style="margin-top: .4rem;"><strong>Phone:</strong> <a href="tel:+919810516065" style="color:inherit;">9810516065</a>, <a href="tel:+919810715129" style="color:inherit;">9810715129</a></p>
-              <p style="margin-top: .4rem;"><strong>Email:</strong> <a href="mailto:${company.emailSales || 'info@deepaliminerals.in'}" style="color:inherit;">${company.emailSales || 'info@deepaliminerals.in'}</a></p>
-              <p style="margin-top: .4rem;"><strong>GST:</strong> ${company.gstNumber || '07AIMPM0458Q1ZL'}</p>
+              <p><strong>GST:</strong> ${company.gstNumber || '07AIMPM0458Q1ZL'}</p>
+              <p><strong>Business:</strong> Industrial Minerals • B2B Supply</p>
             </div>
           </div>
-          <div>
-            <h3>Discover</h3>
-            <a href="${productsUrl}">Product Catalogue</a>
-            <a href="${industriesUrl}">Industries & Applications</a>
-            <a href="${root}/#resources">Technical Resources</a>
-            <a href="${root}/#why">About Deepali Minerals</a>
+
+          <!-- COLUMN 2: MATERIALS -->
+          <div class="footer-col">
+            <h3>Materials</h3>
+            <div class="footer-links-list">
+              <a href="${root}/product.html?product=talc">Talc</a>
+              <a href="${root}/product.html?product=soap-stone">Soap Stone</a>
+              <a href="${root}/product.html?product=chalk-powder">Chalk Powder</a>
+              <a href="${root}/product.html?product=hydrated-lime">Hydrated Lime</a>
+              <a href="${root}/product.html?product=china-clay">China Clay</a>
+              <a href="${root}/product.html?product=kaoline">Kaoline</a>
+              <a href="${root}/product.html?product=marble-powder">Marble Powder</a>
+              <a href="${root}/product.html?product=quartz-powder">Quartz Powder</a>
+              <a href="${root}/product.html?product=calcium-carbonate">Calcium Carbonate</a>
+              <a href="${root}/product.html?product=zinc-oxide">Zinc Oxide</a>
+              <a href="${root}/product.html?product=dolomite-powder">Dolomite Powder</a>
+              <a href="${root}/product.html?product=silica">Silica</a>
+              <a href="${productsUrl}" class="footer-accent-link">View All Materials →</a>
+            </div>
           </div>
-          <div>
-            <h3>Enquiries</h3>
-            <a href="#rfq">Request a Quote</a>
-            <a href="${root}/#contact">Contact Commercial Desk</a>
-            <a href="https://wa.me/${(company.whatsappNumber || '919810516065').replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hello Deepali Minerals, I would like to inquire about industrial mineral procurement.')}" target="_blank" rel="noopener noreferrer">
-              WhatsApp Sales Desk
-            </a>
+
+          <!-- COLUMN 3: INDUSTRIES & APPLICATIONS -->
+          <div class="footer-col">
+            <h3>Industries &amp; Applications</h3>
+            <div class="footer-links-list">
+              <a href="${productsUrl}?industry=Paints">Paints</a>
+              <a href="${productsUrl}?industry=Plastic">Plastics</a>
+              <a href="${productsUrl}?industry=Rubber">Rubber</a>
+              <a href="${productsUrl}?industry=Master%20Batch">Masterbatch</a>
+              <a href="${productsUrl}?industry=PVC">PVC</a>
+              <a href="${productsUrl}?industry=Paper">Paper</a>
+              <a href="${productsUrl}?industry=Ceramics">Ceramics</a>
+              <a href="${productsUrl}?industry=Cosmetics">Cosmetics</a>
+              <a href="${productsUrl}?industry=Pharmaceutical">Pharmaceutical</a>
+              <a href="${productsUrl}?industry=Soap">Soap &amp; Detergent</a>
+              <a href="${productsUrl}?industry=Footwear">Footwear</a>
+              <a href="${productsUrl}?industry=Cables">Cables</a>
+              <a href="${productsUrl}?industry=Construction">Construction</a>
+              <a href="${productsUrl}?industry=FRP">FRP</a>
+              <a href="${industriesUrl}" class="footer-accent-link">Explore Industries →</a>
+            </div>
+          </div>
+
+          <!-- COLUMN 4: BUY / TECHNICAL -->
+          <div class="footer-col">
+            <h3>Buy / Technical</h3>
+            <div class="footer-links-list">
+              <a href="${root}/#materials">Find Your Material</a>
+              <a href="${root}/#rfq">Request a Quote</a>
+              <a href="${root}/#resources">Technical Resources</a>
+              <a href="${productsUrl}">Product Catalogue</a>
+              <a href="${root}/#why">About Deepali Minerals</a>
+              <a href="${root}/#contact">Commercial Desk</a>
+              <a href="${whatsappGeneralUrl}" target="_blank" rel="noopener noreferrer" class="footer-whatsapp-link">
+                ${whatsappIconSvg(14, 14)} WhatsApp Sales Desk
+              </a>
+            </div>
+          </div>
+
+          <!-- COLUMN 5: CONTACT -->
+          <div class="footer-col footer-col-contact">
+            <h3>Contact</h3>
+            <div class="footer-contact-details">
+              <p>
+                <strong class="footer-lbl">Email:</strong><br />
+                <a href="mailto:${company.emailSales || 'info@deepaliminerals.in'}">${company.emailSales || 'info@deepaliminerals.in'}</a>
+              </p>
+              <p style="margin-top: .6rem;">
+                <strong class="footer-lbl">Phone:</strong><br />
+                <a href="tel:+919810516065">9810516065</a>, <a href="tel:+919810715129">9810715129</a>
+              </p>
+              <p style="margin-top: .6rem;">
+                <strong class="footer-lbl">Depot &amp; Office:</strong><br />
+                <span>${company.headquarters || 'C2/29C Lawrence Road, Keshav Puram, Delhi-110035'}</span>
+              </p>
+              <p style="margin-top: .6rem;">
+                <strong class="footer-lbl">Hours:</strong><br />
+                <span>${company.businessHours || 'Monday – Saturday: 9:00 AM – 7:30 PM IST'}</span>
+              </p>
+              <div style="margin-top: .85rem;">
+                <a href="${whatsappGeneralUrl}" target="_blank" rel="noopener noreferrer" class="footer-whatsapp-btn">
+                  ${whatsappIconSvg(15, 15)}
+                  <span>WhatsApp Sales Desk</span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
+
         <div class="shell footer-bottom">
-          <span>© ${new Date().getFullYear()} Deepali Minerals. All rights reserved.</span>
-          <span>Industrial B2B Product Discovery & Technical Material Library</span>
+          <div class="footer-bottom-left">
+            <span>© ${new Date().getFullYear()} Deepali Minerals. All rights reserved.</span>
+            <span class="footer-sep">•</span>
+            <span>Industrial B2B Material Supply &amp; Technical Discovery</span>
+          </div>
+          <div class="footer-bottom-right">
+            <a href="${root}/sitemap.xml" target="_blank" rel="noopener">Sitemap (XML)</a>
+            <span class="footer-sep">•</span>
+            <a href="${root}/#rfq">Request a Quote</a>
+            <span class="footer-sep">•</span>
+            <a href="${whatsappGeneralUrl}" target="_blank" rel="noopener noreferrer">WhatsApp Desk</a>
+          </div>
         </div>
       </footer>
     `;
