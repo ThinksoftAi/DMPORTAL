@@ -304,6 +304,43 @@
     }, { passive: true });
   }
 
+  // Persistent Back-to-Top Floating Arrow Controller
+  function initBackToTop() {
+    const btn = document.querySelector('.back-to-top-btn');
+    if (!btn || btn.dataset.initialized === 'true') return;
+    btn.dataset.initialized = 'true';
+
+    let ticking = false;
+    const updateVisibility = () => {
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      if (scrollY >= 400) {
+        btn.classList.add('is-visible');
+      } else {
+        btn.classList.remove('is-visible');
+      }
+      ticking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateVisibility);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Initial check
+    updateVisibility();
+
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({
+        top: 0,
+        behavior: prefersReduced ? 'auto' : 'smooth'
+      });
+    });
+  }
+
   function footer() {
     const footerEl = document.querySelector('#site-footer');
     if (!footerEl) return;
@@ -325,6 +362,11 @@
 
     footerEl.innerHTML = `
       <a class="contact-float" href="${root}/#rfq" aria-label="Open quote request">RFQ</a>
+      <button type="button" class="back-to-top-btn" aria-label="Back to top" title="Back to top">
+        <svg class="back-to-top-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+      </button>
       <a class="dm-floating-whatsapp" href="${floatingWhatsAppUrl}" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Sales Desk">
         ${whatsappIconSvg(20, 20)}
         <span class="floating-label">WhatsApp Sales Desk</span>
@@ -451,6 +493,8 @@
         </div>
       </footer>
     `;
+
+    initBackToTop();
   }
 
   const productCard = (p, industryCtx, appCtx, routeCtx) => `
