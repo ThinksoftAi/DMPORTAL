@@ -31,7 +31,7 @@ export const Hero: React.FC<HeroProps> = ({
       {/* Background Facility Video */}
       <div className="absolute inset-0 w-full h-full overflow-hidden z-0 pointer-events-none" aria-hidden="true">
         <video
-          className="w-full h-full object-cover object-[center_38%]"
+          className="w-full h-full object-cover object-right-bottom"
           autoPlay
           muted
           loop
@@ -42,7 +42,7 @@ export const Hero: React.FC<HeroProps> = ({
           <source src="/hero%20video%20DM%20watermark%20(1).mp4" type="video/mp4" />
         </video>
         {/* Subtle dark charcoal translucent overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-900/70 to-slate-950/85" />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-900/50 to-transparent" />
       </div>
 
       {/* Background ambient grid */}
