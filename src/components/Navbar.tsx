@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { 
   Phone, 
   Mail, 
@@ -29,6 +29,32 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
+  const [logoVideoActive, setLogoVideoActive] = useState(false);
+  const logoVideoRef = useRef<HTMLVideoElement>(null);
+  const logoLeaveTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleLogoMouseEnter = () => {
+    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (logoLeaveTimerRef.current) clearTimeout(logoLeaveTimerRef.current);
+    setLogoVideoActive(true);
+    if (logoVideoRef.current) {
+      logoVideoRef.current.currentTime = 0;
+      logoVideoRef.current.play().catch(() => {});
+    }
+  };
+
+  const handleLogoMouseLeave = () => {
+    if (logoLeaveTimerRef.current) clearTimeout(logoLeaveTimerRef.current);
+    logoLeaveTimerRef.current = setTimeout(() => {
+      setLogoVideoActive(false);
+      setTimeout(() => {
+        if (logoVideoRef.current) {
+          logoVideoRef.current.pause();
+          logoVideoRef.current.currentTime = 0;
+        }
+      }, 300);
+    }, 250);
+  };
 
   const scrollTo = (id: string) => {
     setMobileMenuOpen(false);
@@ -90,28 +116,73 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* Main navigation header */}
       <nav className="bg-slate-900/95 backdrop-blur-md border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 py-3.5 flex items-center justify-between">
-          {/* Logo */}
-          <button 
-            onClick={() => scrollTo('hero')} 
-            className="flex items-center gap-3 text-left group focus:outline-none"
+          {/* Logo with interactive animated reveal */}
+          <div 
+            className="brand-wrapper"
+            onMouseEnter={handleLogoMouseEnter}
+            onMouseLeave={handleLogoMouseLeave}
           >
-            <div className="bg-white px-2.5 py-1.5 rounded-lg shadow-md group-hover:scale-105 transition-transform flex items-center justify-center">
-              <img 
-                src="/assets/images/logo.png?v=dm2026" 
-                alt="DEEPALI MINERALS Logo" 
-                className="w-full h-auto max-h-11 max-w-[170px] object-contain block" 
-                referrerPolicy="no-referrer"
-              />
+            <button 
+              onClick={() => scrollTo('hero')} 
+              className="dm-interactive-logo flex items-center gap-3 text-left group focus:outline-none"
+              data-dm-logo="true"
+            >
+              <div className="rounded-lg shadow-md group-hover:scale-105 transition-transform flex items-center justify-center overflow-hidden">
+                <img 
+                  src="/assets/images/brand/logo.jpg" 
+                  alt="DEEPALI MINERALS Logo" 
+                  className="w-full h-auto max-h-12 max-w-[175px] object-contain block rounded-lg" 
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div className="hidden sm:block">
+                <span className="block text-[10px] tracking-wider uppercase text-slate-400 font-semibold">
+                  Industrial Materials Leader
+                </span>
+                <span className="block text-[9px] text-amber-400/90 font-mono">
+                  Mfg. & Supplier Since 2004
+                </span>
+              </div>
+            </button>
+
+            <div 
+              className={`brand-video-popover ${logoVideoActive ? 'is-active' : ''}`}
+              aria-hidden={!logoVideoActive}
+            >
+              <video
+                ref={logoVideoRef}
+                className="brand-animated-video"
+                muted
+                playsInline
+                preload="none"
+                onEnded={() => {
+                  setLogoVideoActive(false);
+                  if (logoVideoRef.current) {
+                    logoVideoRef.current.pause();
+                    logoVideoRef.current.currentTime = 0;
+                  }
+                }}
+              >
+                <source src="/Cinematic_logo_animation_script_1080p_20260928120021.mp4" type="video/mp4" />
+              </video>
+              <button 
+                type="button" 
+                className="brand-video-close" 
+                aria-label="Close animation"
+                tabIndex={-1}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setLogoVideoActive(false);
+                  if (logoVideoRef.current) {
+                    logoVideoRef.current.pause();
+                    logoVideoRef.current.currentTime = 0;
+                  }
+                }}
+              >
+                ×
+              </button>
             </div>
-            <div className="hidden sm:block">
-              <span className="block text-[10px] tracking-wider uppercase text-slate-400 font-semibold">
-                Industrial Materials Leader
-              </span>
-              <span className="block text-[9px] text-amber-400/90 font-mono">
-                Mfg. & Supplier Since 2004
-              </span>
-            </div>
-          </button>
+          </div>
 
           {/* Desktop Nav Items */}
           <div className="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-300">

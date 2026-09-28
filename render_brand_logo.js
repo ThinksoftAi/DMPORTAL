@@ -1,4 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+import fs from 'fs';
+import { execSync } from 'child_process';
+import { Resvg } from '@resvg/resvg-js';
+
+const svgContent = `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 1000" width="2000" height="1000">
   <defs>
     <!-- Soft Studio Backdrop Gradient matching JPG -->
@@ -192,3 +196,34 @@
     DEEPALI MINERALS
   </text>
 </svg>
+`;
+
+// Save the SVG in assets/images/brand/
+fs.writeFileSync('assets/images/brand/logo.svg', svgContent);
+fs.writeFileSync('public/assets/images/brand/logo.svg', svgContent);
+
+// Render high-res PNG using resvg (2000x1000)
+const resvg = new Resvg(svgContent, {
+  fitTo: {
+    mode: 'width',
+    value: 2000,
+  },
+});
+const pngData = resvg.render();
+const pngBuffer = pngData.asPng();
+
+fs.writeFileSync('assets/images/brand/logo.png', pngBuffer);
+fs.writeFileSync('public/assets/images/brand/logo.png', pngBuffer);
+
+// Convert PNG to JPG matching "DM LOGO FINAL made_CENTRED AND FOCUS.jpg"
+execSync('convert assets/images/brand/logo.png -quality 98 assets/images/brand/logo.jpg');
+execSync('cp assets/images/brand/logo.jpg public/assets/images/brand/logo.jpg');
+
+// Also save exact filename in brand directory for direct file references
+execSync('cp assets/images/brand/logo.jpg "public/assets/images/brand/DM LOGO FINAL made_CENTRED AND FOCUS.jpg"');
+execSync('cp assets/images/brand/logo.jpg "assets/images/brand/DM LOGO FINAL made_CENTRED AND FOCUS.jpg"');
+
+// Copy to dist as well
+execSync('mkdir -p dist/assets/images/brand && cp -r assets/images/brand/* dist/assets/images/brand/');
+
+console.log('Brand logo generated and verified successfully!');

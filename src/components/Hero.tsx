@@ -27,10 +27,26 @@ export const Hero: React.FC<HeroProps> = ({
   onOpenFinder
 }) => {
   return (
-    <section id="hero" className="relative overflow-hidden pt-8 pb-16 lg:py-20 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 border-b border-slate-800">
-      {/* Background ambient grid and glow */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b15_1px,transparent_1px),linear-gradient(to_bottom,#1e293b15_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-amber-500/10 blur-[130px] rounded-full pointer-events-none" />
+    <section id="hero" className="relative overflow-hidden pt-8 pb-16 lg:py-20 bg-slate-950 border-b border-slate-800">
+      {/* Background Facility Video */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden z-0 pointer-events-none" aria-hidden="true">
+        <video
+          className="w-full h-full object-cover object-[center_38%]"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+        >
+          <source src="/hero%20video%20DM%20watermark%20(1).mp4" type="video/mp4" />
+        </video>
+        {/* Subtle dark charcoal translucent overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-900/70 to-slate-950/85" />
+      </div>
+
+      {/* Background ambient grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b15_1px,transparent_1px),linear-gradient(to_bottom,#1e293b15_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none z-0" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">

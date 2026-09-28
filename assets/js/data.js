@@ -21,6 +21,7 @@
     whatsappNumber: '+919810516065',
     emailSales: 'info@deepaliminerals.in',
     emailInquiry: 'info@deepaliminerals.in',
+    logo: '/assets/images/brand/logo.jpg',
     gstNumber: '07AIMPM0458Q1ZL',
     businessHours: 'Monday – Saturday: 9:00 AM – 7:30 PM IST',
     targetDomain: 'https://deepaliminerals.in'

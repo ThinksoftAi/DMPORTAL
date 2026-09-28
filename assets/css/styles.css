@@ -155,14 +155,146 @@ a {
   flex-shrink: 0;
 }
 
+.brand-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* Global Floating DM Animated Logo Popover */
+.dm-global-logo-popover {
+  position: fixed;
+  z-index: 99999;
+  width: 480px;
+  max-width: calc(100vw - 32px);
+  aspect-ratio: 16 / 9;
+  background: #0b111e;
+  border-radius: 10px;
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(0.96);
+  transform-origin: center center;
+  transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.28s;
+}
+
+.dm-global-logo-popover.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.dm-global-logo-popover .brand-animated-video,
+.brand-animated-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background: #0b111e;
+}
+
+.dm-global-logo-popover .brand-video-close,
+.brand-video-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(11, 17, 30, 0.85);
+  color: #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 10;
+  opacity: 0.85;
+  transition: opacity 0.2s, background 0.2s;
+  padding: 0;
+}
+
+.dm-global-logo-popover .brand-video-close:hover,
+.brand-video-close:hover {
+  opacity: 1;
+  background: rgba(15, 23, 42, 0.98);
+  color: #fff;
+}
+
+.brand-video-popover {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%) scale(0.96);
+  transform-origin: left center;
+  width: 480px;
+  max-width: calc(100vw - 32px);
+  aspect-ratio: 16 / 9;
+  background: #0b111e;
+  border-radius: 10px;
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.28s;
+}
+
+.brand-video-popover.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(-50%) scale(1);
+}
+
+@media (max-width: 768px) {
+  .brand-video-popover {
+    position: fixed;
+    top: 76px;
+    left: 16px;
+    right: 16px;
+    width: auto;
+    max-width: 440px;
+    margin: 0 auto;
+    transform: scale(0.96);
+    transform-origin: top center;
+  }
+  .brand-video-popover.is-active {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-video-popover {
+    left: 12px;
+    right: 12px;
+    top: 70px;
+    max-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dm-global-logo-popover,
+  .brand-video-popover {
+    display: none !important;
+  }
+}
+
 .brand-logo {
   width: 100%;
   max-width: 185px;
   height: auto;
-  max-height: 64px;
   object-fit: contain;
   display: block;
   aspect-ratio: 2 / 1;
+  border-radius: 6px;
   transition: transform .2s ease;
 }
 
@@ -172,16 +304,12 @@ a {
 
 .brand-logo-footer {
   width: 100%;
-  max-width: 195px;
+  max-width: 200px;
   height: auto;
-  max-height: 72px;
   object-fit: contain;
   display: block;
   aspect-ratio: 2 / 1;
-  background: #ffffff;
-  padding: 8px 12px;
-  border-radius: 8px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
   transition: transform .2s ease;
 }
 
@@ -294,27 +422,53 @@ a {
 /* Home */
 .hero {
   overflow: hidden;
-  min-height: 680px;
-  background-color: var(--navy);
+  min-height: clamp(620px, 78vh, 850px);
+  background-color: #12161c;
   color: #fff;
   position: relative;
-  background-image: linear-gradient(115deg, rgba(32, 32, 29, .98) 0 55%, rgba(32, 32, 29, .6)), repeating-linear-gradient(132deg, transparent 0 54px, rgba(213, 164, 58, .08) 55px 56px);
 }
 
 .hero:after {
-  content: '';
-  width: 510px;
-  height: 510px;
-  right: -90px;
-  top: auto;
-  bottom: -185px;
-  border: 0;
-  border-radius: 0;
+  display: none;
+}
+
+.hero-video-wrap {
   position: absolute;
-  background: conic-gradient(from 35deg, #b65a32, #d5a43a, #b4aa90, #88402b, #b65a32);
-  clip-path: polygon(50% 0, 100% 36%, 78% 100%, 17% 84%, 0 29%);
-  box-shadow: none;
-  opacity: .85;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 40% 40%, #1e2633 0%, #10141a 100%);
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+  display: block;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(14, 18, 24, 0.68) 0%,
+    rgba(16, 20, 26, 0.45) 55%,
+    rgba(14, 18, 24, 0.25) 100%
+  );
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-video {
+    display: none;
+  }
 }
 
 .hero-inner {
@@ -1168,7 +1322,7 @@ section {
   }
   .brand-logo {
     max-width: 150px;
-    max-height: 52px;
+    height: auto;
   }
   .nav-links,
   .header-cta {
@@ -1258,22 +1412,22 @@ section {
 @media (max-width: 480px) {
   .brand-logo {
     max-width: 135px;
-    max-height: 48px;
+    height: auto;
   }
   .brand-logo-footer {
     max-width: 160px;
-    max-height: 58px;
+    height: auto;
   }
 }
 
 @media (max-width: 360px) {
   .brand-logo {
-    max-width: 120px;
-    max-height: 44px;
+    max-width: 115px;
+    height: auto;
   }
   .brand-logo-footer {
-    max-width: 145px;
-    max-height: 52px;
+    max-width: 140px;
+    height: auto;
   }
 }
 

@@ -648,6 +648,7 @@ export const COMPANY_DETAILS = {
   phoneOffice: '9810715129',
   emailSales: 'info@deepaliminerals.in',
   emailInquiry: 'info@deepaliminerals.in',
+  logo: '/assets/images/brand/logo.jpg',
   whatsappNumber: '+919810516065',
   gstNumber: '07AIMPM0458Q1ZL',
   turnoverRange: '₹5 Crore - ₹25 Crore INR',

@@ -67,11 +67,11 @@ export const Footer: React.FC<FooterProps> = ({
         {/* Brand Column */}
         <div className="lg:col-span-2 space-y-4">
           <div className="flex items-center gap-3">
-            <div className="bg-white px-3 py-1.5 rounded-lg shadow-md flex items-center justify-center">
+            <div className="dm-interactive-logo rounded-lg shadow-md flex items-center justify-center overflow-hidden cursor-pointer" data-dm-logo="true">
               <img 
-                src="/assets/images/logo.png?v=dm2026" 
+                src="/assets/images/brand/logo.jpg" 
                 alt="DEEPALI MINERALS Logo" 
-                className="w-full h-auto max-h-14 max-w-[185px] object-contain block" 
+                className="w-full h-auto max-h-14 max-w-[190px] object-contain block rounded-lg" 
                 referrerPolicy="no-referrer"
               />
             </div>

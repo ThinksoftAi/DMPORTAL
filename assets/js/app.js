@@ -61,8 +61,8 @@
       <div class="topline"></div>
       <header class="site-header">
         <div class="shell header-inner">
-          <a class="brand" href="${root}/" aria-label="Deepali Minerals home">
-            <img src="${root}/assets/images/logo.png?v=dm2026" alt="Deepali Minerals Logo" class="brand-logo" width="200" height="100" referrerpolicy="no-referrer" />
+          <a class="brand dm-interactive-logo" href="${root}/" aria-label="Deepali Minerals home" data-dm-logo="true">
+            <img src="${root}/assets/images/brand/logo.jpg" alt="Deepali Minerals Logo" class="brand-logo" width="200" height="100" referrerpolicy="no-referrer" />
           </a>
           <nav class="nav-links" aria-label="Primary navigation">${links}</nav>
           <a class="button header-cta" href="#rfq">Request a Quote</a>
@@ -86,6 +86,200 @@
     }
   }
 
+  // Global Reusable DM Interactive Logo Controller
+  function initGlobalDMInteractiveLogos() {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    let popover = document.getElementById('dm-global-logo-popover');
+    if (!popover) {
+      popover = document.createElement('div');
+      popover.id = 'dm-global-logo-popover';
+      popover.className = 'dm-global-logo-popover';
+      popover.setAttribute('aria-hidden', 'true');
+      popover.innerHTML = `
+        <video
+          class="brand-animated-video"
+          muted
+          playsinline
+          preload="none"
+        >
+          <source src="${root}/Cinematic_logo_animation_script_1080p_20260928120021.mp4" type="video/mp4" />
+        </video>
+        <button type="button" class="brand-video-close" aria-label="Close animation" tabindex="-1">×</button>
+      `;
+      document.body.appendChild(popover);
+    }
+
+    const video = popover.querySelector('video');
+    const closeBtn = popover.querySelector('.brand-video-close');
+    let activeLogo = null;
+    let leaveTimer = null;
+    let isPlaying = false;
+    let isTouch = false;
+
+    function positionPopover(logoEl) {
+      const rect = logoEl.getBoundingClientRect();
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+
+      let targetWidth = 480;
+      if (vw < 520) {
+        targetWidth = Math.min(420, vw - 24);
+      } else if (vw < 768) {
+        targetWidth = Math.min(440, vw - 32);
+      } else {
+        targetWidth = Math.min(480, vw - 32);
+      }
+      const targetHeight = Math.round(targetWidth * (9 / 16));
+
+      // Intelligently position relative to the hovered logo
+      // If near viewport bottom (e.g. footer), show above the logo
+      // If near top (e.g. header), show below the logo
+      const spaceBelow = vh - rect.bottom;
+      const spaceAbove = rect.top;
+      let top = 0;
+
+      if (spaceBelow >= targetHeight + 12) {
+        top = rect.bottom + 8;
+      } else if (spaceAbove >= targetHeight + 12) {
+        top = rect.top - targetHeight - 8;
+      } else {
+        top = Math.max(12, Math.min(vh - targetHeight - 12, rect.top + (rect.height - targetHeight) / 2));
+      }
+
+      // Horizontal alignment: align with logo left edge, then clamp safely in viewport
+      let left = rect.left;
+      if (left + targetWidth > vw - 16) {
+        left = vw - 16 - targetWidth;
+      }
+      if (left < 16) {
+        left = 16;
+      }
+
+      popover.style.top = `${Math.round(top)}px`;
+      popover.style.left = `${Math.round(left)}px`;
+      popover.style.width = `${Math.round(targetWidth)}px`;
+    }
+
+    function showAndPlay(logoEl) {
+      clearTimeout(leaveTimer);
+      if (activeLogo !== logoEl || !isPlaying) {
+        activeLogo = logoEl;
+        positionPopover(logoEl);
+        popover.classList.add('is-active');
+        popover.setAttribute('aria-hidden', 'false');
+        isPlaying = true;
+        try {
+          video.currentTime = 0;
+        } catch (_) {}
+        const p = video.play();
+        if (p !== undefined) p.catch(() => {});
+      }
+    }
+
+    function hideAndStop() {
+      clearTimeout(leaveTimer);
+      if (isPlaying) {
+        popover.classList.remove('is-active');
+        popover.setAttribute('aria-hidden', 'true');
+        isPlaying = false;
+        activeLogo = null;
+        setTimeout(() => {
+          if (!isPlaying) {
+            try {
+              video.pause();
+              video.currentTime = 0;
+            } catch (_) {}
+          }
+        }, 300);
+      }
+    }
+
+    video.addEventListener('ended', () => {
+      hideAndStop();
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        hideAndStop();
+      });
+    }
+
+    popover.addEventListener('mouseenter', () => {
+      if (isTouch) return;
+      clearTimeout(leaveTimer);
+    });
+
+    popover.addEventListener('mouseleave', () => {
+      if (isTouch) return;
+      leaveTimer = setTimeout(() => {
+        hideAndStop();
+      }, 250);
+    });
+
+    function getLogoElement(target) {
+      if (!target || !(target instanceof Element)) return null;
+      if (target.closest('#dm-global-logo-popover')) return null;
+      return target.closest('[data-dm-logo="true"], .dm-interactive-logo, .brand-logo, .brand-logo-footer, img[src*="brand/logo"]');
+    }
+
+    // Delegated hover events for all current and future logo instances
+    document.addEventListener('mouseover', (e) => {
+      if (isTouch) return;
+      const logoEl = getLogoElement(e.target);
+      if (logoEl) {
+        clearTimeout(leaveTimer);
+        showAndPlay(logoEl);
+      }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+      if (isTouch) return;
+      const logoEl = getLogoElement(e.target);
+      if (logoEl && activeLogo === logoEl) {
+        leaveTimer = setTimeout(() => {
+          hideAndStop();
+        }, 250);
+      }
+    });
+
+    // Touch / Mobile delegation
+    document.addEventListener('touchstart', (e) => {
+      isTouch = true;
+      const logoEl = getLogoElement(e.target);
+      if (isPlaying && !popover.contains(e.target) && (!logoEl || logoEl !== activeLogo)) {
+        hideAndStop();
+      }
+    }, { passive: true });
+
+    document.addEventListener('click', (e) => {
+      if (!isTouch) return;
+      const logoEl = getLogoElement(e.target);
+      if (logoEl) {
+        if (!isPlaying || activeLogo !== logoEl) {
+          e.preventDefault();
+          showAndPlay(logoEl);
+        }
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (isPlaying && activeLogo) {
+        positionPopover(activeLogo);
+      }
+    });
+
+    window.addEventListener('scroll', () => {
+      if (isPlaying && activeLogo) {
+        positionPopover(activeLogo);
+      }
+    }, { passive: true });
+  }
+
   function footer() {
     const footerEl = document.querySelector('#site-footer');
     if (!footerEl) return;
@@ -96,8 +290,8 @@
       <footer class="footer" id="contact">
         <div class="shell footer-grid">
           <div>
-            <a class="brand" href="${root}/" aria-label="Deepali Minerals home">
-              <img src="${root}/assets/images/logo.png?v=dm2026" alt="Deepali Minerals Logo" class="brand-logo-footer" width="200" height="100" referrerpolicy="no-referrer" />
+            <a class="brand dm-interactive-logo" href="${root}/" aria-label="Deepali Minerals home" data-dm-logo="true">
+              <img src="${root}/assets/images/brand/logo.jpg" alt="Deepali Minerals Logo" class="brand-logo-footer" width="200" height="100" referrerpolicy="no-referrer" />
             </a>
             <p style="margin-top: .75rem;">${company.tagline}</p>
             <div style="font-size: .84rem; color: #a99f8f; margin-top: .75rem; line-height: 1.5;">
@@ -251,15 +445,30 @@
 
     document.querySelector('#main').innerHTML = `
       <!-- Hero Section -->
-      <section class="hero">
+      <section class="hero" id="hero">
+        <div class="hero-video-wrap" aria-hidden="true">
+          <video
+            class="hero-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            aria-hidden="true"
+          >
+            <source src="${root}/hero%20video%20DM%20watermark%20(1).mp4" type="video/mp4" />
+          </video>
+          <div class="hero-overlay"></div>
+        </div>
+
         <div class="shell hero-inner">
           <div class="hero-copy">
-            <span class="eyebrow">Industrial Materials Catalogue • Delhi Hub</span>
-            <h1 class="display">Industrial minerals for demanding applications.</h1>
-            <p class="lede">A direct path from material discovery to technical review and qualified B2B procurement enquiries.</p>
+            <span class="eyebrow">Deepali Minerals • Certified Industrial Processing &amp; Dispatch</span>
+            <h1 class="display">INDUSTRIAL MINERALS<br>FOR DEMANDING APPLICATIONS</h1>
+            <p class="lede">Materials • Supply • Technical Information • B2B Enquiries</p>
             <div class="hero-actions">
-              <a class="button" href="${productsUrl}">Explore Products</a>
-              <a class="button alt" href="${industriesUrl}">Browse by Industry</a>
+              <a class="button" href="${productsUrl}">EXPLORE MATERIALS</a>
+              <a class="button alt" href="#rfq">REQUEST A QUOTE</a>
             </div>
           </div>
           <div class="hero-aside">
@@ -274,7 +483,9 @@
         <div class="discovery-engine-box">
           <div class="discovery-engine-head">
             <h2 class="discovery-title">
-              <img src="${root}/assets/images/logo.png?v=dm2026" alt="DM" style="height: 28px; width: auto; vertical-align: middle; margin-right: .5rem; display: inline-block;" referrerpolicy="no-referrer" />
+              <span class="dm-interactive-logo" data-dm-logo="true" style="display: inline-block; vertical-align: middle; cursor: pointer;">
+                <img src="${root}/assets/images/brand/logo.jpg" alt="DM" style="height: 28px; width: auto; vertical-align: middle; margin-right: .5rem; display: inline-block; object-fit: contain; border-radius: 4px;" referrerpolicy="no-referrer" />
+              </span>
               Find Your Material
             </h2>
             <div class="discovery-mode-nav">
@@ -1525,5 +1736,6 @@ ${notesVal ? 'Notes: ' + notesVal : ''}`;
   if (page === 'industries') industries();
   if (page === 'products') products();
   if (page === 'product') product();
+  initGlobalDMInteractiveLogos();
 
 })();
