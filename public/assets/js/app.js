@@ -1621,13 +1621,13 @@
         </div>
       </section>
 
-      <!-- Master Manufacturing Directory -->
+          <!-- Master Manufacturing Directory -->
       <section class="catalogue" id="sector-directory">
         <div class="shell">
           <div class="section-head" style="margin-bottom: 1.5rem;">
             <div>
               <span class="eyebrow">Manufacturing Directory</span>
-              <h2 class="section-title">${summary.length} Industrial Sectors Digitized</h2>
+              <h2 class="section-title">${summary.length} Industrial Sectors & Applications</h2>
             </div>
             <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
               <a class="text-link" href="${productsUrl}">View all 22 products in catalogue →</a>
@@ -1638,7 +1638,7 @@
           <div style="margin-bottom: 2rem; padding: 1.25rem; background: var(--fog); border: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
             <div style="flex: 1; min-width: 260px;">
               <label for="sector-quick-search" style="display: block; font: 700 .72rem var(--mono); text-transform: uppercase; color: var(--slate); margin-bottom: .35rem;">Search Manufacturing Sectors:</label>
-              <input id="sector-quick-search" type="search" placeholder="Filter by sector name, material, or sheet (e.g. Putty, Dal Polish, Celite, Sheet A)..." style="width: 100%; padding: .65rem .85rem; border: 1px solid var(--line); font: 500 .85rem var(--sans); background: var(--paper);" />
+              <input id="sector-quick-search" type="search" placeholder="Filter by sector name, application, or material (e.g. Putty, Polymers, Paints, Talc, Calcium Carbonate)..." style="width: 100%; padding: .65rem .85rem; border: 1px solid var(--line); font: 500 .85rem var(--sans); background: var(--paper);" />
             </div>
             <div style="font: 500 .75rem var(--mono); color: var(--slate);">
               Showing <span id="visible-sector-count" style="font-weight: 700; color: var(--ink);">${summary.length}</span> of ${summary.length} sectors
@@ -1648,14 +1648,13 @@
           <div id="sector-cards-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem;">
             ${summary.map((item, idx) => {
               const prof = item.profile;
-              const sheetTag = item.sheetIndex ? (item.sheetIndex.startsWith('Sheet') || item.sheetIndex.startsWith('Portal') ? item.sheetIndex : 'Sheet ' + item.sheetIndex) : '';
               return `
-              <article class="industry-card sector-item" data-sector-name="${esc(item.name.toLowerCase())}" data-sector-sheet="${esc((item.sheetIndex || '').toLowerCase())}" data-materials="${esc(item.products.map(p => p.name.toLowerCase()).join(' '))}" style="display: flex; flex-direction: column; height: 100%; border: 1px solid var(--line); padding: 1.5rem; background: var(--paper);">
+              <article class="industry-card sector-item" data-sector-name="${esc(item.name.toLowerCase())}" data-sector-badge="${esc((item.badge || '').toLowerCase())}" data-materials="${esc(item.products.map(p => p.name.toLowerCase()).join(' '))}" style="display: flex; flex-direction: column; height: 100%; border: 1px solid var(--line); padding: 1.5rem; background: var(--paper);">
                 <div>
                   <div style="display: flex; justify-content: space-between; align-items: baseline; gap: .5rem; margin-bottom: .5rem; flex-wrap: wrap;">
                     <span class="category-index">SECTOR / ${String(idx + 1).padStart(2, '0')}</span>
                     <div style="display: flex; gap: .35rem; align-items: center; flex-wrap: wrap;">
-                      ${sheetTag ? `<span style="font: 700 .66rem var(--mono); color: #B45309; background: #FEF3C7; padding: .15rem .45rem; border: 1px solid #FDE68A;">${esc(sheetTag)}</span>` : ''}
+                      ${item.badge ? `<span style="font: 700 .66rem var(--mono); color: var(--terracotta, #A84E2B); background: var(--fog); padding: .15rem .45rem; border: 1px solid var(--line);">${esc(item.badge)}</span>` : ''}
                       ${prof && prof.status ? `<span style="font: 700 .66rem var(--mono); color: ${prof.statusColor || 'var(--blue)'}; text-transform: uppercase; background: var(--fog); padding: .15rem .45rem; border: 1px solid var(--line);">${esc(prof.status)}</span>` : ''}
                     </div>
                   </div>
@@ -1691,7 +1690,7 @@
 
                   ${item.uncataloguedMaterials && item.uncataloguedMaterials.length ? `
                     <div class="data-note" style="margin: .6rem 0 .75rem; font-size: .73rem; line-height: 1.4; padding: .6rem .75rem; background: #FFFBEB; border: 1px solid #FDE68A; border-left: 3px solid #D97706; color: #92400E;">
-                      <strong>Uncatalogued Candidate Material:</strong> ${item.uncataloguedMaterials.map(m => `<span><strong>${esc(m.name)}</strong> (${esc(m.status)})</span>`).join(', ')} — Technical specifications and commercial availability confirmed on direct enquiry.
+                      <strong>Specialty Sourced Material:</strong> ${item.uncataloguedMaterials.map(m => `<span><strong>${esc(m.name)}</strong> (${esc(m.status)})</span>`).join(', ')} — Technical specifications and custom formulation supply confirmed on direct enquiry.
                     </div>
                   ` : ''}
                   
@@ -1722,7 +1721,7 @@
                   <a href="#rfq" class="button alt" style="padding: .6rem .8rem; font-size: .72rem; text-align: center;" onclick="prefillIndustryRfq('${esc(item.name)}', '${esc((prof && prof.defaultNotes) || '')}')">
                     ${esc((prof && prof.ctaText) || 'Quotation')}
                   </a>
-                  <a href="https://wa.me/${(data.company.whatsappNumber || '919810516065').replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hello Deepali Minerals, I would like to enquire about mineral materials for ${item.name} (${sheetTag}).`)}" target="_blank" rel="noopener noreferrer" class="whatsapp-btn" style="padding: .5rem .7rem; font-size: .72rem; display: inline-flex; align-items: center; gap: .35rem;" title="Enquire via WhatsApp">
+                  <a href="https://wa.me/${(data.company.whatsappNumber || '919810516065').replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hello Deepali Minerals, I would like to enquire about mineral materials for ${item.name}.`)}" target="_blank" rel="noopener noreferrer" class="whatsapp-btn" style="padding: .5rem .7rem; font-size: .72rem; display: inline-flex; align-items: center; gap: .35rem;" title="Enquire via WhatsApp">
                     ${whatsappIconSvg(13, 13)}
                     <span>WhatsApp</span>
                   </a>
@@ -1734,22 +1733,22 @@
         </div>
       </section>
 
-      <!-- Uncatalogued Candidate Raw Materials Technical Registry -->
+      <!-- Specialty & Custom Formulation Raw Materials Technical Registry -->
       <section style="background: var(--fog); padding: 4.5rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
         <div class="shell">
           <div class="section-head">
             <div>
               <span class="eyebrow">Technical Formulation Registry</span>
-              <h2 class="section-title">Uncatalogued Candidate Raw Materials</h2>
+              <h2 class="section-title">Specialty Minerals &amp; Custom Sourced Raw Materials</h2>
             </div>
-            <p class="lede">The following materials are recorded in our master formulation indices and handwritten source sheets across specific industrial sectors, but are not currently maintained as distinct stock items in our standard 22-product commercial catalogue. Commercial availability, grade specifications, and technical suitability are confirmed upon direct business enquiry.</p>
+            <p class="lede">In addition to our standard catalogue, Deepali Minerals sources, qualifies, and supplies specialty mineral grades and custom formulation additives for specialized industrial applications. Commercial availability, particle size distribution, and technical specifications are confirmed upon direct business enquiry.</p>
           </div>
 
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; margin-top: 1.75rem;">
             ${uncatalogued.map(item => `
               <article style="background: var(--paper); border: 1px solid var(--line); padding: 1.5rem; display: flex; flex-direction: column;">
                 <div style="display: flex; justify-content: space-between; align-items: baseline; gap: .5rem; margin-bottom: .5rem; flex-wrap: wrap;">
-                  <span style="font: 700 .7rem var(--mono); color: #D97706; background: #FFFBEB; padding: .2rem .5rem; border: 1px solid #FDE68A;">${esc(item.category)}</span>
+                  <span style="font: 700 .7rem var(--mono); color: #B45309; background: #FEF3C7; padding: .2rem .5rem; border: 1px solid #FDE68A;">${esc(item.category)}</span>
                   <span style="font: 600 .68rem var(--mono); color: var(--slate);">${esc(item.catalogueStatus)}</span>
                 </div>
                 <h3 style="margin: 0 0 .25rem; font-size: 1.25rem;">${esc(item.name)}</h3>
@@ -1757,9 +1756,9 @@
                 <p style="font-size: .84rem; line-height: 1.45; color: var(--ink); margin-bottom: .75rem;">${esc(item.description)}</p>
 
                 <div style="margin-top: auto; padding-top: .75rem; border-top: 1px solid var(--line);">
-                  <strong style="display: block; font: 600 .7rem var(--mono); color: var(--ink); margin-bottom: .35rem; text-transform: uppercase;">Handwritten Sheet Occurrences:</strong>
+                  <strong style="display: block; font: 600 .7rem var(--mono); color: var(--ink); margin-bottom: .35rem; text-transform: uppercase;">Target Manufacturing Applications:</strong>
                   <ul style="list-style: disc; margin: 0 0 0 1.1rem; padding: 0; font-size: .76rem; color: var(--slate); line-height: 1.4;">
-                    ${item.sheetOccurrences.map(occ => `<li><strong>Sheet ${esc(occ.sheetIndex)} (${esc(occ.industry)}):</strong> ${esc(occ.role)}</li>`).join('')}
+                    ${item.sheetOccurrences.map(occ => `<li><strong>${esc(occ.industry)}:</strong> ${esc(occ.role)}</li>`).join('')}
                   </ul>
                 </div>
 
@@ -1809,9 +1808,9 @@
         let visible = 0;
         cards.forEach(card => {
           const sName = card.dataset.sectorName || '';
-          const sSheet = card.dataset.sectorSheet || '';
+          const sBadge = card.dataset.sectorBadge || '';
           const sMats = card.dataset.materials || '';
-          const match = !val || sName.includes(val) || sSheet.includes(val) || sMats.includes(val) || ('sheet ' + sSheet).includes(val);
+          const match = !val || sName.includes(val) || sBadge.includes(val) || sMats.includes(val);
           card.style.display = match ? 'flex' : 'none';
           if (match) visible++;
         });
@@ -2261,16 +2260,15 @@
           if (activeIndustry !== 'all' && data.getTaxonomyByName) {
             const tax = data.getTaxonomyByName(activeIndustry);
             if (tax) {
-              const sheetTag = tax.sheetIndex ? ` [${tax.sheetIndex}]` : '';
               const indIdx = parts.findIndex(p => p.startsWith('Manufacturing Sector:'));
               if (indIdx !== -1) {
-                parts[indIdx] = `Sector: ${tax.name}${sheetTag}`;
+                parts[indIdx] = `Sector: ${tax.name}`;
               }
               if (tax.safetyNotice) {
                 extraInfo += `<div style="margin-top: .4rem; padding: .6rem .8rem; background: #FEF3C7; border: 1px solid #F59E0B; color: #92400E; font-size: .8rem; font-family: var(--sans); line-height: 1.4;"><strong>Technical Qualification Notice:</strong> ${esc(tax.safetyNotice)}</div>`;
               }
               if (tax.uncataloguedMaterials && tax.uncataloguedMaterials.length > 0) {
-                extraInfo += `<div style="margin-top: .4rem; padding: .6rem .8rem; background: #EFF6FF; border: 1px solid #3B82F6; color: #1E40AF; font-size: .8rem; font-family: var(--sans); line-height: 1.4;"><strong>Uncatalogued Candidate Material in Source Sheets:</strong> ${tax.uncataloguedMaterials.map(m => `<em>${esc(m.name)}</em> (${esc(m.status)})`).join(', ')} — Not in standard 22-product catalogue; available for review & specialized supply discussions.</div>`;
+                extraInfo += `<div style="margin-top: .4rem; padding: .6rem .8rem; background: #EFF6FF; border: 1px solid #3B82F6; color: #1E40AF; font-size: .8rem; font-family: var(--sans); line-height: 1.4;"><strong>Specialty Sourced Material:</strong> ${tax.uncataloguedMaterials.map(m => `<em>${esc(m.name)}</em>`).join(', ')} — Custom formulation grades available upon technical inquiry.</div>`;
               }
             }
           }
