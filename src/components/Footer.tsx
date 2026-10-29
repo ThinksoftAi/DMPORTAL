@@ -55,7 +55,7 @@ export const Footer: React.FC<FooterProps> = ({
               onClick={() => onOpenQuote()}
               className="px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition-colors shadow-md shadow-amber-500/15"
             >
-              Instant RFQ Calculator
+              Instant Quotation Calculator
             </button>
           </div>
         </div>
@@ -69,8 +69,8 @@ export const Footer: React.FC<FooterProps> = ({
           <div className="flex items-center gap-3">
             <div className="dm-interactive-logo rounded-lg shadow-md flex items-center justify-center overflow-hidden cursor-pointer" data-dm-logo="true">
               <img 
-                src="/assets/images/brand/logo.jpg" 
-                alt="DEEPALI MINERALS Logo" 
+                src="/assets/images/brand/logo.png" 
+                alt="Deepali Minerals" 
                 className="w-full h-auto max-h-14 max-w-[190px] object-contain block rounded-lg" 
                 referrerPolicy="no-referrer"
               />
@@ -158,7 +158,7 @@ export const Footer: React.FC<FooterProps> = ({
             </li>
             <li>
               <button onClick={() => scrollTo('contact')} className="hover:text-teal-300 transition-colors text-left">
-                Request a Quote
+                Quotation
               </button>
             </li>
             <li>
@@ -216,7 +216,7 @@ export const Footer: React.FC<FooterProps> = ({
               </a>
             </div>
             <div>
-              <span className="text-slate-500 uppercase tracking-wider text-[10px] font-mono block">Depot &amp; Office:</span>
+              <span className="text-slate-500 uppercase tracking-wider text-[10px] font-mono block">Office:</span>
               <span className="text-slate-300 block">{COMPANY_DETAILS.registeredAddress}</span>
             </div>
             <div>

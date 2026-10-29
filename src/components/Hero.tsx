@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { 
   ShieldCheck, 
   ArrowRight, 
@@ -9,7 +9,9 @@ import {
   Truck, 
   Layers, 
   CheckCircle2,
-  FileSpreadsheet
+  FileSpreadsheet,
+  Volume2,
+  VolumeX
 } from 'lucide-react';
 import { COMPANY_DETAILS } from '../data/minerals';
 
@@ -26,23 +28,121 @@ export const Hero: React.FC<HeroProps> = ({
   onExploreProducts,
   onOpenFinder
 }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isMuted, setIsMuted] = useState(true);
+  const [volume, setVolume] = useState(1);
+
+  const toggleSound = () => {
+    if (videoRef.current) {
+      if (videoRef.current.muted) {
+        videoRef.current.muted = false;
+        videoRef.current.volume = volume || 1.0;
+        videoRef.current.play().catch(() => {});
+        setIsMuted(false);
+      } else {
+        videoRef.current.muted = true;
+        setIsMuted(true);
+      }
+    }
+  };
+
+  const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.stopPropagation();
+    const val = parseFloat(e.target.value);
+    setVolume(val);
+    if (videoRef.current) {
+      videoRef.current.volume = val;
+      if (val > 0) {
+        if (videoRef.current.muted) {
+          videoRef.current.muted = false;
+          videoRef.current.play().catch(() => {});
+        }
+        setIsMuted(false);
+      } else {
+        videoRef.current.muted = true;
+        setIsMuted(true);
+      }
+    }
+  };
+
   return (
     <section id="hero" className="relative overflow-hidden pt-8 pb-16 lg:py-20 bg-slate-950 border-b border-slate-800">
       {/* Background Facility Video */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden z-0 pointer-events-none" aria-hidden="true">
+      <div 
+        onClick={toggleSound}
+        className="absolute inset-0 w-full h-full overflow-hidden z-0 cursor-pointer" 
+        title="Click anywhere on video to toggle facility sound"
+        aria-hidden="true"
+      >
         <video
+          ref={videoRef}
           className="w-full h-full object-cover object-right-bottom"
           autoPlay
           muted
           loop
           playsInline
           preload="metadata"
-          aria-hidden="true"
+          aria-label="Deepali Minerals industrial manufacturing facility video"
         >
           <source src="/hero%20video%20DM%20watermark%20(1).mp4" type="video/mp4" />
         </video>
         {/* Subtle dark charcoal translucent overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-900/50 to-transparent" />
+      </div>
+
+      {/* Floating Sound Toggle Dock on Video */}
+      <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20">
+        <div className="flex items-center gap-2 p-1 rounded-full bg-slate-950/90 border border-slate-700/80 backdrop-blur-md shadow-2xl">
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleSound();
+            }}
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-mono font-bold tracking-wider transition-all shadow-md ${
+              isMuted 
+                ? 'bg-slate-900/90 text-slate-200 border border-amber-400/60 hover:bg-slate-800 hover:text-white hover:border-amber-300' 
+                : 'bg-emerald-950/90 text-emerald-300 border border-emerald-500/70 shadow-emerald-900/40 hover:bg-emerald-900/90'
+            }`}
+            aria-label={isMuted ? 'Play facility video sound' : 'Mute facility video sound'}
+            title={isMuted ? 'Click to play facility video sound' : 'Click to mute sound'}
+          >
+            <span 
+              className={`w-2 h-2 rounded-full ${isMuted ? 'bg-amber-400 animate-pulse' : 'bg-emerald-400'}`} 
+              aria-hidden="true" 
+            />
+            {isMuted ? (
+              <>
+                <VolumeX className="w-3.5 h-3.5 text-amber-300" />
+                <span>Play Video Sound</span>
+              </>
+            ) : (
+              <>
+                <Volume2 className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
+                <span>Sound On (Mute)</span>
+              </>
+            )}
+          </button>
+
+          {!isMuted && (
+            <div 
+              className="flex items-center gap-1.5 pr-3 pl-1 text-[11px] font-mono text-slate-300" 
+              onClick={(e) => e.stopPropagation()}
+            >
+              <input
+                type="range"
+                min="0"
+                max="1"
+                step="0.05"
+                value={volume}
+                onChange={handleVolumeChange}
+                className="w-14 h-1.5 accent-emerald-400 cursor-pointer rounded-lg bg-slate-700"
+                aria-label="Video volume"
+              />
+              <span className="w-7 text-right">{Math.round(volume * 100)}%</span>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Background ambient grid */}
@@ -95,7 +195,7 @@ export const Hero: React.FC<HeroProps> = ({
                 onClick={onOpenQuote}
                 className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-bold text-sm sm:text-base flex items-center gap-2 shadow-lg shadow-amber-500/25 hover:shadow-amber-500/35 transition-all transform active:scale-95"
               >
-                <span>Request B2B Quotation (RFQ)</span>
+                <span>Quotation</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
 
@@ -113,6 +213,29 @@ export const Hero: React.FC<HeroProps> = ({
               >
                 <Sparkles className="w-4 h-4 text-amber-400" />
                 <span>Grade Finder</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={toggleSound}
+                className={`px-4 py-3.5 rounded-xl font-semibold text-sm flex items-center gap-2 border shadow-md transition-all ${
+                  isMuted
+                    ? 'bg-slate-900/90 hover:bg-slate-800 text-white border-amber-400/70 hover:border-amber-300'
+                    : 'bg-emerald-950/90 hover:bg-emerald-900/90 text-emerald-300 border-emerald-500/70'
+                }`}
+                aria-label={isMuted ? 'Play facility video sound' : 'Mute facility video sound'}
+                title={isMuted ? 'Click to play facility video sound' : 'Click to mute sound'}
+              >
+                <span 
+                  className={`w-2 h-2 rounded-full ${isMuted ? 'bg-amber-400 animate-pulse' : 'bg-emerald-400'}`} 
+                  aria-hidden="true" 
+                />
+                {isMuted ? (
+                  <VolumeX className="w-4 h-4 text-amber-300" />
+                ) : (
+                  <Volume2 className="w-4 h-4 text-emerald-400 animate-pulse" />
+                )}
+                <span>{isMuted ? 'Play Video Sound' : 'Sound On (Mute)'}</span>
               </button>
             </div>
 

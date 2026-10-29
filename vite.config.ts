@@ -105,7 +105,9 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         product: resolve(__dirname, 'product.html'),
         products: resolve(__dirname, 'products/index.html'),
-        industries: resolve(__dirname, 'industries/index.html')
+        industries: resolve(__dirname, 'industries/index.html'),
+        about: resolve(__dirname, 'about.html'),
+        aboutDir: resolve(__dirname, 'about/index.html')
       }
     }
   }

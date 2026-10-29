@@ -16,6 +16,11 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://deepaliminerals.in/about.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://deepaliminerals.in/product.html?product=talc</loc>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
@@ -92,6 +97,36 @@
   </url>
   <url>
     <loc>https://deepaliminerals.in/product.html?product=silica</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://deepaliminerals.in/product.html?product=titanium-dioxide</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://deepaliminerals.in/product.html?product=quartz-sand</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://deepaliminerals.in/product.html?product=marble-chips</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://deepaliminerals.in/product.html?product=barytes</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://deepaliminerals.in/product.html?product=french-chalk-powder</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://deepaliminerals.in/product.html?product=starch</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

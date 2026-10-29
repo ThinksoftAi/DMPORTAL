@@ -24,8 +24,33 @@
     }
   })();
 
+  // Enforce Clean Bright White Theme System Tokens
+  (function enforceWhiteThemeTokens() {
+    if (typeof document === 'undefined') return;
+    const rootEl = document.documentElement;
+    if (rootEl) {
+      rootEl.style.setProperty('--paper', '#FFFFFF');
+      rootEl.style.setProperty('--surface', '#FFFFFF');
+      rootEl.style.setProperty('--fog', '#F8F9FA');
+      rootEl.style.setProperty('--line', '#E5E7EB');
+      rootEl.style.setProperty('--ink', '#25241F');
+      rootEl.style.setProperty('--slate', '#6F6B61');
+      rootEl.style.backgroundColor = '#FFFFFF';
+    }
+    const applyBody = () => {
+      if (document.body) {
+        document.body.style.backgroundColor = '#FFFFFF';
+        document.body.style.color = '#25241F';
+      }
+    };
+    applyBody();
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', applyBody);
+    }
+  })();
+
   const data = window.DeepaliData;
-  const root = document.body.dataset.root || '.';
+  const root = document.body ? (document.body.dataset.root || '.') : '.';
   const page = document.body.dataset.page;
   const esc = (value) => String(value || '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char]));
   
@@ -58,13 +83,14 @@
       ['Products', productsUrl],
       ['Industries & Applications', industriesUrl],
       ['Technical Resources', `${root}/#resources`],
-      ['About Deepali Minerals', `${root}/#why`],
+      ['About Deepali Minerals', `${root}/about.html`],
       ['Contact', `${root}/#contact`]
     ];
     const links = nav.map(([label, href]) => {
       let isActive = false;
       if (page === 'products' && label === 'Products') isActive = true;
       if (page === 'industries' && label === 'Industries & Applications') isActive = true;
+      if (page === 'about' && label === 'About Deepali Minerals') isActive = true;
       return `<a href="${href}" class="${isActive ? 'active' : ''}">${label}</a>`;
     }).join('');
     
@@ -76,7 +102,7 @@
       <header class="site-header">
         <div class="shell header-inner">
           <a class="brand dm-interactive-logo" href="${root}/" aria-label="Deepali Minerals home" data-dm-logo="true">
-            <img src="${root}/assets/images/brand/logo.jpg" alt="Deepali Minerals Logo" class="brand-logo" width="200" height="100" referrerpolicy="no-referrer" />
+            <img src="${root}/assets/images/brand/logo.png" alt="Deepali Minerals" class="brand-logo" width="200" height="100" referrerpolicy="no-referrer" />
           </a>
           <nav class="nav-links" aria-label="Primary navigation">${links}</nav>
           <div class="header-actions">
@@ -84,7 +110,7 @@
               ${whatsappIconSvg(15, 15)}
               <span>WhatsApp Sales Desk</span>
             </a>
-            <a class="button header-cta" href="${root}/#rfq">Request a Quote</a>
+            <a class="button header-cta" href="${root}/#rfq">Quotation</a>
             <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav">Menu</button>
           </div>
         </div>
@@ -94,7 +120,7 @@
             ${whatsappIconSvg(18, 18)}
             <span>WhatsApp Sales Desk</span>
           </a>
-          <a class="button" href="${root}/#rfq">Request a Quote</a>
+          <a class="button" href="${root}/#rfq">Quotation</a>
         </nav>
       </header>
     `;
@@ -361,7 +387,7 @@
     const whatsappGeneralUrl = getWhatsAppUrl();
 
     footerEl.innerHTML = `
-      <a class="contact-float" href="${root}/#rfq" aria-label="Open quote request">RFQ</a>
+      <a class="contact-float" href="${root}/#rfq" aria-label="Open quotation">Quotation</a>
       <button type="button" class="back-to-top-btn" aria-label="Back to top" title="Back to top">
         <svg class="back-to-top-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M12 19V5M5 12l7-7 7 7"/>
@@ -376,7 +402,7 @@
           <!-- COLUMN 1: DEEPALI MINERALS -->
           <div class="footer-col footer-col-brand">
             <a class="brand dm-interactive-logo" href="${root}/" aria-label="Deepali Minerals home" data-dm-logo="true">
-              <img src="${root}/assets/images/brand/logo.jpg" alt="Deepali Minerals Logo" class="brand-logo-footer" width="200" height="100" referrerpolicy="no-referrer" />
+              <img src="${root}/assets/images/brand/logo.png" alt="Deepali Minerals" class="brand-logo-footer" width="200" height="100" referrerpolicy="no-referrer" />
             </a>
             <p class="footer-tagline">${company.tagline || 'Industrial materials, clearly connected.'}</p>
             <p class="footer-desc">
@@ -402,10 +428,13 @@
               <a href="${root}/product.html?product=marble-powder">Marble Powder</a>
               <a href="${root}/product.html?product=quartz-powder">Quartz Powder</a>
               <a href="${root}/product.html?product=calcium-carbonate">Calcium Carbonate</a>
-              <a href="${root}/product.html?product=zinc-oxide">Zinc Oxide</a>
-              <a href="${root}/product.html?product=dolomite-powder">Dolomite Powder</a>
-              <a href="${root}/product.html?product=silica">Silica</a>
-              <a href="${productsUrl}" class="footer-accent-link">View All Materials →</a>
+              <a href="${root}/product.html?product=titanium-dioxide">Titanium Di Oxide</a>
+              <a href="${root}/product.html?product=quartz-sand">Quartz Sand</a>
+              <a href="${root}/product.html?product=marble-chips">Marble Chips</a>
+              <a href="${root}/product.html?product=barytes">Barytes</a>
+              <a href="${root}/product.html?product=french-chalk-powder">French Chalk Powder</a>
+              <a href="${root}/product.html?product=starch">Starch</a>
+              <a href="${productsUrl}" class="footer-accent-link">View All 22 Materials →</a>
             </div>
           </div>
 
@@ -436,10 +465,10 @@
             <h3>Buy / Technical</h3>
             <div class="footer-links-list">
               <a href="${root}/#materials">Find Your Material</a>
-              <a href="${root}/#rfq">Request a Quote</a>
+              <a href="${root}/#rfq">Quotation</a>
               <a href="${root}/#resources">Technical Resources</a>
               <a href="${productsUrl}">Product Catalogue</a>
-              <a href="${root}/#why">About Deepali Minerals</a>
+              <a href="${root}/about.html">About Deepali Minerals</a>
               <a href="${root}/#contact">Commercial Desk</a>
               <a href="${whatsappGeneralUrl}" target="_blank" rel="noopener noreferrer" class="footer-whatsapp-link">
                 ${whatsappIconSvg(14, 14)} WhatsApp Sales Desk
@@ -460,7 +489,7 @@
                 <a href="tel:+919810516065">9810516065</a>, <a href="tel:+919810715129">9810715129</a>
               </p>
               <p style="margin-top: .6rem;">
-                <strong class="footer-lbl">Depot &amp; Office:</strong><br />
+                <strong class="footer-lbl">Office:</strong><br />
                 <span>${company.headquarters || 'C2/29C Lawrence Road, Keshav Puram, Delhi-110035'}</span>
               </p>
               <p style="margin-top: .6rem;">
@@ -486,7 +515,7 @@
           <div class="footer-bottom-right">
             <a href="${root}/sitemap.xml" target="_blank" rel="noopener">Sitemap (XML)</a>
             <span class="footer-sep">•</span>
-            <a href="${root}/#rfq">Request a Quote</a>
+            <a href="${root}/#rfq">Quotation</a>
             <span class="footer-sep">•</span>
             <a href="${whatsappGeneralUrl}" target="_blank" rel="noopener noreferrer">WhatsApp Desk</a>
           </div>
@@ -513,10 +542,83 @@
 
       <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid var(--line);">
         <a class="text-link" href="${productUrl(p, industryCtx, appCtx, routeCtx)}">View specs <span aria-hidden="true">→</span></a>
-        <a class="button alt" style="padding: .4rem .75rem; font-size: .7rem;" href="${productUrl(p, industryCtx, appCtx, routeCtx)}#rfq">Quote</a>
+        <a class="button alt" style="padding: .4rem .75rem; font-size: .7rem;" href="${productUrl(p, industryCtx, appCtx, routeCtx)}#rfq">Quotation</a>
       </div>
     </article>
   `;
+
+  const applicationCard = (app) => {
+    const productsHtml = (app.products || []).map(slug => {
+      const p = data.getProductBySlug(slug);
+      if (!p) return '';
+      return `
+        <a href="${productUrl(p, null, app.title)}" class="pill" style="font-size: .75rem; font-weight: 600; padding: .35rem .75rem;">
+          ${esc(p.name)} →
+        </a>
+      `;
+    }).filter(Boolean).join('');
+
+    const whatsappMsg = app.id === 'fire-safety'
+      ? 'Hello Deepali Minerals, I would like to enquire about mineral materials (Calcium Carbonate, Talc, Hydrated Lime) for Fire Safety applications.'
+      : 'Hello Deepali Minerals, I would like to enquire about Magnesium Carbonate for Gym Powder / sports-grip applications.';
+
+    const defaultNotes = app.id === 'fire-safety'
+      ? '[Application: Fire Safety] Intended fire-safety application, required material & technical requirements: '
+      : '[Application: Gym Powder] Intended application, required grade/specifications & packaging preference: ';
+
+    const ctaHref = app.id === 'gym-powder'
+      ? `${root}/product.html?product=magnesium-carbonate&app=${encodeURIComponent(app.title)}#rfq`
+      : '#rfq';
+
+    return `
+      <article class="industry-card application-card" id="app-${app.id}">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: .5rem; margin-bottom: .4rem;">
+            <span class="category-index" style="color: var(--terracotta, #A84E2B); font-weight: 700;">APPLICATION</span>
+            <span style="font: 700 .68rem var(--mono); color: var(--slate); text-transform: uppercase; background: var(--fog); padding: .2rem .5rem; border: 1px solid var(--line);">Discovery Card</span>
+          </div>
+          
+          <h3 style="margin-top: .2rem; margin-bottom: .25rem;">${esc(app.title)}</h3>
+          <div style="font: 600 .82rem var(--mono); color: var(--terracotta, #A84E2B); margin-bottom: .75rem;">${esc(app.subtitle)}</div>
+          
+          <p style="color: var(--ink); font-size: .88rem; line-height: 1.5; margin-bottom: 1rem;">
+            ${esc(app.cardDescription)}
+          </p>
+
+          <div style="margin: .85rem 0 1rem;">
+            <span style="font: 600 .7rem var(--mono); color: var(--slate); text-transform: uppercase; display: block; margin-bottom: .45rem;">
+              ${app.products.length > 1 ? 'Compatible Materials (Linked Pages):' : 'Compatible Material (Linked Page):'}
+            </span>
+            <div class="pill-list">
+              ${productsHtml}
+            </div>
+          </div>
+
+          <div style="margin-bottom: 1rem; padding: .75rem; background: var(--fog); border: 1px solid var(--line); font-size: .78rem; line-height: 1.45; color: var(--slate);">
+            <strong style="color: var(--ink); display: block; margin-bottom: .2rem;">Technical Qualification:</strong>
+            ${esc(app.disclaimer)}
+          </div>
+
+          <div style="margin-bottom: 1.25rem;">
+            <span style="font: 600 .7rem var(--mono); color: var(--slate); text-transform: uppercase; display: block; margin-bottom: .35rem;">Buyer Enquiry Details Captured:</span>
+            <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: .25rem; font-size: .75rem; color: var(--slate);">
+              ${app.enquiryFields.map(f => `<li style="display: flex; gap: .35rem; align-items: center;"><span style="color: var(--blue);">•</span> <span>${esc(f)}</span></li>`).join('')}
+            </ul>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: .5rem; flex-wrap: wrap; margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--line);">
+          <a href="${ctaHref}" class="button" style="flex: 1; min-width: 190px; padding: .65rem .85rem; font-size: .72rem; text-align: center;" onclick="prefillApplicationRfq('${esc(app.title)}', '${app.ctaProduct}', '${esc(defaultNotes)}')">
+            ${esc(app.ctaText)}
+          </a>
+          <a href="https://wa.me/${(data.company.whatsappNumber || '919810516065').replace(/[^0-9]/g, '')}?text=${encodeURIComponent(whatsappMsg)}" target="_blank" rel="noopener noreferrer" class="button alt" style="padding: .65rem .85rem; font-size: .72rem; display: inline-flex; align-items: center; gap: .35rem;">
+            ${whatsappIconSvg(13, 13)}
+            <span>WhatsApp Enquiry</span>
+          </a>
+        </div>
+      </article>
+    `;
+  };
 
   const rfq = (selectedProduct, prefillContext) => {
     const currentProd = selectedProduct ? selectedProduct.name : '';
@@ -525,13 +627,15 @@
     
     let defaultNotes = '';
     if (ctx.industry) defaultNotes += `[Industry / Manufacturing Sector: ${ctx.industry}] `;
+    if (ctx.application) defaultNotes += `[Application: ${ctx.application}] `;
     if (ctx.route) defaultNotes += `[Discovery Path: ${ctx.route}] `;
     if (ctx.requirementText) defaultNotes += `[Requirement: "${ctx.requirementText}"] `;
+    if (ctx.notes) defaultNotes += `${ctx.notes} `;
 
     return `
       <aside class="rfq-preview" id="rfq">
         <span class="eyebrow" style="color:var(--aqua)">B2B Procurement Request</span>
-        <h2 class="section-title">Start a Material Quote</h2>
+        <h2 class="section-title">Quotation</h2>
         <p>Submit your industrial material requirement. Our Lawrence Road commercial desk will review parameters and provide competitive wholesale terms.</p>
         
         <form data-rfq>
@@ -599,7 +703,7 @@
 
           </div>
 
-          <button class="button" type="submit" style="width: 100%; margin-top: 1.25rem;">Submit RFQ to Sales Desk</button>
+          <button class="button" type="submit" style="width: 100%; margin-top: 1.25rem;">Submit Quotation to Sales Desk</button>
           
           <div class="rfq-feedback" style="display:none;"></div>
         </form>
@@ -617,7 +721,7 @@
     document.querySelector('#main').innerHTML = `
       <!-- Hero Section -->
       <section class="hero" id="hero">
-        <div class="hero-video-wrap" aria-hidden="true">
+        <div class="hero-video-wrap" data-hero-video-click="true" title="Click to toggle facility video sound">
           <video
             class="hero-video"
             autoplay
@@ -625,11 +729,52 @@
             loop
             playsinline
             preload="metadata"
-            aria-hidden="true"
+            aria-label="Deepali Minerals industrial manufacturing facility video"
           >
             <source src="${root}/hero%20video%20DM%20watermark%20(1).mp4" type="video/mp4" />
           </video>
           <div class="hero-overlay"></div>
+        </div>
+
+        <!-- Floating Audio Control Badge on Hero Video -->
+        <div class="hero-floating-sound">
+          <div class="hero-sound-card">
+            <button
+              type="button"
+              class="hero-sound-pill"
+              data-hero-audio-toggle="true"
+              aria-label="Play facility video sound"
+              aria-pressed="false"
+              title="Click to play facility video sound"
+            >
+              <span class="hero-sound-pulse-dot" aria-hidden="true"></span>
+              <span class="hero-audio-icon" aria-hidden="true">
+                <svg class="sound-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <line x1="23" y1="9" x2="17" y2="15"></line>
+                  <line x1="17" y1="9" x2="23" y2="15"></line>
+                </svg>
+              </span>
+              <span class="hero-audio-label">Play Video Sound</span>
+              <span class="sound-bars" aria-hidden="true">
+                <span class="bar bar-1"></span>
+                <span class="bar bar-2"></span>
+                <span class="bar bar-3"></span>
+              </span>
+            </button>
+            <div class="hero-volume-wrap" title="Adjust volume">
+              <input
+                type="range"
+                class="hero-volume-slider"
+                min="0"
+                max="1"
+                step="0.05"
+                value="1"
+                aria-label="Facility video volume"
+              />
+              <span class="hero-volume-label">100%</span>
+            </div>
+          </div>
         </div>
 
         <div class="shell hero-inner">
@@ -639,7 +784,29 @@
             <p class="lede">Materials • Supply • Technical Information • B2B Enquiries</p>
             <div class="hero-actions">
               <a class="button" href="${productsUrl}">EXPLORE MATERIALS</a>
-              <a class="button alt" href="#rfq">REQUEST A QUOTE</a>
+              <a class="button alt" href="#rfq">QUOTATION</a>
+              <button
+                type="button"
+                class="button hero-sound-btn"
+                data-hero-audio-toggle="true"
+                aria-label="Play facility video sound"
+                aria-pressed="false"
+                title="Click to play facility video sound"
+              >
+                <span class="hero-audio-icon" aria-hidden="true">
+                  <svg class="sound-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <line x1="23" y1="9" x2="17" y2="15"></line>
+                    <line x1="17" y1="9" x2="23" y2="15"></line>
+                  </svg>
+                </span>
+                <span class="hero-audio-label">Play Video Sound</span>
+                <span class="sound-bars" aria-hidden="true">
+                  <span class="bar bar-1"></span>
+                  <span class="bar bar-2"></span>
+                  <span class="bar bar-3"></span>
+                </span>
+              </button>
             </div>
           </div>
           <div class="hero-aside">
@@ -655,7 +822,7 @@
           <div class="discovery-engine-head">
             <h2 class="discovery-title">
               <span class="dm-interactive-logo" data-dm-logo="true" style="display: inline-block; vertical-align: middle; cursor: pointer;">
-                <img src="${root}/assets/images/brand/logo.jpg" alt="DM" style="height: 28px; width: auto; vertical-align: middle; margin-right: .5rem; display: inline-block; object-fit: contain; border-radius: 4px;" referrerpolicy="no-referrer" />
+                <img src="${root}/assets/images/brand/logo.png" alt="Deepali Minerals" style="height: 28px; width: auto; vertical-align: middle; margin-right: .5rem; display: inline-block; object-fit: contain; border-radius: 4px;" referrerpolicy="no-referrer" />
               </span>
               Find Your Material
             </h2>
@@ -750,7 +917,7 @@
             <div class="discovery-grid" id="discovery-results-grid"></div>
 
             <div style="margin-top: 1.5rem; text-align: right;">
-              <a href="${productsUrl}" class="text-link" id="discovery-view-all-link">View all 16 materials in full catalogue →</a>
+              <a href="${productsUrl}" class="text-link" id="discovery-view-all-link">View all 22 materials in full catalogue →</a>
             </div>
           </div>
         </div>
@@ -764,7 +931,7 @@
               <span class="eyebrow">Explore by Material Category</span>
               <h2 class="section-title">A catalogue built around clearer decisions.</h2>
             </div>
-            <a class="text-link" href="${productsUrl}">View all 16 products →</a>
+            <a class="text-link" href="${productsUrl}">View all 22 products →</a>
           </div>
           <div class="category-grid">
             ${data.categories.map((c, i) => `
@@ -816,8 +983,22 @@
             `).join('')}
           </div>
           <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-            <a href="${industriesUrl}" class="button alt">Explore All 22 Manufacturing Sectors →</a>
+            <a href="${industriesUrl}" class="button alt">Explore All 38 Manufacturing Sectors →</a>
             <a href="${productsUrl}" class="text-link">View all catalogue materials →</a>
+          </div>
+
+          <!-- Discover by Application (Specialized Formulations) -->
+          <div style="margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid var(--line);">
+            <div class="section-head">
+              <div>
+                <span class="eyebrow">Application Discovery</span>
+                <h2 class="section-title">Discover by Application</h2>
+              </div>
+              <p class="lede">Explore mineral materials relevant to specialized industrial applications. Deepali Minerals' application-discovery section helps buyers identify materials and enquire about technical specifications and availability.</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+              ${(data.getApplicationCategories ? data.getApplicationCategories() : []).map(app => applicationCard(app)).join('')}
+            </div>
           </div>
         </div>
       </section>
@@ -840,9 +1021,16 @@
             </article>
             <article class="why-card">
               <b>03 / Enquire</b>
-              <h3>Move to an RFQ</h3>
+              <h3>Move to a Quotation</h3>
               <p>Make a focused business enquiry with application, quantity, and packaging context for rapid sales desk pricing.</p>
             </article>
+          </div>
+          <div style="margin-top: 2.25rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 4px;">
+            <div>
+              <strong style="color: #ffffff; display: block; font-size: 1rem; margin-bottom: .25rem;">About Deepali Minerals (Est. 2004)</strong>
+              <span style="color: var(--aqua); font-size: .84rem;">Explore our comprehensive company profile, statutory factsheet, quality testing parameters, and Lawrence Road logistics hub.</span>
+            </div>
+            <a href="${root}/about.html" class="button" style="background: var(--aqua); color: var(--navy); border-color: var(--aqua);">Explore Full Company Profile →</a>
           </div>
         </div>
       </section>
@@ -873,7 +1061,7 @@
             <article class="resource">
               <span>RESOURCE / 03</span>
               <h3>Product Catalogue</h3>
-              <p>Comprehensive 16-mineral product portfolio with packaging and application indices.</p>
+              <p>Comprehensive 22-product portfolio with packaging and application indices.</p>
               <a href="${productsUrl}" class="text-link">Explore Catalogue →</a>
             </article>
           </div>
@@ -888,7 +1076,7 @@
             <h2 class="section-title">Need to discuss a material requirement?</h2>
             <p>Send an enquiry with your product, application, quantity, and delivery context for direct wholesale pricing.</p>
           </div>
-          <a class="button" href="#rfq">Request a Quote</a>
+          <a class="button" href="#rfq">Quotation</a>
         </div>
       </section>
 
@@ -916,6 +1104,134 @@
 
     bindDiscoveryEngine();
     bindRfq();
+    bindHeroVideoAudio();
+  }
+
+  /* =========================================================================
+   * HERO VIDEO AUDIO CONTROLLER
+   * ========================================================================= */
+  function bindHeroVideoAudio() {
+    const video = document.querySelector('.hero-video');
+    const toggleBtns = document.querySelectorAll('[data-hero-audio-toggle]');
+    const soundCard = document.querySelector('.hero-sound-card');
+    const volumeSlider = document.querySelector('.hero-volume-slider');
+    const volumeLabel = document.querySelector('.hero-volume-label');
+    const videoWrap = document.querySelector('[data-hero-video-click]');
+    if (!video || !toggleBtns.length) return;
+
+    const mutedSvg = `
+      <svg class="sound-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+        <line x1="23" y1="9" x2="17" y2="15"></line>
+        <line x1="17" y1="9" x2="23" y2="15"></line>
+      </svg>
+    `;
+
+    const playingSvg = `
+      <svg class="sound-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+      </svg>
+    `;
+
+    const syncUI = (isMuted) => {
+      toggleBtns.forEach(btn => {
+        btn.setAttribute('aria-pressed', (!isMuted).toString());
+        btn.classList.toggle('is-active', !isMuted);
+
+        const iconEl = btn.querySelector('.hero-audio-icon');
+        if (iconEl) {
+          iconEl.innerHTML = isMuted ? mutedSvg : playingSvg;
+        }
+
+        const labelEl = btn.querySelector('.hero-audio-label');
+        if (labelEl) {
+          const isPill = btn.classList.contains('hero-sound-pill');
+          if (isPill) {
+            labelEl.textContent = isMuted ? 'Play Video Sound' : 'Sound On (Mute)';
+          } else {
+            labelEl.textContent = isMuted ? 'Play Video Sound' : 'Mute Video Sound';
+          }
+        }
+
+        btn.setAttribute('title', isMuted ? 'Click to play facility video sound' : 'Click to mute facility video sound');
+        btn.setAttribute('aria-label', isMuted ? 'Play facility video sound' : 'Mute facility video sound');
+      });
+
+      if (soundCard) {
+        soundCard.classList.toggle('has-audio-on', !isMuted);
+      }
+
+      if (volumeSlider) {
+        volumeSlider.value = isMuted ? 0 : (video.volume || 1);
+      }
+      if (volumeLabel) {
+        const pct = isMuted ? 0 : Math.round((video.volume || 1) * 100);
+        volumeLabel.textContent = `${pct}%`;
+      }
+    };
+
+    const toggleAudio = () => {
+      if (video.muted) {
+        video.muted = false;
+        if (!video.volume || video.volume < 0.1) {
+          video.volume = 1.0;
+        }
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {});
+        }
+        syncUI(false);
+      } else {
+        video.muted = true;
+        syncUI(true);
+      }
+    };
+
+    toggleBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleAudio();
+      });
+    });
+
+    if (volumeSlider) {
+      volumeSlider.addEventListener('input', (e) => {
+        e.stopPropagation();
+        const val = parseFloat(e.target.value);
+        video.volume = val;
+        if (val > 0) {
+          if (video.muted) {
+            video.muted = false;
+            const playPromise = video.play();
+            if (playPromise !== undefined) playPromise.catch(() => {});
+          }
+          syncUI(false);
+        } else {
+          video.muted = true;
+          syncUI(true);
+        }
+      });
+      volumeSlider.addEventListener('click', (e) => e.stopPropagation());
+    }
+
+    if (videoWrap) {
+      videoWrap.addEventListener('click', (e) => {
+        // Toggle if user clicks video area directly
+        if (!e.target.closest('button, a, input, select, textarea, form')) {
+          toggleAudio();
+        }
+      });
+    }
+
+    video.addEventListener('volumechange', () => {
+      syncUI(video.muted);
+    });
+
+    // Initial state sync
+    syncUI(video.muted);
   }
 
   /* =========================================================================
@@ -971,7 +1287,7 @@
         dynamicLabel.textContent = 'Select Material';
         dynamicContainer.innerHTML = `
           <select id="discovery-dynamic-select">
-            <option value="">All 16 Catalogue Materials</option>
+            <option value="">All 22 Catalogue Materials</option>
             ${data.products.map(p => `<option value="${esc(p.slug)}">${esc(p.name)} (${esc(p.category)})</option>`).join('')}
           </select>
         `;
@@ -1100,8 +1416,8 @@
           <div class="empty" style="grid-column: 1 / -1; padding: 2.5rem; background: var(--fog); text-align: center;">
             <p style="font-weight: 700; color: var(--ink); margin-bottom: .5rem;">No exact matching materials found for this requirement.</p>
             <p style="font-size: .88rem; color: var(--slate); margin-bottom: 1rem;">Our Lawrence Road commercial desk sources and processes custom industrial mineral grades on request.</p>
-            <a href="#rfq" class="button alt" style="margin-right: .5rem;">Submit Custom RFQ</a>
-            <a href="${productsUrl}" class="button">Explore All 16 Materials</a>
+            <a href="#rfq" class="button alt" style="margin-right: .5rem;">Submit Custom Quotation</a>
+            <a href="${productsUrl}" class="button">Explore All 22 Materials</a>
           </div>
         `;
         resultsSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -1134,7 +1450,7 @@
           criteriaText = p ? p.name : 'All Catalogue Materials';
         } else {
           matched = data.products;
-          criteriaText = 'All 16 Catalogue Materials';
+          criteriaText = 'All 22 Catalogue Materials';
         }
       } else if (q === 'manufacturing' || q === 'industry') {
         if (val) {
@@ -1263,13 +1579,14 @@
 
     const summary = data.getIndustrySummary ? data.getIndustrySummary() : [];
     const commonApps = data.getCommonApplications ? data.getCommonApplications() : [];
+    const uncatalogued = data.getUncataloguedMaterials ? data.getUncataloguedMaterials() : [];
 
     mainEl.innerHTML = `
       <section class="page-hero">
         <div class="shell">
-          <span class="eyebrow">Application-Led Procurement • 22 Manufacturing Sectors</span>
+          <span class="eyebrow">Master Industry Taxonomy • ${summary.length} Manufacturing Sectors</span>
           <h1 class="display">What are you manufacturing?</h1>
-          <p class="lede">Discover industrial mineral fillers, extenders, and functional additives mapped to your specific compound formulation and processing requirements.</p>
+          <p class="lede">Comprehensive centralized taxonomy digitized directly from technical source sheets. Discover verified industrial mineral fillers, extenders, pigments, and functional additives mapped to your specific compound formulation and processing requirements.</p>
         </div>
       </section>
 
@@ -1287,49 +1604,172 @@
         </div>
       </section>
 
-      <!-- 22 Industries Discovery Directory -->
-      <section class="catalogue">
+      <!-- Discover by Application Section -->
+      <section class="applications-section" id="applications" style="padding: 3.5rem 0; background: var(--paper); border-bottom: 1px solid var(--line);">
         <div class="shell">
           <div class="section-head">
             <div>
-              <span class="eyebrow">Manufacturing Directory</span>
-              <h2 class="section-title">22 Industrial Sectors Served</h2>
+              <span class="eyebrow">Application Discovery</span>
+              <h2 class="section-title">Discover by Application</h2>
             </div>
-            <a class="text-link" href="${productsUrl}">View all 16 products in catalogue →</a>
+            <p class="lede">Explore mineral materials relevant to specialized industrial formulations and manufacturing applications. Deepali Minerals' application-discovery section helps buyers identify materials and enquire about technical specifications and availability.</p>
           </div>
 
-          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.25rem;">
-            ${summary.map((item, idx) => `
-              <article class="industry-card">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; margin-top: 1.75rem;">
+            ${(data.getApplicationCategories ? data.getApplicationCategories() : []).map(app => applicationCard(app)).join('')}
+          </div>
+        </div>
+      </section>
+
+      <!-- Master Manufacturing Directory -->
+      <section class="catalogue" id="sector-directory">
+        <div class="shell">
+          <div class="section-head" style="margin-bottom: 1.5rem;">
+            <div>
+              <span class="eyebrow">Manufacturing Directory</span>
+              <h2 class="section-title">${summary.length} Industrial Sectors Digitized</h2>
+            </div>
+            <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+              <a class="text-link" href="${productsUrl}">View all 22 products in catalogue →</a>
+            </div>
+          </div>
+
+          <!-- Quick Directory Search & Filter -->
+          <div style="margin-bottom: 2rem; padding: 1.25rem; background: var(--fog); border: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div style="flex: 1; min-width: 260px;">
+              <label for="sector-quick-search" style="display: block; font: 700 .72rem var(--mono); text-transform: uppercase; color: var(--slate); margin-bottom: .35rem;">Search Manufacturing Sectors:</label>
+              <input id="sector-quick-search" type="search" placeholder="Filter by sector name, material, or sheet (e.g. Putty, Dal Polish, Celite, Sheet A)..." style="width: 100%; padding: .65rem .85rem; border: 1px solid var(--line); font: 500 .85rem var(--sans); background: var(--paper);" />
+            </div>
+            <div style="font: 500 .75rem var(--mono); color: var(--slate);">
+              Showing <span id="visible-sector-count" style="font-weight: 700; color: var(--ink);">${summary.length}</span> of ${summary.length} sectors
+            </div>
+          </div>
+
+          <div id="sector-cards-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem;">
+            ${summary.map((item, idx) => {
+              const prof = item.profile;
+              const sheetTag = item.sheetIndex ? (item.sheetIndex.startsWith('Sheet') || item.sheetIndex.startsWith('Portal') ? item.sheetIndex : 'Sheet ' + item.sheetIndex) : '';
+              return `
+              <article class="industry-card sector-item" data-sector-name="${esc(item.name.toLowerCase())}" data-sector-sheet="${esc((item.sheetIndex || '').toLowerCase())}" data-materials="${esc(item.products.map(p => p.name.toLowerCase()).join(' '))}" style="display: flex; flex-direction: column; height: 100%; border: 1px solid var(--line); padding: 1.5rem; background: var(--paper);">
                 <div>
-                  <span class="category-index">SECTOR / 0${idx + 1}</span>
-                  <h3>${esc(item.name)}</h3>
-                  <p>
-                    ${item.count > 0 
-                      ? `<strong>${item.count} material${item.count > 1 ? 's' : ''}</strong> available for formulation in this sector.`
-                      : `Custom mineral grades available upon technical consultation.`}
+                  <div style="display: flex; justify-content: space-between; align-items: baseline; gap: .5rem; margin-bottom: .5rem; flex-wrap: wrap;">
+                    <span class="category-index">SECTOR / ${String(idx + 1).padStart(2, '0')}</span>
+                    <div style="display: flex; gap: .35rem; align-items: center; flex-wrap: wrap;">
+                      ${sheetTag ? `<span style="font: 700 .66rem var(--mono); color: #B45309; background: #FEF3C7; padding: .15rem .45rem; border: 1px solid #FDE68A;">${esc(sheetTag)}</span>` : ''}
+                      ${prof && prof.status ? `<span style="font: 700 .66rem var(--mono); color: ${prof.statusColor || 'var(--blue)'}; text-transform: uppercase; background: var(--fog); padding: .15rem .45rem; border: 1px solid var(--line);">${esc(prof.status)}</span>` : ''}
+                    </div>
+                  </div>
+
+                  <h3 style="margin: 0 0 .35rem; font-size: 1.25rem;">${esc(item.name)}</h3>
+
+                  ${prof && prof.subtitle ? `
+                    <div style="font: 600 .78rem var(--mono); color: var(--terracotta, #A84E2B); margin-bottom: .6rem;">${esc(prof.subtitle)}</div>
+                  ` : ''}
+
+                  <p style="font-size: .84rem; line-height: 1.45; color: var(--ink); margin-bottom: .6rem;">
+                    ${prof ? esc(prof.description) : (
+                      item.count > 0 
+                        ? `<strong>${item.count} material${item.count > 1 ? 's' : ''}</strong> available for formulation in this sector.`
+                        : `Custom mineral grades available upon technical consultation.`
+                    )}
                   </p>
+
+                  ${prof && prof.safetyNotice ? `
+                    <div class="data-note" style="margin: .6rem 0 .75rem; font-size: .74rem; line-height: 1.4; padding: .6rem .75rem; background: var(--fog); border: 1px solid var(--line); border-left: 3px solid ${prof.statusColor || 'var(--terracotta, #A84E2B)'};">
+                      <strong>Qualification Notice:</strong> ${esc(prof.safetyNotice)}
+                    </div>
+                  ` : ''}
+
+                  ${prof && prof.applicationDetails && prof.applicationDetails.length ? `
+                    <div style="margin: .6rem 0 .75rem; font-size: .76rem; color: var(--slate);">
+                      <strong style="display: block; font: 600 .7rem var(--mono); color: var(--ink); margin-bottom: .3rem; text-transform: uppercase;">Key Manufacturing Details:</strong>
+                      <ul style="list-style: disc; margin: 0 0 0 1.1rem; padding: 0; line-height: 1.4;">
+                        ${prof.applicationDetails.map(d => `<li style="margin-bottom: .2rem;">${esc(d)}</li>`).join('')}
+                      </ul>
+                    </div>
+                  ` : ''}
+
+                  ${item.uncataloguedMaterials && item.uncataloguedMaterials.length ? `
+                    <div class="data-note" style="margin: .6rem 0 .75rem; font-size: .73rem; line-height: 1.4; padding: .6rem .75rem; background: #FFFBEB; border: 1px solid #FDE68A; border-left: 3px solid #D97706; color: #92400E;">
+                      <strong>Uncatalogued Candidate Material:</strong> ${item.uncataloguedMaterials.map(m => `<span><strong>${esc(m.name)}</strong> (${esc(m.status)})</span>`).join(', ')} — Technical specifications and commercial availability confirmed on direct enquiry.
+                    </div>
+                  ` : ''}
                   
                   ${item.products.length ? `
                     <div style="margin: .75rem 0 1.25rem;">
-                      <span style="font: 500 .7rem var(--mono); color: var(--slate); text-transform: uppercase; display: block; margin-bottom: .35rem;">Compatible Materials:</span>
+                      <span style="font: 500 .7rem var(--mono); color: var(--slate); text-transform: uppercase; display: block; margin-bottom: .35rem;">
+                        ${prof ? 'Potentially Relevant Catalogue Materials:' : 'Compatible Materials:'}
+                      </span>
                       <div class="pill-list">
-                        ${item.products.map(p => `
-                          <a href="${productUrl(p, item.name)}" class="pill" style="font-size: .7rem;">
-                            ${esc(p.name)}
-                          </a>
-                        `).join('')}
+                        ${item.products.map(p => {
+                          const isCattleFeed = item.name === 'Cattle Feed' || item.name === 'Cattle Feed Industry';
+                          const label = isCattleFeed ? `${p.name} (Feed-grade confirmation required)` : p.name;
+                          return `
+                            <a href="${productUrl(p, item.name)}" class="pill" style="font-size: .7rem;" title="${isCattleFeed ? 'Feed-grade availability and suitability must be confirmed' : ''}">
+                              ${esc(label)}
+                            </a>
+                          `;
+                        }).join('')}
                       </div>
                     </div>
                   ` : ''}
                 </div>
 
-                <div style="display: flex; gap: .5rem; margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--line);">
-                  <a href="${productsUrl}?industry=${encodeURIComponent(item.name)}" class="button" style="flex: 1; padding: .6rem; font-size: .72rem;">
+                <div style="display: flex; gap: .5rem; margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--line); flex-wrap: wrap;">
+                  <a href="${productsUrl}?industry=${encodeURIComponent(item.name)}" class="button" style="flex: 1; min-width: 120px; padding: .6rem .75rem; font-size: .72rem; text-align: center;">
                     Filter Materials →
                   </a>
-                  <a href="#rfq" class="button alt" style="padding: .6rem .8rem; font-size: .72rem;" onclick="prefillIndustryRfq('${esc(item.name)}')">
-                    RFQ
+                  <a href="#rfq" class="button alt" style="padding: .6rem .8rem; font-size: .72rem; text-align: center;" onclick="prefillIndustryRfq('${esc(item.name)}', '${esc((prof && prof.defaultNotes) || '')}')">
+                    ${esc((prof && prof.ctaText) || 'Quotation')}
+                  </a>
+                  <a href="https://wa.me/${(data.company.whatsappNumber || '919810516065').replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hello Deepali Minerals, I would like to enquire about mineral materials for ${item.name} (${sheetTag}).`)}" target="_blank" rel="noopener noreferrer" class="whatsapp-btn" style="padding: .5rem .7rem; font-size: .72rem; display: inline-flex; align-items: center; gap: .35rem;" title="Enquire via WhatsApp">
+                    ${whatsappIconSvg(13, 13)}
+                    <span>WhatsApp</span>
+                  </a>
+                </div>
+              </article>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      </section>
+
+      <!-- Uncatalogued Candidate Raw Materials Technical Registry -->
+      <section style="background: var(--fog); padding: 4.5rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+        <div class="shell">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Technical Formulation Registry</span>
+              <h2 class="section-title">Uncatalogued Candidate Raw Materials</h2>
+            </div>
+            <p class="lede">The following materials are recorded in our master formulation indices and handwritten source sheets across specific industrial sectors, but are not currently maintained as distinct stock items in our standard 22-product commercial catalogue. Commercial availability, grade specifications, and technical suitability are confirmed upon direct business enquiry.</p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; margin-top: 1.75rem;">
+            ${uncatalogued.map(item => `
+              <article style="background: var(--paper); border: 1px solid var(--line); padding: 1.5rem; display: flex; flex-direction: column;">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; gap: .5rem; margin-bottom: .5rem; flex-wrap: wrap;">
+                  <span style="font: 700 .7rem var(--mono); color: #D97706; background: #FFFBEB; padding: .2rem .5rem; border: 1px solid #FDE68A;">${esc(item.category)}</span>
+                  <span style="font: 600 .68rem var(--mono); color: var(--slate);">${esc(item.catalogueStatus)}</span>
+                </div>
+                <h3 style="margin: 0 0 .25rem; font-size: 1.25rem;">${esc(item.name)}</h3>
+                <div style="font: 600 .75rem var(--mono); color: var(--slate); margin-bottom: .6rem;">${esc(item.chemicalName)}</div>
+                <p style="font-size: .84rem; line-height: 1.45; color: var(--ink); margin-bottom: .75rem;">${esc(item.description)}</p>
+
+                <div style="margin-top: auto; padding-top: .75rem; border-top: 1px solid var(--line);">
+                  <strong style="display: block; font: 600 .7rem var(--mono); color: var(--ink); margin-bottom: .35rem; text-transform: uppercase;">Handwritten Sheet Occurrences:</strong>
+                  <ul style="list-style: disc; margin: 0 0 0 1.1rem; padding: 0; font-size: .76rem; color: var(--slate); line-height: 1.4;">
+                    ${item.sheetOccurrences.map(occ => `<li><strong>Sheet ${esc(occ.sheetIndex)} (${esc(occ.industry)}):</strong> ${esc(occ.role)}</li>`).join('')}
+                  </ul>
+                </div>
+
+                <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); display: flex; gap: .5rem; flex-wrap: wrap;">
+                  <a href="#rfq" class="button alt" style="flex: 1; min-width: 140px; padding: .55rem .75rem; font-size: .72rem; text-align: center;" onclick="prefillIndustryRfq('Technical Enquiry: ${esc(item.name)}', '[Candidate Raw Material Enquiry: ${esc(item.name)}] Intended application: ; Grade requirement: ; Quantity: ')">
+                    Enquire for Specifications
+                  </a>
+                  <a href="https://wa.me/${(data.company.whatsappNumber || '919810516065').replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hello Deepali Minerals, I would like to enquire about technical availability and specifications for ${item.name} (${item.chemicalName}).`)}" target="_blank" rel="noopener noreferrer" class="whatsapp-btn" style="padding: .5rem .7rem; font-size: .72rem; display: inline-flex; align-items: center; gap: .35rem;" title="Enquire via WhatsApp">
+                    ${whatsappIconSvg(13, 13)}
+                    <span>WhatsApp</span>
                   </a>
                 </div>
               </article>
@@ -1358,16 +1798,79 @@
       </section>
     `;
 
+    // Bind real-time directory search filter
+    const searchInput = document.querySelector('#sector-quick-search');
+    const cards = document.querySelectorAll('.sector-item');
+    const countEl = document.querySelector('#visible-sector-count');
+
+    if (searchInput && cards.length) {
+      searchInput.addEventListener('input', e => {
+        const val = e.target.value.toLowerCase().trim();
+        let visible = 0;
+        cards.forEach(card => {
+          const sName = card.dataset.sectorName || '';
+          const sSheet = card.dataset.sectorSheet || '';
+          const sMats = card.dataset.materials || '';
+          const match = !val || sName.includes(val) || sSheet.includes(val) || sMats.includes(val) || ('sheet ' + sSheet).includes(val);
+          card.style.display = match ? 'flex' : 'none';
+          if (match) visible++;
+        });
+        if (countEl) countEl.textContent = visible;
+      });
+    }
+
     bindRfq();
   }
 
   // Global helper for RFQ button click on industry cards
-  window.prefillIndustryRfq = function (indName) {
+  window.prefillIndustryRfq = function (indName, customNotes) {
     const rfqSec = document.querySelector('#rfq');
-    if (!rfqSec) return;
+    if (!rfqSec) {
+      window.location.href = `${root}/#rfq`;
+      return;
+    }
+    const appInput = rfqSec.querySelector('input[name="application"]');
+    if (appInput) {
+      appInput.value = indName;
+    }
     const notesInput = rfqSec.querySelector('input[name="notes"]');
     if (notesInput) {
-      notesInput.value = `[Manufacturing Sector: ${indName}] `;
+      notesInput.value = customNotes || `[Manufacturing Sector: ${indName}] `;
+      notesInput.focus();
+    }
+    rfqSec.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  // Global helper for Application Card Quotation / RFQ button click
+  window.prefillApplicationRfq = function (appName, defaultProductSlug, defaultNotes) {
+    const rfqSec = document.querySelector('#rfq');
+    if (!rfqSec) {
+      const targetUrl = defaultProductSlug
+        ? `${root}/product.html?product=${encodeURIComponent(defaultProductSlug)}&app=${encodeURIComponent(appName)}#rfq`
+        : `${root}/#rfq`;
+      window.location.href = targetUrl;
+      return;
+    }
+    const appInput = rfqSec.querySelector('input[name="application"]');
+    if (appInput) appInput.value = appName;
+
+    if (defaultProductSlug) {
+      const prodSelect = rfqSec.querySelector('select[name="product"]');
+      if (prodSelect) {
+        const prodObj = data.getProductBySlug(defaultProductSlug);
+        const searchName = prodObj ? prodObj.name.toLowerCase() : defaultProductSlug.toLowerCase();
+        for (let i = 0; i < prodSelect.options.length; i++) {
+          if (prodSelect.options[i].value.toLowerCase().includes(searchName)) {
+            prodSelect.selectedIndex = i;
+            break;
+          }
+        }
+      }
+    }
+
+    const notesInput = rfqSec.querySelector('input[name="notes"]');
+    if (notesInput) {
+      notesInput.value = defaultNotes || `[Application: ${appName}] `;
       notesInput.focus();
     }
     rfqSec.scrollIntoView({ behavior: 'smooth' });
@@ -1387,7 +1890,7 @@
         <div class="shell">
           <span class="eyebrow">Product Catalogue • Industrial Minerals & Chemicals</span>
           <h1 class="display">Materials, organized for the next conversation.</h1>
-          <p class="lede">Complete 16-mineral source catalogue. Filter by category, manufacturing industry, or application term to discover the right grade.</p>
+          <p class="lede">Complete 22-product source catalogue. Filter by category, manufacturing industry, or application term to discover the right grade.</p>
         </div>
       </section>
 
@@ -1396,16 +1899,17 @@
           
           <!-- Search Bar -->
           <div class="catalogue-top">
-            <span class="result-count"><b id="product-count">${data.products.length}</b> PRODUCTS IN INITIAL CATALOGUE</span>
+            <span class="result-count"><b id="product-count">${data.products.length}</b> PRODUCTS IN COMPLETE CATALOGUE</span>
             <input id="catalogue-search" type="search" placeholder="Search by name, category, or industry (e.g. Talc, PVC, Putty, Rubber)..." aria-label="Search materials">
           </div>
 
           <!-- Category Filter Bar -->
           <div class="filter-bar" id="category-filter-bar">
-            <button type="button" class="filter-btn active" data-cat="all">All Materials</button>
-            <button type="button" class="filter-btn" data-cat="Mineral Powders">Mineral Powders</button>
-            <button type="button" class="filter-btn" data-cat="Functional Chemicals">Functional Chemicals</button>
-            <button type="button" class="filter-btn" data-cat="Industrial Materials">Industrial Materials</button>
+            <button type="button" class="filter-btn active" data-cat="all">All Materials (22)</button>
+            <button type="button" class="filter-btn" data-cat="Industrial Minerals">Industrial Minerals (22)</button>
+            <button type="button" class="filter-btn" data-cat="Mineral Powders">Mineral Powders (12)</button>
+            <button type="button" class="filter-btn" data-cat="Functional Chemicals">Functional Chemicals (7)</button>
+            <button type="button" class="filter-btn" data-cat="Grains & Aggregates">Grains & Aggregates (3)</button>
           </div>
 
           <!-- Application Quick Filter Strip -->
@@ -1466,19 +1970,38 @@
 
     // SEO Dynamic Update
     document.title = `${p.name} | Deepali Minerals`;
+    const metaDescEl = document.querySelector('meta[name="description"]');
+    if (metaDescEl) {
+      metaDescEl.setAttribute('content', `${p.name} technical specifications, manufacturing applications, packaging standards, and wholesale B2B pricing from Deepali Minerals.`);
+    }
+    let canonicalEl = document.querySelector('link[rel="canonical"]');
+    if (!canonicalEl) {
+      canonicalEl = document.createElement('link');
+      canonicalEl.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonicalEl);
+    }
+    canonicalEl.setAttribute('href', `https://deepaliminerals.in/product.html?product=${p.slug}`);
 
     const specs = p.specifications || {};
-    const specRows = [
-      ['Grade', specs.grade || 'Available on request'],
-      ['Purity', specs.purity || 'Available on request'],
-      ['Mesh Size', specs.mesh || 'Available on request'],
-      ['Micron Size', specs.micron || 'Available on request'],
-      ['Particle Size', specs.particleSize || 'Available on request'],
-      ['Whiteness', specs.whiteness || 'Available on request'],
-      ['Moisture Content', specs.moisture || 'Available on request'],
-      ['Bulk Density', specs.bulkDensity || 'Available on request']
-    ];
+    const specRows = [];
+    if (p.composition || specs.composition) {
+      specRows.push(['Primary Composition', p.composition || specs.composition]);
+    }
+    specRows.push(['Grade', specs.grade || 'Available on request']);
+    specRows.push(['Purity', specs.purity || 'Available on request']);
+    specRows.push(['Mesh Size', specs.mesh || 'Available on request']);
+    specRows.push(['Micron Size', specs.micron || 'Available on request']);
+    specRows.push(['Particle Size', specs.particleSize || 'Available on request']);
+    specRows.push(['Whiteness', specs.whiteness || 'Available on request']);
+    specRows.push(['Moisture Content', specs.moisture || 'Available on request']);
+    specRows.push(['Bulk Density', specs.bulkDensity || 'Available on request']);
 
+    if (specs.ph) {
+      specRows.push(['pH Value', specs.ph]);
+    }
+    if (specs.oilAbsorption) {
+      specRows.push(['Oil Absorption', specs.oilAbsorption]);
+    }
     if (specs.asbestosStatus) {
       specRows.push(['Asbestos Status', specs.asbestosStatus]);
     }
@@ -1500,7 +2023,7 @@
               
               <!-- Primary Buyer Actions -->
               <div class="detail-actions">
-                <a class="button" href="#rfq">Request a quote</a>
+                <a class="button" href="#rfq">Quotation</a>
                 <a class="button alt" href="https://wa.me/${(data.company.whatsappNumber || '919810516065').replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hello Deepali Minerals, I would like to request commercial pricing and specifications for ${p.name}${industryCtx ? ' for ' + industryCtx + ' application' : (reqText ? ' for requirement: ' + reqText : '')}.`)}" target="_blank" rel="noopener noreferrer">
                   WhatsApp Enquiry
                 </a>
@@ -1601,10 +2124,6 @@
                   <span class="doc-status">Available on request</span>
                 </li>
                 <li class="doc-item">
-                  <span class="doc-name">Material Safety Data (MSDS / SDS)</span>
-                  <span class="doc-status">Available on request</span>
-                </li>
-                <li class="doc-item">
                   <span class="doc-name">Certificate of Analysis (COA)</span>
                   <span class="doc-status">Supplied with batch</span>
                 </li>
@@ -1691,7 +2210,22 @@
 
       // 2. Category filter
       if (activeCategory && activeCategory !== 'all') {
-        filtered = filtered.filter(p => p.category.toLowerCase() === activeCategory.toLowerCase());
+        const catNorm = activeCategory.toLowerCase().trim().replace(/-/g, ' ');
+        if (catNorm === 'industrial minerals' || catNorm === 'industrial materials' || catNorm === 'all materials' || catNorm === 'all industrial minerals' || catNorm === 'all') {
+          // All 22 products of Deepali Minerals are industrial minerals
+          filtered = filtered.filter(p => p.isIndustrialMineral !== false);
+        } else if (catNorm === 'mineral powders') {
+          filtered = filtered.filter(p => p.category === 'Mineral Powders' || (p.categories && p.categories.includes('Mineral Powders')));
+        } else if (catNorm === 'functional chemicals') {
+          filtered = filtered.filter(p => p.category === 'Functional Chemicals' || (p.categories && p.categories.includes('Functional Chemicals')));
+        } else if (catNorm === 'grains & aggregates' || catNorm === 'grains aggregates' || catNorm === 'granules & aggregates' || catNorm === 'grains') {
+          filtered = filtered.filter(p => p.category === 'Industrial Materials' || (p.categories && p.categories.includes('Grains & Aggregates')) || ['silica', 'quartz-sand', 'marble-chips'].includes(p.slug));
+        } else {
+          filtered = filtered.filter(p => 
+            (p.category && p.category.toLowerCase() === catNorm) || 
+            (p.categories && p.categories.some(c => c.toLowerCase() === catNorm))
+          );
+        }
       }
 
       // 3. Industry filter
@@ -1720,11 +2254,31 @@
           statusEl.style.display = 'block';
           const parts = [];
           if (activeCategory !== 'all') parts.push(`Category: ${activeCategory}`);
-          if (activeIndustry !== 'all') parts.push(`Industry: ${activeIndustry}`);
+          if (activeIndustry !== 'all') parts.push(`Manufacturing Sector: ${activeIndustry}`);
           if (currentSearch) parts.push(`Search: "${currentSearch}"`);
-          statusEl.textContent = `Active Filters: ${parts.join(' | ')}`;
+
+          let extraInfo = '';
+          if (activeIndustry !== 'all' && data.getTaxonomyByName) {
+            const tax = data.getTaxonomyByName(activeIndustry);
+            if (tax) {
+              const sheetTag = tax.sheetIndex ? ` [${tax.sheetIndex}]` : '';
+              const indIdx = parts.findIndex(p => p.startsWith('Manufacturing Sector:'));
+              if (indIdx !== -1) {
+                parts[indIdx] = `Sector: ${tax.name}${sheetTag}`;
+              }
+              if (tax.safetyNotice) {
+                extraInfo += `<div style="margin-top: .4rem; padding: .6rem .8rem; background: #FEF3C7; border: 1px solid #F59E0B; color: #92400E; font-size: .8rem; font-family: var(--sans); line-height: 1.4;"><strong>Technical Qualification Notice:</strong> ${esc(tax.safetyNotice)}</div>`;
+              }
+              if (tax.uncataloguedMaterials && tax.uncataloguedMaterials.length > 0) {
+                extraInfo += `<div style="margin-top: .4rem; padding: .6rem .8rem; background: #EFF6FF; border: 1px solid #3B82F6; color: #1E40AF; font-size: .8rem; font-family: var(--sans); line-height: 1.4;"><strong>Uncatalogued Candidate Material in Source Sheets:</strong> ${tax.uncataloguedMaterials.map(m => `<em>${esc(m.name)}</em> (${esc(m.status)})`).join(', ')} — Not in standard 22-product catalogue; available for review & specialized supply discussions.</div>`;
+              }
+            }
+          }
+
+          statusEl.innerHTML = `<div style="font-weight: 600;">Active Filters: ${parts.join(' | ')}</div>${extraInfo}`;
         } else {
           statusEl.style.display = 'none';
+          statusEl.innerHTML = '';
         }
       }
     }
@@ -1804,18 +2358,29 @@
     // Check URL parameters on mount
     const params = new URLSearchParams(location.search);
     const searchParam = params.get('search');
+    const appParam = params.get('app');
     const catParam = params.get('category');
     const indParam = params.get('industry');
 
-    if (searchParam) {
-      currentSearch = searchParam;
-      if (searchInput) searchInput.value = searchParam;
+    const effectiveSearch = searchParam || appParam;
+    if (effectiveSearch) {
+      currentSearch = effectiveSearch;
+      if (searchInput) searchInput.value = effectiveSearch;
+      if (appQuickPills) {
+        appQuickPills.querySelectorAll('.pill').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.app && btn.dataset.app.toLowerCase() === effectiveSearch.toLowerCase());
+        });
+      }
     }
     if (catParam) {
       activeCategory = catParam;
       if (categoryBar) {
         categoryBar.querySelectorAll('.filter-btn').forEach(btn => {
-          btn.classList.toggle('active', btn.dataset.cat.toLowerCase() === catParam.toLowerCase());
+          const btnCat = btn.dataset.cat.toLowerCase().replace(/-/g, ' ');
+          const cleanParam = catParam.toLowerCase().replace(/-/g, ' ');
+          const isMatch = btnCat === cleanParam || 
+            ((btnCat === 'industrial minerals' || btnCat === 'industrial materials') && (cleanParam === 'industrial minerals' || cleanParam === 'industrial materials'));
+          btn.classList.toggle('active', isMatch);
         });
       }
     }
@@ -1828,7 +2393,7 @@
       }
     }
 
-    if (searchParam || catParam || indParam) {
+    if (searchParam || appParam || catParam || indParam) {
       applyFilters();
     }
   }
@@ -1867,7 +2432,7 @@
 
         const refId = `DM-RFQ-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
 
-        const whatsappText = `*Deepali Minerals RFQ Submission*
+        const whatsappText = `*Deepali Minerals Quotation Submission*
 Ref: ${refId}
 Product: ${productVal}
 Application: ${appVal || 'Industrial Compounding'}
@@ -1883,7 +2448,7 @@ ${notesVal ? 'Notes: ' + notesVal : ''}`;
           fb.style.display = 'block';
           fb.innerHTML = `
             <div class="rfq-success-card">
-              <h3>RFQ Logged Successfully</h3>
+              <h3>Quotation Logged Successfully</h3>
               <p>Reference: <strong style="font-family: var(--mono); color: var(--aqua);">${refId}</strong></p>
               <p>Your requirement for <strong>${esc(productVal)}</strong> has been recorded for review by our Lawrence Road commercial desk. We will respond with pricing and dispatch terms shortly.</p>
               <div>
@@ -1900,6 +2465,40 @@ ${notesVal ? 'Notes: ' + notesVal : ''}`;
     });
   }
 
+  /* =========================================================================
+   * ABOUT PAGE CONTROLLER
+   * ========================================================================= */
+  function about() {
+    // Initialize sticky subnav scrollspy
+    const subnavLinks = document.querySelectorAll('.about-subnav-link');
+    const sections = Array.from(subnavLinks).map(link => {
+      const targetId = link.getAttribute('href').replace('#', '');
+      return document.getElementById(targetId);
+    }).filter(Boolean);
+
+    if (subnavLinks.length && sections.length) {
+      const onScroll = () => {
+        const scrollPos = window.scrollY + 140;
+        let currentSectionId = '';
+        sections.forEach(sec => {
+          if (sec.offsetTop <= scrollPos) {
+            currentSectionId = sec.id;
+          }
+        });
+        subnavLinks.forEach(link => {
+          const href = link.getAttribute('href').replace('#', '');
+          link.classList.toggle('is-active', href === currentSectionId);
+        });
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+
+    bindRfq();
+    bindSearch();
+    initBackToTop();
+  }
+
   // App initialization
   header();
   footer();
@@ -1907,6 +2506,7 @@ ${notesVal ? 'Notes: ' + notesVal : ''}`;
   if (page === 'industries') industries();
   if (page === 'products') products();
   if (page === 'product') product();
+  if (page === 'about') about();
   initGlobalDMInteractiveLogos();
 
 })();

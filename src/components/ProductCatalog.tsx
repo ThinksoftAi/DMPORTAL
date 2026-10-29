@@ -27,6 +27,8 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
 
   const categories = [
     'All',
+    'Industrial Minerals',
+    'Mineral Powders',
     'Fillers & Extenders',
     'Lime & Carbonates',
     'Clays & Binders',
@@ -34,9 +36,11 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
     'Chemicals & Additives'
   ];
 
-  const displayedMinerals = selectedCategory === 'All'
+  const displayedMinerals = (selectedCategory === 'All' || selectedCategory === 'Industrial Minerals' || selectedCategory === 'Industrial Materials')
     ? MINERALS_DATA
-    : MINERALS_DATA.filter(m => m.category === selectedCategory);
+    : selectedCategory === 'Mineral Powders'
+      ? MINERALS_DATA.filter(m => m.category !== 'Chemicals & Additives')
+      : MINERALS_DATA.filter(m => m.category === selectedCategory);
 
   return (
     <section id="products" className="py-16 sm:py-20 bg-slate-900 border-b border-slate-800">
@@ -52,7 +56,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
               Industrial Minerals & Functional Fillers Catalog
             </h2>
             <p className="text-slate-300 text-sm sm:text-base">
-              Explore our full range of 12 mineral formulations manufactured in state-of-the-art pulverizing and air-classifying mills. Each batch is supplied with certified Technical Data Sheets (TDS) and Certificate of Analysis (COA).
+              Explore our comprehensive product portfolio manufactured in state-of-the-art pulverizing and air-classifying mills. Each batch is supplied with certified Technical Data Sheets (TDS) and Certificate of Analysis (COA).
             </p>
           </div>
 
@@ -189,7 +193,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                     onClick={() => onOpenQuote(mineral.id)}
                     className="flex-1 py-2 px-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors shadow-sm"
                   >
-                    <span>Instant RFQ</span>
+                    <span>Instant Quotation</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>

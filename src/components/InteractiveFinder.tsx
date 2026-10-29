@@ -10,7 +10,7 @@ import {
   ArrowRight,
   Filter
 } from 'lucide-react';
-import { MINERALS_DATA, MineralProduct } from '../data/minerals';
+import { MINERALS_DATA, MineralProduct, INDUSTRIES_SERVED } from '../data/minerals';
 
 interface InteractiveFinderProps {
   onSelectMineralForTds: (mineral: MineralProduct) => void;
@@ -28,18 +28,9 @@ export const InteractiveFinder: React.FC<InteractiveFinderProps> = ({
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [minWhiteness, setMinWhiteness] = useState<number>(80);
 
-  const industriesList = [
-    'All',
-    'Cosmetics',
-    'Plastics & Polymers',
-    'Paints & Coatings',
-    'Rubber & EVA',
-    'Cables & Wiring',
-    'Ceramics',
-    'Paper',
-    'Water Treatment & ETP',
-    'Construction'
-  ];
+  const industriesList = useMemo(() => {
+    return ['All', ...INDUSTRIES_SERVED.map(i => i.name)];
+  }, []);
 
   const meshOptions = [
     'All',
@@ -55,8 +46,19 @@ export const InteractiveFinder: React.FC<InteractiveFinderProps> = ({
   const filteredMinerals = useMemo(() => {
     return MINERALS_DATA.filter(mineral => {
       // Industry filter
-      if (selectedIndustry !== 'All' && !mineral.applications.some(app => app.toLowerCase().includes(selectedIndustry.toLowerCase()))) {
-        return false;
+      if (selectedIndustry !== 'All') {
+        const indObj = INDUSTRIES_SERVED.find(
+          i => i.name.toLowerCase() === selectedIndustry.toLowerCase() || i.id.toLowerCase() === selectedIndustry.toLowerCase()
+        );
+        const matchesRec = indObj ? indObj.recommendedMinerals.some(m => 
+          mineral.name.toLowerCase().includes(m.toLowerCase()) || m.toLowerCase().includes(mineral.name.toLowerCase())
+        ) : false;
+        const matchesApp = mineral.applications.some(app => 
+          app.toLowerCase().includes(selectedIndustry.toLowerCase())
+        );
+        if (!matchesRec && !matchesApp) {
+          return false;
+        }
       }
 
       // Mesh filter

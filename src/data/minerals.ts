@@ -13,7 +13,7 @@ export interface PhysicalProperty {
 export interface MineralProduct {
   id: string;
   name: string;
-  category: 'Fillers & Extenders' | 'Functional Minerals' | 'Chemicals & Additives' | 'Clays & Binders' | 'Lime & Carbonates';
+  category: 'Fillers & Extenders' | 'Functional Minerals' | 'Chemicals & Additives' | 'Clays & Binders' | 'Lime & Carbonates' | 'Industrial Materials';
   tagline: string;
   description: string;
   grades: string[];
@@ -546,6 +546,166 @@ export const MINERALS_DATA: MineralProduct[] = [
       { property: 'Whiteness', value: '97.2', unit: '%' },
       { property: 'Bulk Density (Light)', value: '0.14', unit: 'g/cm³' }
     ]
+  },
+  {
+    id: 'titanium-dioxide',
+    name: 'Titanium Di Oxide',
+    category: 'Chemicals & Additives',
+    tagline: 'High-opacity white inorganic pigment for brightness, tinting strength, and UV resistance',
+    description: 'Titanium dioxide is an inorganic white pigment widely utilized across industrial manufacturing for whiteness, opacity, and optical performance in coatings, masterbatches, polymers, and inks.',
+    grades: ['Industrial Pigment Grade', 'Anatase / Rutile Grades on request'],
+    meshSizes: ['Sub-micron pigment particles'],
+    chemicalFormula: 'TiO2',
+    brightnessWhiteness: 'High Opacity White Pigment',
+    purity: 'Technical data available on request',
+    oilAbsorption: 'Available on request',
+    bulkDensity: 'Available on request',
+    phValue: '6.5 - 8.0',
+    moistureContent: 'Technical data available on request',
+    keyProperties: [
+      'Maximum light scattering and refractive index for extreme opacity',
+      'Superior tinting strength and clean undertone in color systems',
+      'Excellent weatherability and UV degradation protection in polymers',
+      'Low binder demand and high dispersion compatibility'
+    ],
+    applications: ['Paints & Coatings', 'Plastics & Masterbatches', 'Rubber Goods', 'Paper', 'Printing Inks'],
+    packagingOptions: ['25 Kg Bags', '50 Kg Bags', '1 MT Jumbo Bags'],
+    minimumOrderQty: '1 Metric Ton',
+    typicalPriceRange: 'Pricing available on request',
+    chemicalAnalysis: [
+      { component: 'TiO2 (Titanium Dioxide)', value: 'Primary composition', testMethod: 'XRF' }
+    ],
+    physicalProperties: [
+      { property: 'Form', value: 'Fine white powder', unit: '' }
+    ]
+  },
+  {
+    id: 'quartz-sand',
+    name: 'Quartz Sand',
+    category: 'Industrial Materials',
+    tagline: 'Silica-rich natural quartz granular media for foundry molding, glass manufacturing, and screeds',
+    description: 'Quartz Sand is a silica-rich granular material processed from high-purity quartz deposits for industrial applications requiring chemical inertness, high melting point, and controlled grain fractions.',
+    grades: ['Industrial Quartz Sand', 'Graded Foundry & Filtration Fractions'],
+    meshSizes: ['Graded Mesh Fractions (16/30, 30/60, 50/100 Mesh)'],
+    chemicalFormula: 'SiO2',
+    brightnessWhiteness: 'Natural silica grain',
+    purity: 'SiO2 content available on request',
+    oilAbsorption: 'Available on request',
+    bulkDensity: '1.40 - 1.60 g/cm³',
+    phValue: '6.8 - 7.5',
+    moistureContent: '< 0.5% Max',
+    keyProperties: [
+      'High thermal resistance and low thermal expansion in foundry molds',
+      'Chemically inert crystalline silica structure',
+      'Hard angular-to-subangular grains ensuring structural bond strength',
+      'Controlled particle size distribution'
+    ],
+    applications: ['Glass Manufacturing', 'Foundry Casting', 'Construction Mortars', 'Ceramics', 'Water Filtration'],
+    packagingOptions: ['50 Kg HDPE Bags', '1 MT Jumbo Bags', 'Loose Bulk on request'],
+    minimumOrderQty: '5 Metric Tons',
+    typicalPriceRange: 'Pricing available on request',
+    chemicalAnalysis: [
+      { component: 'SiO2 (Silicon Dioxide)', value: 'Primary composition', testMethod: 'Wet Assay / XRF' }
+    ],
+    physicalProperties: [
+      { property: 'Hardness (Mohs)', value: '7.0', unit: 'Mohs' }
+    ]
+  },
+  {
+    id: 'marble-chips',
+    name: 'Marble Chips',
+    category: 'Industrial Materials',
+    tagline: 'Screened natural crystalline marble stone granules for terrazzo flooring and exposed aggregates',
+    description: 'Marble Chips are crushed and screened natural marble stone granules primarily associated with calcium carbonate. Processed in various aggregate fractions for architectural terrazzo floors, decorative exposed cast panels, and garden landscaping.',
+    grades: ['Screened Industrial & Decorative Chips', 'Fine to Coarse Aggregates'],
+    meshSizes: ['Graded chip fractions: 0-size, 1-size, 2-size, 3-size'],
+    chemicalFormula: 'CaCO3',
+    brightnessWhiteness: 'Natural white to off-white chips',
+    purity: 'CaCO3 content available on request',
+    oilAbsorption: 'N/A (Granular Chips)',
+    bulkDensity: '1.45 - 1.65 g/cm³',
+    phValue: '8.2 - 9.0',
+    moistureContent: '< 0.5% Max',
+    keyProperties: [
+      'High compressive strength and weather resistance',
+      'Natural crystalline sparkle and architectural aesthetic appeal',
+      'Uniform grading for terrazzo and precast bonding',
+      'Non-reactive with cementitious and epoxy resin matrixes'
+    ],
+    applications: ['Terrazzo Flooring', 'Exposed Aggregate Renders', 'Decorative Landscaping', 'Precast Concrete', 'Cast Stone'],
+    packagingOptions: ['50 Kg HDPE Bags', '1 MT Jumbo Bags'],
+    minimumOrderQty: '5 Metric Tons',
+    typicalPriceRange: 'Pricing available on request',
+    chemicalAnalysis: [
+      { component: 'CaCO3 (Calcium Carbonate)', value: 'Primary composition', testMethod: 'Titrimetric' }
+    ],
+    physicalProperties: [
+      { property: 'Form', value: 'Granular stone chippings', unit: '' }
+    ]
+  },
+  {
+    id: 'french-chalk-powder',
+    name: 'French Chalk Powder',
+    category: 'Fillers & Extenders',
+    tagline: 'Talc-associated natural mineral powder for industrial lubricity, surface dusting, and marking',
+    description: 'French Chalk Powder is a talc-associated mineral powder characterized by extreme softness, lubricity, and non-stick release properties. Common industrial applications include rubber tyre demolding, cable drawing lubrication, metal marking, and tailoring chalks.',
+    grades: ['Commercial French Chalk Grade', 'Fine Industrial Dusting Grade'],
+    meshSizes: ['300 Mesh', '400 Mesh', '500 Mesh'],
+    chemicalFormula: 'Mg3Si4O10(OH)2',
+    brightnessWhiteness: 'Good whiteness available',
+    purity: 'Technical data available on request',
+    oilAbsorption: '30 - 40 g / 100g',
+    bulkDensity: '0.40 - 0.60 g/cm³',
+    phValue: '8.5 - 9.2',
+    moistureContent: '< 1.0% Max',
+    keyProperties: [
+      'Exceptional dry surface lubricity and anti-adhesion performance',
+      'Prevents rubber sticking during vulcanization and storage',
+      'Smooth non-abrasive marking on fabrics and metals',
+      'High thermal stability'
+    ],
+    applications: ['Rubber Goods & Tyres', 'Cable Sheathing', 'Metal Fabrication Marking', 'Tailoring Chalk', 'Welding Anti-Spatter'],
+    packagingOptions: ['25 Kg Bags', '50 Kg HDPE Bags'],
+    minimumOrderQty: '1 Metric Ton',
+    typicalPriceRange: 'Pricing available on request',
+    chemicalAnalysis: [
+      { component: 'Primary Mineral', value: 'Talc / Steatite', testMethod: 'XRD' }
+    ],
+    physicalProperties: [
+      { property: 'Hardness (Mohs)', value: '1.0', unit: 'Mohs' }
+    ]
+  },
+  {
+    id: 'starch',
+    name: 'Starch',
+    category: 'Chemicals & Additives',
+    tagline: 'Natural polymeric carbohydrate material for industrial sizing, binding, and adhesives',
+    description: 'Starch is a natural polymeric carbohydrate material widely employed in non-food industrial processing as a green binder, film former, and adhesive modifier across paper mills, packaging adhesives, textile sizing, and foundry core binders.',
+    grades: ['Industrial Technical Grade', 'Modified & Native Starch'],
+    meshSizes: ['Fine industrial powder'],
+    chemicalFormula: '(C6H10O5)n',
+    brightnessWhiteness: 'White to creamy powder',
+    purity: 'Technical data available on request',
+    oilAbsorption: 'Available on request',
+    bulkDensity: '0.50 - 0.70 g/cm³',
+    phValue: '5.5 - 7.5',
+    moistureContent: 'Technical data available on request',
+    keyProperties: [
+      'Natural renewable polymeric binder and film former',
+      'Excellent tensile adhesion in corrugating and paper pasting',
+      'Uniform viscosity and thermal gelatinization control',
+      'Green bio-based agglomeration agent for foundry and briquettes'
+    ],
+    applications: ['Paper & Corrugated Packaging', 'Textile Sizing', 'Industrial Adhesives', 'Foundry Core Binder', 'Agglomeration'],
+    packagingOptions: ['25 Kg Bags', '50 Kg HDPE Bags'],
+    minimumOrderQty: '1 Metric Ton',
+    typicalPriceRange: 'Pricing available on request',
+    chemicalAnalysis: [
+      { component: 'Composition', value: 'Natural polymeric carbohydrate', testMethod: 'Standard Assay' }
+    ],
+    physicalProperties: [
+      { property: 'Form', value: 'Fine powder', unit: '' }
+    ]
   }
 ];
 
@@ -631,6 +791,426 @@ export const INDUSTRIES_SERVED: IndustryApplication[] = [
     shortDesc: 'High available CaO quicklime and hydrated lime for municipal wastewater treatment, textile effluent neutralization, and flue gas desulfurization.',
     recommendedMinerals: ['Hydrated Lime Ca(OH)2 90%+', 'Quicklime Powder / Lumps', 'Precipitated Calcium Carbonate'],
     keyBenefits: ['Rapid flocculation and heavy metal precipitation', 'High alkalinity efficiency per metric ton', 'Low insolubles preventing pipe incrustation', 'Cost-effective compliant effluent discharge']
+  },
+  {
+    id: 'fire-safety',
+    name: 'Fire Safety',
+    badge: 'Industrial Formulations',
+    iconName: 'ShieldCheck',
+    shortDesc: 'Explore Calcium Carbonate, Talc and Hydrated Lime for potential fire-safety-related industrial applications. Contact Deepali Minerals to discuss material suitability and technical requirements.',
+    recommendedMinerals: ['Calcium Carbonate', 'Talc Powder', 'Hydrated Lime'],
+    keyBenefits: [
+      'Mineral extenders for industrial fire-safety formulations',
+      'High chemical purity and controlled fineness gradations',
+      'Formulation-specific testing and batch certificate of analysis',
+      'Direct technical consultation for compound compatibility'
+    ]
+  },
+  {
+    id: 'gym-powder',
+    name: 'Gym Powder',
+    badge: 'Moisture Absorption',
+    iconName: 'Activity',
+    shortDesc: 'Explore Magnesium Carbonate for gym chalk and sports-grip powder applications. Contact Deepali Minerals to discuss grade, technical specifications and supply requirements.',
+    recommendedMinerals: ['Magnesium Carbonate Light'],
+    keyBenefits: [
+      'Basic Magnesium Carbonate with high moisture absorbency',
+      'Ultra-low bulk density for superior volume feel',
+      'Industrial grade supply with custom packaging options',
+      'Suitability and grade confirmed with commercial desk'
+    ]
+  },
+  {
+    id: 'fibre-murti',
+    name: 'Fibre Murti Industry',
+    badge: 'Moulding & Statues',
+    iconName: 'Boxes',
+    shortDesc: 'Mineral fillers and powders for fibre idols, statues and decorative figures in resin formulations and surface finishing.',
+    recommendedMinerals: ['Calcium Carbonate', 'Talc Powder', 'Marble Powder', 'Silica'],
+    keyBenefits: [
+      'Mineral fillers in compatible resin formulations',
+      'Surface finishing and decorative manufacturing',
+      'Material sourcing for fibre idol and statue manufacturers',
+      'Technical material selection based on formulation requirements'
+    ]
+  },
+  {
+    id: 'plywood',
+    name: 'Plywood Industry',
+    badge: 'Adhesives & Panels',
+    iconName: 'Layers',
+    shortDesc: 'Mineral fillers and extenders for plywood bonding systems, resin adhesives, and wood-panel surface-treatment formulations.',
+    recommendedMinerals: ['Calcium Carbonate', 'Talc Powder', 'China Clay', 'Silica'],
+    keyBenefits: [
+      'Mineral fillers for compatible adhesive formulations',
+      'Materials for relevant coating and surface-treatment formulations',
+      'Industrial material sourcing for plywood manufacturers',
+      'Technical enquiry for application-specific grades'
+    ]
+  },
+  {
+    id: 'gulal-rangoli',
+    name: 'Gulal / Rangoli Industry',
+    badge: 'Colour & Texture',
+    iconName: 'Sparkles',
+    shortDesc: 'Mineral powders for dry colours, rangoli powders and decorative colour products as base carriers and bulk fillers.',
+    recommendedMinerals: ['Calcium Carbonate', 'Talc Powder', 'Chalk Powder', 'Marble Powder'],
+    keyBenefits: [
+      'Base powders and carriers for dry colour formulations',
+      'Bulk mineral fillers for decorative rangoli products',
+      'Fine powders for flow and texture in decorative blends',
+      'Suitability for finished consumer products must be independently confirmed'
+    ]
+  },
+  {
+    id: 'nc-putty',
+    name: 'NC Putty Industry',
+    badge: 'Knifing & Body Putty',
+    iconName: 'Paintbrush',
+    shortDesc: 'Fine mineral extenders and fillers for nitrocellulose and knifing putty formulations supporting body, sandability, and smooth surface.',
+    recommendedMinerals: ['Talc Powder', 'Calcium Carbonate', 'China Clay', 'Marble Powder'],
+    keyBenefits: [
+      'Mineral extenders for compatible body and knifing putty formulations',
+      'Fine-particle materials to support surface smoothness and sandability',
+      'Fillers for automotive and industrial repair putty systems',
+      'Sourcing for paint and putty manufacturers'
+    ]
+  },
+  {
+    id: 'stationery',
+    name: 'Stationery Industry',
+    badge: 'Paper, Chalk & School Supplies',
+    iconName: 'FileText',
+    shortDesc: 'Mineral materials for writing paper, writing chalk, crayons, modelling clays, pencils and office stationery manufacturing.',
+    recommendedMinerals: ['Calcium Carbonate', 'Talc Powder', 'China Clay', 'Chalk Powder', 'Starch'],
+    keyBenefits: [
+      'Fillers and coating minerals for paper and board manufacturing',
+      'Raw materials for chalk, crayon and modelling clay formulations',
+      'Inert powders for pencil lead and body formulations',
+      'Industrial mineral sourcing for stationery manufacturers'
+    ]
+  },
+  {
+    id: 'cattle-feed',
+    name: 'Cattle Feed Industry',
+    badge: 'Application Enquiry',
+    iconName: 'ShieldCheck',
+    shortDesc: 'Enquire about Calcium Carbonate for animal feed and cattle feed applications. Grade availability, purity, and suitability must be confirmed with Deepali Minerals.',
+    recommendedMinerals: ['Calcium Carbonate'],
+    keyBenefits: [
+      'Application enquiry pathway for animal feed compounders',
+      'Technical discussions on grade availability, purity and specifications',
+      'Particle size distribution and calcium content evaluation',
+      'Feed-grade suitability and compliance must be confirmed directly prior to supply'
+    ]
+  },
+  {
+    id: 'tile-adhesives',
+    name: 'Tile Adhesives Industry',
+    badge: 'Mortars & Grouts',
+    iconName: 'Layers',
+    shortDesc: 'Mineral fillers and aggregates for cementitious tile adhesives (CTA), polymer-modified mortars, joint grouts, and sag-resistant fillers.',
+    recommendedMinerals: ['Calcium Carbonate', 'Silica', 'Talc Powder', 'Hydrated Lime'],
+    keyBenefits: [
+      'Controlled-gradation fillers for cementitious tile adhesives (CTA)',
+      'Mineral components for polymer-modified mortar and grout formulations',
+      'Silica aggregates for mechanical keying and bond strength',
+      'Rheology-supporting mineral powders for sag resistance and open time'
+    ]
+  },
+  {
+    id: 'home-household',
+    name: 'Home / Household',
+    badge: 'Sheet A • Cleaners & Polishes',
+    iconName: 'Sparkles',
+    shortDesc: 'Functional mineral fillers and mild abrasives for scouring powders, household cleaners, and polishes.',
+    recommendedMinerals: ['Talc Powder', 'Calcium Carbonate', 'Silica Powder / Quartz', 'Hydrated Lime Ca(OH)2 90%+'],
+    keyBenefits: [
+      'Mild controlled abrasiveness without surface scratching',
+      'Moisture regulation and anti-caking properties in storage',
+      'High brightness and chemically inert carrier base',
+      'Cost-effective formulation extender for household cleaners'
+    ]
+  },
+  {
+    id: 'agriculture',
+    name: 'Agriculture',
+    badge: 'Sheet B • Carriers & Dusting',
+    iconName: 'Boxes',
+    shortDesc: 'Inert mineral carriers, anti-caking conditioners, and dusting agents for agrochemical formulations, fertilizer coatings, and seed dressing.',
+    recommendedMinerals: ['Talc Powder', 'Soap Stone', 'Kaolin / China Clay', 'Calcium Carbonate', 'Zinc Oxide White Seal'],
+    keyBenefits: [
+      'High chemical inertness preserving active ingredient stability',
+      'Superior dry flowability and anti-caking in storage',
+      'Controlled particle size distribution for dusting efficiency',
+      'Micro-nutrient carrier support (Zinc Oxide)'
+    ]
+  },
+  {
+    id: 'plastic',
+    name: 'Plastic Compounding',
+    badge: 'Sheet C • Polymer Reinforcement',
+    iconName: 'Layers',
+    shortDesc: 'Reinforcing mineral fillers, nucleating agents, and processing lubricants for masterbatches, compounding, and extruded profiles.',
+    recommendedMinerals: ['Talc Powder', 'Soap Stone', 'Calcium Carbonate', 'Zinc Stearate'],
+    keyBenefits: [
+      'Enhances flexural modulus, rigidity, and tensile strength',
+      'Improves heat deflection temperature (HDT) and cycle times',
+      'Zinc Stearate acts as internal lubricant and mould release',
+      'Consistent fine gradation minimizing extruder barrel wear'
+    ]
+  },
+  {
+    id: 'putty',
+    name: 'Putty Formulations',
+    badge: 'Sheet D • Body & Workability',
+    iconName: 'Paintbrush',
+    shortDesc: 'Mineral fillers and extenders for architectural wall putties, wood fillers, and glazing compounds.',
+    recommendedMinerals: ['French Chalk / Porbandar Chalk', 'Talc Powder', 'Soap Stone', 'Calcium Carbonate', 'Silica Powder / Quartz'],
+    keyBenefits: [
+      'Smooth knife application and superior trowel workability',
+      'Excellent feather-edging and non-sag consistency',
+      'Balanced particle size packing reducing shrinkage cracks',
+      'French Chalk imparts silky smooth finishing texture'
+    ]
+  },
+  {
+    id: 'soap',
+    name: 'Soap & Toiletries',
+    badge: 'Sheet E • Binding & Texture',
+    iconName: 'Sparkles',
+    shortDesc: 'Smooth mineral fillers and structuring agents for laundry bars, toilet soaps, and detergent cakes.',
+    recommendedMinerals: ['Talc Powder', 'Soap Stone', 'Kaolin / China Clay', 'Titanium Di Oxide'],
+    keyBenefits: [
+      'Improves bar hardness and reduces mushing in water',
+      'Gives creamy lather feel and smooth skin slip',
+      'Titanium Dioxide provides brilliant opacity and whiteness',
+      'Cost optimization without compromising cake integrity'
+    ]
+  },
+  {
+    id: 'footwear',
+    name: 'Footwear & Soling',
+    badge: 'Sheet F • Elastomer Fillers',
+    iconName: 'Activity',
+    shortDesc: 'Reinforcing fillers, activating agents, and release powders for microcellular EVA sheets, hawai chappals, and rubber soles.',
+    recommendedMinerals: ['Calcium Carbonate', 'Talc Powder', 'Zinc Stearate', 'Chalk Powder', 'Kaolin / China Clay', 'Zinc Oxide White Seal'],
+    keyBenefits: [
+      'Active vulcanization activation via Zinc Oxide',
+      'Internal lubrication and mold release via Zinc Stearate',
+      'Improves abrasion resistance and hardness control',
+      'French chalk and talc prevent unvulcanized rubber tackiness'
+    ]
+  },
+  {
+    id: 'pesticides',
+    name: 'Pesticides & Agrochemicals',
+    badge: 'Sheet G • Wettable Powders',
+    iconName: 'ShieldCheck',
+    shortDesc: 'Inert diluents, suspension carriers, and free-flowing mineral bases for wettable powders (WP) and dustable formulations (DP). Note: Calcite is an uncatalogued candidate raw material.',
+    recommendedMinerals: ['Kaolin / China Clay', 'Talc Powder', 'Soap Stone', 'Hydrated Lime Ca(OH)2 90%+'],
+    keyBenefits: [
+      'High liquid carrier capacity and wettability',
+      'Chemically neutral avoiding active chemical degradation',
+      'Consistent fine suspension in water sprayers',
+      'Free flowability prevents hopper bridging during packing'
+    ]
+  },
+  {
+    id: 'detergent',
+    name: 'Detergent & Washing Powders',
+    badge: 'Sheet H • Flow & Abrasive Balance',
+    iconName: 'Droplets',
+    shortDesc: 'Bulk builders, anti-caking minerals, and controlled abrasives for washing powders, scouring bars, and detergent cakes.',
+    recommendedMinerals: ['Marble Powder', 'Talc Powder', 'Soap Stone', 'Kaolin / China Clay'],
+    keyBenefits: [
+      'Enhances density and physical volume of washing powders',
+      'Controlled mechanical scrubbing action in scourers',
+      'Improves dry cake hardness and structural integrity',
+      'Free-flowing particle morphology prevents clumping'
+    ]
+  },
+  {
+    id: 'construction',
+    name: 'Construction & Mortars',
+    badge: 'Sheet I • Building Materials',
+    iconName: 'Boxes',
+    shortDesc: 'Mineral aggregates, binders, and lime mortars for plastering, masonry, flooring, and readymix formulations.',
+    recommendedMinerals: ['Marble Powder', 'Hydrated Lime Ca(OH)2 90%+', 'Silica Powder / Quartz'],
+    keyBenefits: [
+      'Hydrated Lime provides superior plasticity and bond strength',
+      'Marble powder provides brilliant white plaster finish',
+      'Graded silica provides mechanical compression strength',
+      'Weather-resistant and carbonation hardening'
+    ]
+  },
+  {
+    id: 'eva',
+    name: 'EVA Foaming & Sheet',
+    badge: 'Sheet J • Cellular Foam',
+    iconName: 'Layers',
+    shortDesc: 'Mineral fillers, cell activators, and pigments for expanded EVA foam sheets, sports goods, and footwear.',
+    recommendedMinerals: ['Calcium Carbonate', 'Talc Powder', 'Titanium Di Oxide', 'Zinc Oxide White Seal'],
+    keyBenefits: [
+      'Zinc Oxide acts as blowing agent booster & activator',
+      'Calcium carbonate controls uniform microcellular cell size',
+      'Improves tear resistance and rebound resilience',
+      'Titanium dioxide imparts crisp white opacity to foam'
+    ]
+  },
+  {
+    id: 'biofertilizers',
+    name: 'Biofertilizers',
+    badge: 'Sheet K • Microbial Carriers',
+    iconName: 'ShieldCheck',
+    shortDesc: 'Neutral, sterile mineral carrier matrices for beneficial soil bacteria (Rhizobium, Azotobacter, PSB). Note: Celite is an uncatalogued candidate raw material.',
+    recommendedMinerals: ['Talc Powder', 'Soap Stone', 'Kaolin / China Clay', 'Silica Powder / Quartz', 'Calcium Carbonate'],
+    keyBenefits: [
+      'Non-toxic, chemically inert carrier matrix',
+      'High moisture-holding capacity for bacterial survival',
+      'Optimal pH buffer (6.5 - 7.5) ensuring microbial shelf life',
+      'Smooth dusting and uniform seed adherence during sowing'
+    ]
+  },
+  {
+    id: 'rigid-pvc',
+    name: 'Rigid PVC Pipes & Profiles',
+    badge: 'Sheet M • High Impact & Gloss',
+    iconName: 'Zap',
+    shortDesc: 'Surface-treated ultrafine calcium carbonate, stabilizers, and functional additives for PVC pressure pipes, conduits, and profiles.',
+    recommendedMinerals: ['Calcium Carbonate', 'Talc Powder', 'Soap Stone', 'Kaolin / China Clay', 'Zinc Stearate', 'Zinc Oxide White Seal', 'Titanium Di Oxide'],
+    keyBenefits: [
+      'Enhances pipe impact strength and elongation at break',
+      'Zinc Stearate provides external/internal lubrication balance',
+      'Titanium Dioxide protects against exterior UV photodegradation',
+      'Decreases formulation cost without compromising burst pressure'
+    ]
+  },
+  {
+    id: 'wall-putty',
+    name: 'Wall Putty',
+    badge: 'Sheet N • Skim Coat & Levelling',
+    iconName: 'Paintbrush',
+    shortDesc: 'Mineral powders for polymer-modified white cement wall putties, skim coats, and exterior smoothing compounds.',
+    recommendedMinerals: ['Marble Powder', 'Talc Powder', 'Dolomite Powder'],
+    keyBenefits: [
+      'Brilliant optical whiteness (Hunter L > 95%)',
+      'Dolomite & Marble powder provide dense particle packing',
+      'Talc imparts buttery smooth knifing and feather-edging',
+      'Reduces water demand and shrinkage cracking'
+    ]
+  },
+  {
+    id: 'ceramics-sheet',
+    name: 'Ceramics (Sheet O)',
+    badge: 'Sheet O • Vitrification & Glazes',
+    iconName: 'Boxes',
+    shortDesc: 'Levigated kaolin, high-purity quartz silica powder, talc, and dolomite for vitreous china bodies, wall tiles, and ceramic glazes.',
+    recommendedMinerals: ['Talc Powder', 'Soap Stone', 'Kaolin / China Clay', 'Silica Powder / Quartz'],
+    keyBenefits: [
+      'Optimal plasticity and green strength for slip casting',
+      'Uniform thermal expansion with zero crazing in glazes',
+      'High fired whiteness and fluxing efficiency',
+      'Reduces firing shrinkage and warping defects'
+    ]
+  },
+  {
+    id: 'colors',
+    name: 'Colors & Pigment Blends',
+    badge: 'Sheet P • Dry Powder Pigments',
+    iconName: 'Sparkles',
+    shortDesc: 'Ultra-white inert carrier bases, extenders, and brightness enhancers for dry pigments, masterbatches, and pigment pastes. Note: Unclear entry is candidate under verification.',
+    recommendedMinerals: ['Chalk Powder', 'Kaolin / China Clay', 'Soap Stone', 'Talc Powder', 'Calcium Carbonate', 'Silica Powder / Quartz', 'Zinc Oxide White Seal'],
+    keyBenefits: [
+      'High whiteness and low tinting strength preserve pigment hue',
+      'Superfine particle size ensures streak-free dispersion',
+      'Zinc Oxide adds brilliance and anti-fungal properties',
+      'Consistent oil absorption for uniform paste rheology'
+    ]
+  },
+  {
+    id: 'mould-release',
+    name: 'Mould Release Agents',
+    badge: 'Sheet Q • Parting Compounds',
+    iconName: 'Layers',
+    shortDesc: 'Dry dusting powders and lubricating anti-tack minerals for rubber moulding, plastic die release, and metal casting.',
+    recommendedMinerals: ['Talc Powder', 'Soap Stone', 'Calcium Carbonate', 'Zinc Oxide White Seal', 'Zinc Stearate', 'Titanium Di Oxide'],
+    keyBenefits: [
+      'Extreme lamellar slip prevents sticking in hot dies',
+      'Zinc Stearate melts to form a hydrophobic parting film',
+      'High thermal stability up to 900°C without charring',
+      'Non-staining and easily cleaned from moulded parts'
+    ]
+  },
+  {
+    id: 'anti-corrosive-primer',
+    name: 'Anti-Corrosive Primers',
+    badge: 'Sheet R • Metal Protection',
+    iconName: 'ShieldCheck',
+    shortDesc: 'Barrier pigments, neutralizing bases, and reinforcing extenders for metal primers, alkyd paints, and industrial maintenance coatings.',
+    recommendedMinerals: ['Red Oxide Pigment', 'Talc Powder', 'Calcium Carbonate', 'Hydrated Lime Ca(OH)2 90%+'],
+    keyBenefits: [
+      'Natural red iron oxide provides impermeable barrier protection',
+      'Lamellar talc creates overlapping tortuous moisture paths',
+      'Hydrated lime acts as alkaline corrosion inhibitor',
+      'Enhances primer adhesion to bare steel surfaces'
+    ]
+  },
+  {
+    id: 'foundry',
+    name: 'Foundry & Metal Casting',
+    badge: 'Sheet S • Refractory & Moulding',
+    iconName: 'Boxes',
+    shortDesc: 'Refractory dusting powders, parting agents, and core wash minerals for sand casting, ferrous foundries, and non-ferrous moulding. Note: Celite is an uncatalogued candidate raw material.',
+    recommendedMinerals: ['Talc Powder', 'Soap Stone', 'Dolomite Powder', 'Marble Powder', 'Hydrated Lime Ca(OH)2 90%+', 'Silica Powder / Quartz'],
+    keyBenefits: [
+      'High refractoriness preventing metal penetration into sand',
+      'Talc parting powder ensures clean separation from pattern',
+      'Controlled gas permeability in foundry core washes',
+      'Thermal shock resistance during liquid metal pouring'
+    ]
+  },
+  {
+    id: 'frp',
+    name: 'FRP & Composite Moulding',
+    badge: 'Sheet T • Composite Resins',
+    iconName: 'Layers',
+    shortDesc: 'Polyester resins, reinforcing marble chips, and fine mineral extenders for fiberglass reinforced plastics, SMC/BMC moulding, and pultrusion.',
+    recommendedMinerals: ['Hydrated Lime Ca(OH)2 90%+', 'Polyester Resin', 'Talc Powder', 'French Chalk / Porbandar Chalk', 'Marble Chips', 'Marble Powder', 'Calcium Carbonate'],
+    keyBenefits: [
+      'Supplies prime orthophthalic and isophthalic Polyester Resin',
+      'Fine extenders reduce exotherm peak and shrinkage during cure',
+      'Marble chips provide structural body in composite casting',
+      'Improves surface smoothness, flame retardancy, and rigidity'
+    ]
+  },
+  {
+    id: 'paints-sheet',
+    name: 'Paints & Coatings (Sheet U)',
+    badge: 'Sheet U • Architectural & Industrial',
+    iconName: 'Paintbrush',
+    shortDesc: 'Complete 13-mineral suite of functional extenders, prime pigments, and rheology modifiers for decorative emulsions, primers, and industrial coatings.',
+    recommendedMinerals: ['Talc Powder', 'Calcium Carbonate', 'Silica Powder / Quartz', 'Red Oxide Pigment', 'Chalk Powder', 'Kaolin / China Clay', 'Hydrated Lime Ca(OH)2 90%+', 'Zinc Oxide White Seal', 'Marble Powder', 'Dolomite Powder', 'Titanium Di Oxide', 'Barytes Powder (BaSO4)'],
+    keyBenefits: [
+      'Comprehensive TiO2 spacing reducing formulation costs by up to 25%',
+      'Barytes adds high density, chemical resistance, and scrub resistance',
+      'Lamellar talc and kaolin improve film durability and sag resistance',
+      'Controlled gloss, sheen, and exterior weatherability'
+    ]
+  },
+  {
+    id: 'dal-polish-mills',
+    name: 'Dal Polish Mills',
+    badge: 'Sheet V • Grain Polishing',
+    iconName: 'Sparkles',
+    shortDesc: 'Specialized ultra-fine, food-processing contact parting and polishing powders for pulse mills, dal grading, and grain gloss enhancement.',
+    recommendedMinerals: ['Talc Powder', 'Soap Stone', 'French Chalk / Porbandar Chalk'],
+    keyBenefits: [
+      'Food-contact grade cosmetic/pharma quality purity',
+      'Imparts natural gloss and lustre to processed pulses and grains',
+      'Prevents pulse-to-pulse friction damage and surface abrasions',
+      'Smooth, free-flowing, completely odorless and non-toxic'
+    ]
   }
 ];
 
@@ -648,7 +1228,7 @@ export const COMPANY_DETAILS = {
   phoneOffice: '9810715129',
   emailSales: 'info@deepaliminerals.in',
   emailInquiry: 'info@deepaliminerals.in',
-  logo: '/assets/images/brand/logo.jpg',
+  logo: '/assets/images/brand/logo.png',
   whatsappNumber: '+919810516065',
   gstNumber: '07AIMPM0458Q1ZL',
   turnoverRange: '₹5 Crore - ₹25 Crore INR',

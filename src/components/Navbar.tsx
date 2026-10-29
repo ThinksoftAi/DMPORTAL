@@ -129,8 +129,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <div className="rounded-lg shadow-md group-hover:scale-105 transition-transform flex items-center justify-center overflow-hidden">
                 <img 
-                  src="/assets/images/brand/logo.jpg" 
-                  alt="DEEPALI MINERALS Logo" 
+                  src="/assets/images/brand/logo.png" 
+                  alt="Deepali Minerals" 
                   className="w-full h-auto max-h-12 max-w-[175px] object-contain block rounded-lg" 
                   referrerPolicy="no-referrer"
                 />
@@ -302,7 +302,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => onOpenQuote()}
               className="px-2.5 py-1.5 text-xs font-bold text-slate-950 bg-amber-400 rounded-md"
             >
-              RFQ
+              Quotation
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -323,7 +323,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 className="py-2.5 px-3 rounded-lg bg-amber-500 text-slate-950 font-bold text-xs flex items-center justify-center gap-1.5"
               >
                 <FileText className="w-4 h-4" />
-                <span>Instant RFQ</span>
+                <span>Instant Quotation</span>
               </button>
               <button
                 onClick={() => { setMobileMenuOpen(false); onOpenSample(); }}

@@ -316,7 +316,7 @@ Website: https://deepaliminerals.in
               }}
               className="px-5 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center gap-1.5 transition-colors shadow-md shadow-amber-500/20"
             >
-              <span>Request Custom RFQ</span>
+              <span>Request Custom Quotation</span>
             </button>
           </div>
         </div>

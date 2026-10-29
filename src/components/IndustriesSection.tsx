@@ -40,6 +40,7 @@ export const IndustriesSection: React.FC<IndustriesSectionProps> = ({
       case 'Boxes': return <Boxes className="w-5 h-5 text-amber-400" />;
       case 'FileText': return <FileText className="w-5 h-5 text-amber-400" />;
       case 'Droplets': return <Droplets className="w-5 h-5 text-amber-400" />;
+      case 'ShieldCheck': return <ShieldCheck className="w-5 h-5 text-amber-400" />;
       default: return <Layers className="w-5 h-5 text-amber-400" />;
     }
   };

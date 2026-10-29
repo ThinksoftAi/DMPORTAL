@@ -111,7 +111,7 @@ export const QuoteCalculatorModal: React.FC<QuoteCalculatorModalProps> = ({
             </div>
             <div>
               <h2 className="text-lg sm:text-xl font-bold font-heading text-white">
-                Request for Quotation (RFQ) & Cost Calculator
+                Quotation & Cost Calculator
               </h2>
               <p className="text-xs text-slate-400">
                 Direct factory pricing from Deepali Minerals manufacturing units
@@ -122,7 +122,7 @@ export const QuoteCalculatorModal: React.FC<QuoteCalculatorModalProps> = ({
           <button
             onClick={onClose}
             className="p-2 rounded-lg bg-slate-800/80 hover:bg-rose-500/20 hover:text-rose-300 text-slate-400 transition-colors"
-            aria-label="Close RFQ Modal"
+            aria-label="Close Quotation Modal"
           >
             <X className="w-5 h-5" />
           </button>
@@ -138,13 +138,13 @@ export const QuoteCalculatorModal: React.FC<QuoteCalculatorModalProps> = ({
 
               <div className="space-y-1">
                 <h3 className="text-xl font-bold text-white font-heading">
-                  RFQ Dispatched Successfully!
+                  Quotation Dispatched Successfully!
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-300">
                   Reference ID: <strong className="text-amber-400 font-mono text-base">{rfqNumber}</strong>
                 </p>
                 <p className="text-xs text-slate-400 max-w-md mx-auto pt-2">
-                  Our commercial sales desk at Lawrence Road, New Delhi has received your RFQ. A formal proforma quote with current freight & delivery timeline will be shared with <strong className="text-slate-200">{email || phone}</strong> within 2 hours.
+                  Our commercial sales desk at Lawrence Road, New Delhi has received your quotation request. A formal proforma quote with current freight & delivery timeline will be shared with <strong className="text-slate-200">{email || phone}</strong> within 2 hours.
                 </p>
               </div>
 
@@ -433,7 +433,7 @@ export const QuoteCalculatorModal: React.FC<QuoteCalculatorModalProps> = ({
                   className="px-6 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-amber-500/20 active:scale-95 transition-all"
                 >
                   <Send className="w-4 h-4" />
-                  <span>Submit RFQ to Sales Desk</span>
+                  <span>Submit Quotation to Sales Desk</span>
                 </button>
               </div>
 

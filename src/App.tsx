@@ -124,7 +124,7 @@ export function App() {
           className="hidden sm:flex pointer-events-auto items-center gap-2 px-3.5 py-2.5 rounded-full bg-slate-900 text-amber-400 border border-amber-500/40 hover:bg-slate-800 shadow-xl text-xs font-bold transition-all hover:scale-105"
         >
           <Calculator className="w-4 h-4 text-amber-400" />
-          <span>Quick RFQ</span>
+          <span>Quick Quotation</span>
         </button>
 
         {showBackToTop && (

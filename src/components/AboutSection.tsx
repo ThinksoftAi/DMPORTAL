@@ -31,117 +31,130 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
           <div className="lg:col-span-7 space-y-6">
             <div className="space-y-2">
               <span className="text-xs font-semibold uppercase tracking-wider text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20 inline-block">
-                Company Profile & Legacy
+                Company Profile &amp; Sourcing Network
               </span>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white font-heading">
-                Two Decades of Excellence in Industrial Minerals
+                Two Decades of Dependable Industrial Mineral Supply
               </h2>
               <p className="text-base text-slate-300 leading-relaxed font-normal">
-                Founded in <strong>2004</strong> under the leadership of <strong>Mr. Neeraj Monga (CEO)</strong>, <strong>DEEPALI MINERALS</strong> has grown from a specialized mineral trading house in Delhi to a comprehensive manufacturer, processor, and bulk exporter of non-metallic industrial minerals.
+                Established in <strong>2004</strong> under the leadership of <strong>Mr. Neeraj Monga (CEO)</strong>, <strong>DEEPALI MINERALS</strong> operates as an established supplier of non-metallic industrial minerals, pulverized powders, and functional chemical additives serving manufacturing sectors across India.
               </p>
             </div>
 
             <p className="text-sm text-slate-400 leading-relaxed">
-              Operating out of our prime headquarters at <strong>C2/29C Lawrence Road, Keshav Puram, Delhi-110035</strong>, we maintain integrated grinding and air-classification facilities across the rich mineral belts of Rajasthan and Gujarat. We process over <strong>50,000 Metric Tons</strong> of mineral powders annually, fulfilling rigorous technical standards for cosmetic formulations, high-impact polymers, architectural coatings, and rubber products.
+              Operating from our commercial logistics base at <strong>C2/29C Lawrence Road, Keshav Puram / Rampura, Delhi-110035</strong>, we coordinate bulk sourcing, particle classification, quality verification, and rapid dispatch across 22 master mineral products and 38 manufacturing industries.
             </p>
 
             {/* Quick stats checklist */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs sm:text-sm text-slate-300">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>Proprietor & CEO: <strong>{COMPANY_DETAILS.ceo}</strong></span>
+                <span>Proprietor &amp; CEO: <strong>{COMPANY_DETAILS.ceo}</strong></span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>Established: <strong>{COMPANY_DETAILS.establishedYear} ({COMPANY_DETAILS.experienceYears})</strong></span>
+                <span>Established: <strong>{COMPANY_DETAILS.establishedYear} (20+ Years)</strong></span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>Annual Turnover: <strong>{COMPANY_DETAILS.turnoverRange}</strong></span>
+                <span>Constitution: <strong>Proprietorship</strong></span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>Annual Volume: <strong>{COMPANY_DETAILS.annualProcessingCapacity}</strong></span>
+                <span>GSTIN: <strong>{COMPANY_DETAILS.gstNumber}</strong></span>
               </div>
             </div>
 
             {/* Action buttons */}
             <div className="pt-4 flex flex-wrap items-center gap-4">
-              <button
-                onClick={onOpenQuote}
+              <a
+                href="/about.html"
                 className="px-6 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-amber-500/20 transition-all"
               >
-                <span>Partner with Deepali Minerals</span>
+                <span>Read Full Company Profile</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </a>
 
               <button
-                onClick={onOpenContact}
+                onClick={onOpenQuote}
                 className="px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold text-xs sm:text-sm border border-slate-700 transition-colors"
               >
-                <span>View Factory & Office Details</span>
+                <span>Request Quotation</span>
               </button>
             </div>
           </div>
 
-          {/* Right Column Client Trust & Manufacturing Footprint */}
+          {/* Right Column Structured Profile Card */}
           <div className="lg:col-span-5 space-y-6">
             
-            {/* Reputable Clients Card */}
+            {/* Factsheet Summary Card */}
             <div className="bg-slate-900 rounded-2xl border border-slate-800 p-6 shadow-xl space-y-4">
               <div className="flex items-center justify-between pb-3 border-b border-slate-800">
                 <span className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
                   <Award className="w-4 h-4 text-amber-400" />
-                  <span>Esteemed Industry Clients</span>
+                  <span>Corporate Factsheet</span>
                 </span>
-                <span className="text-[10px] text-slate-400 font-mono">
-                  Long-term Partnerships
+                <span className="text-[10px] text-amber-400 font-mono bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">
+                  Verified Data
                 </span>
               </div>
 
-              <div className="space-y-2.5">
-                {COMPANY_DETAILS.reputableClients.map((client, idx) => (
-                  <div 
-                    key={idx}
-                    className="p-3 rounded-xl bg-slate-950 border border-slate-800/80 flex items-center justify-between"
-                  >
-                    <div>
-                      <div className="font-semibold text-xs sm:text-sm text-slate-100">
-                        {client.name}
-                      </div>
-                      <div className="text-[11px] text-slate-400">
-                        {client.industry}
-                      </div>
-                    </div>
-                    <span className="text-[10px] font-mono font-medium text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
-                      Active Buyer
-                    </span>
-                  </div>
-                ))}
+              <div className="space-y-2 text-xs">
+                <div className="p-2.5 rounded-lg bg-slate-950 border border-slate-800/80 flex justify-between items-center">
+                  <span className="text-slate-400">Nature of Business:</span>
+                  <span className="font-semibold text-slate-200">Trader–Retailer &amp; Supplier</span>
+                </div>
+                <div className="p-2.5 rounded-lg bg-slate-950 border border-slate-800/80 flex justify-between items-center">
+                  <span className="text-slate-400">Business Category:</span>
+                  <span className="font-semibold text-slate-200">Industrial Minerals &amp; Chemicals</span>
+                </div>
+                <div className="p-2.5 rounded-lg bg-slate-950 border border-slate-800/80 flex justify-between items-center">
+                  <span className="text-slate-400">GST Registration:</span>
+                  <span className="font-semibold text-slate-200">01 July 2017</span>
+                </div>
+                <div className="p-2.5 rounded-lg bg-slate-950 border border-slate-800/80 flex justify-between items-center">
+                  <span className="text-slate-400">Master Portfolio:</span>
+                  <span className="font-semibold text-slate-200">22 Mineral Products</span>
+                </div>
+                <div className="p-2.5 rounded-lg bg-slate-950 border border-slate-800/80 flex justify-between items-center">
+                  <span className="text-slate-400">Industries Covered:</span>
+                  <span className="font-semibold text-slate-200">38 Manufacturing Sectors</span>
+                </div>
               </div>
 
-              <p className="text-[11px] text-slate-500 pt-1">
-                Serving over 500+ commercial manufacturers spanning Northern, Western, and Southern industrial corridors, as well as containerized exports to the Middle East, Southeast Asia, and Africa.
+              <p className="text-[11px] text-slate-400 pt-1 leading-relaxed">
+                For detailed quality assurance parameters, sourcing methodology, infrastructure, and commercial documentation, visit our comprehensive company profile.
               </p>
+
+              <div className="pt-2">
+                <a
+                  href="/about.html"
+                  className="w-full py-2.5 px-4 rounded-xl bg-slate-950 hover:bg-slate-800 border border-amber-500/30 text-amber-400 text-xs font-semibold flex items-center justify-center gap-2 transition-colors"
+                >
+                  <span>Explore Quality, Sourcing &amp; Infrastructure</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+              </div>
             </div>
 
-            {/* Logistics & Locations Card */}
+            {/* Logistics & Office Card */}
             <div className="bg-slate-900 rounded-2xl border border-slate-800 p-5 text-xs text-slate-300 space-y-3">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                 <div>
-                  <strong className="text-white block">Head Office & Central Warehouse:</strong>
-                  {COMPANY_DETAILS.registeredAddress}
+                  <strong className="text-white block">Commercial Office &amp; Logistics Hub:</strong>
+                  C-2/29 C Lawrence Road, Rampura / Keshav Puram, New Delhi – 110035
                 </div>
               </div>
 
               <div className="flex items-start gap-2.5 pt-2 border-t border-slate-800">
                 <Truck className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                 <div>
-                  <strong className="text-white block">Processing Units & Mining Operations:</strong>
-                  {COMPANY_DETAILS.worksAddress}
+                  <strong className="text-white block">Sourcing &amp; Transit Facilities:</strong>
+                  Vendor network across Rajasthan, Gujarat, and key North Indian mineral corridors.
                 </div>
               </div>
+            </div>
             </div>
 
           </div>
