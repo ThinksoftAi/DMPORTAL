@@ -2073,4 +2073,1369 @@ section {
   }
 }
 
+/* ==========================================================================
+   ABOUT DEEPALI MINERALS — COMPREHENSIVE B2B PROFILE STYLES
+   ========================================================================== */
 
+.about-page-wrap {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.about-hero {
+  padding: 4.5rem 0 3rem;
+  background: linear-gradient(180deg, var(--fog) 0%, var(--paper) 100%);
+  border-bottom: 1px solid var(--line);
+}
+
+.about-hero-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.95fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.about-stats-deck {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.about-stat-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 1.35rem 1.25rem;
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.about-stat-number {
+  font-family: var(--serif);
+  font-size: 2.1rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--blue);
+  margin-bottom: 0.35rem;
+}
+
+.about-stat-label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--slate);
+  line-height: 1.35;
+}
+
+/* Sticky Quick Anchor Subnav */
+.about-subnav-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+.about-subnav-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 0.75rem 0;
+  scrollbar-width: thin;
+}
+
+.about-subnav-link {
+  font-family: var(--mono);
+  font-size: 0.73rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--slate);
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.about-subnav-link:hover {
+  color: var(--ink);
+  background: var(--fog);
+  border-color: var(--line);
+}
+
+.about-subnav-link.is-active {
+  color: #ffffff;
+  background: var(--navy);
+  border-color: var(--navy);
+}
+
+/* Section Common Spacing & Anchoring */
+.about-section {
+  padding: 5rem 0;
+  border-bottom: 1px solid var(--line);
+  scroll-margin-top: 75px;
+}
+
+.about-section-alt {
+  background: var(--fog);
+}
+
+.about-section-head {
+  margin-bottom: 2.75rem;
+  max-width: 75ch;
+}
+
+.about-section-head .eyebrow {
+  margin-bottom: 0.65rem;
+}
+
+.about-section-head h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 0 0 0.85rem;
+  color: var(--ink);
+}
+
+.about-section-head p {
+  color: var(--slate);
+  font-size: 1.02rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Factsheet Table */
+.about-factsheet-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.95fr;
+  gap: 2.5rem;
+}
+
+.about-factsheet-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.about-factsheet-header {
+  background: var(--navy);
+  color: #ffffff;
+  padding: 1.15rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.about-factsheet-title {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  margin: 0;
+}
+
+.about-factsheet-tag {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  padding: 0.2rem 0.55rem;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+  letter-spacing: 0.05em;
+}
+
+.about-factsheet-row {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  padding: 0.9rem 1.5rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.88rem;
+  align-items: baseline;
+}
+
+.about-factsheet-row:last-child {
+  border-bottom: none;
+}
+
+.about-factsheet-row:nth-child(even) {
+  background: var(--fog);
+}
+
+.about-factsheet-label {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--slate);
+  font-weight: 600;
+}
+
+.about-factsheet-value {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.about-factsheet-value strong {
+  color: var(--ink);
+}
+
+.about-factsheet-note {
+  margin-top: 1.5rem;
+  padding: 1.2rem;
+  background: var(--fog);
+  border-left: 3px solid var(--blue);
+  border-radius: 0 4px 4px 0;
+  font-size: 0.82rem;
+  color: var(--slate);
+  line-height: 1.55;
+}
+
+/* Product Mapping Cards */
+.about-mapping-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+}
+
+.about-mapping-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.2s ease;
+}
+
+.about-mapping-card:hover {
+  border-color: var(--blue);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+.about-mapping-header {
+  margin-bottom: 0.85rem;
+}
+
+.about-mapping-legacy {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--slate);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.about-mapping-legacy span {
+  background: var(--fog);
+  padding: 0.15rem 0.45rem;
+  border-radius: 3px;
+  border: 1px solid var(--line);
+}
+
+.about-mapping-name {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+}
+
+.about-mapping-desc {
+  font-size: 0.86rem;
+  color: var(--slate);
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
+.about-mapping-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.78rem;
+}
+
+.about-mapping-link {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--blue);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.about-mapping-link:hover {
+  text-decoration: underline;
+}
+
+/* Quality Assurance Grids */
+.about-qa-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.about-qa-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1.4rem;
+}
+
+.about-qa-icon {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--blue);
+  background: rgba(168, 78, 43, 0.08);
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  display: inline-block;
+  margin-bottom: 0.85rem;
+}
+
+.about-qa-card h3 {
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 0.5rem;
+}
+
+.about-qa-card p {
+  font-size: 0.86rem;
+  color: var(--slate);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.about-qa-disclaimer {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--lime);
+  padding: 1.5rem;
+  border-radius: 0 4px 4px 0;
+}
+
+.about-qa-disclaimer h4 {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  margin: 0 0 0.5rem;
+}
+
+.about-qa-disclaimer p {
+  font-size: 0.86rem;
+  color: var(--slate);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Sourcing Flow Steps */
+.about-sourcing-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.about-step-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1.5rem 1.25rem;
+  position: relative;
+}
+
+.about-step-number {
+  font-family: var(--mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--blue);
+  line-height: 1;
+  margin-bottom: 0.85rem;
+}
+
+.about-step-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  color: var(--ink);
+}
+
+.about-step-card p {
+  font-size: 0.84rem;
+  color: var(--slate);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Infrastructure & Packaging */
+.about-infra-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.about-infra-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1.6rem;
+}
+
+.about-infra-card h3 {
+  font-family: var(--sans);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+  color: var(--ink);
+}
+
+.about-infra-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.about-infra-card li {
+  font-size: 0.86rem;
+  color: var(--slate);
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  line-height: 1.45;
+}
+
+.about-infra-card li:last-child {
+  border-bottom: none;
+}
+
+.about-infra-card li::before {
+  content: "•";
+  color: var(--blue);
+  font-weight: bold;
+}
+
+/* Team Functional Grid */
+.about-team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.about-team-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1.4rem;
+}
+
+.about-team-role {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--blue);
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.about-team-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 0.5rem;
+}
+
+.about-team-card p {
+  font-size: 0.85rem;
+  color: var(--slate);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Why Deepali Minerals Grid */
+.about-why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.about-why-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1.5rem;
+}
+
+.about-why-num {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--slate);
+  margin-bottom: 0.6rem;
+}
+
+.about-why-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 0.5rem;
+}
+
+.about-why-card p {
+  font-size: 0.85rem;
+  color: var(--slate);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Corporate Presentation Card */
+.about-presentation-box {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 2.25rem;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+}
+
+.about-presentation-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 960px) {
+  .about-hero-grid,
+  .about-factsheet-grid,
+  .about-presentation-box {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .about-qa-grid,
+  .about-sourcing-grid,
+  .about-infra-grid,
+  .about-team-grid,
+  .about-why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .about-qa-grid,
+  .about-sourcing-grid,
+  .about-infra-grid,
+  .about-team-grid,
+  .about-why-grid,
+  .about-stats-deck {
+    grid-template-columns: 1fr;
+  }
+  .about-factsheet-row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+  .about-section {
+    padding: 3.5rem 0;
+  }
+}
+
+
+
+
+
+/* =========================================================================
+ * REDESIGNED ABOUT DEEPALI MINERALS - 70% VISUAL PRESENTATION STYLES
+ * ========================================================================= */
+
+.about-hero-v2 {
+  position: relative;
+  background-color: #FFFFFF;
+  background-image: url('../images/hero-minerals-pattern.svg');
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+  padding: 4.5rem 0 3.5rem;
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.about-hero-inner {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.about-badge-estd {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #174A70;
+  background: rgba(23, 74, 112, 0.08);
+  border: 1px solid rgba(23, 74, 112, 0.18);
+  padding: 0.35rem 0.85rem;
+  border-radius: 4px;
+  margin-bottom: 1.25rem;
+}
+
+.about-hero-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.about-hero-highlight-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--line);
+  padding: 1.15rem 1.4rem;
+  border-radius: 6px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.about-hero-highlight-card:hover {
+  transform: translateY(-2px);
+  border-color: #174A70;
+}
+
+.about-hero-hl-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.about-hero-hl-icon.blue { background: rgba(23, 74, 112, 0.1); color: #174A70; }
+.about-hero-hl-icon.teal { background: rgba(36, 140, 145, 0.1); color: #248C91; }
+.about-hero-hl-icon.gold { background: rgba(213, 164, 58, 0.15); color: #B07F1A; }
+
+.about-hero-hl-text strong {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.15rem;
+}
+
+.about-hero-hl-text span {
+  font-size: 0.82rem;
+  color: var(--slate);
+  line-height: 1.35;
+}
+
+/* Company at a Glance Infographic */
+.about-glance-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.about-glance-tile {
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1.6rem 1.4rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.about-glance-tile:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+}
+
+.about-glance-tile-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.about-glance-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+.about-glance-tile.theme-blue { border-top: 3px solid #174A70; }
+.about-glance-tile.theme-blue .about-glance-icon { background: rgba(23, 74, 112, 0.1); color: #174A70; }
+
+.about-glance-tile.theme-teal { border-top: 3px solid #248C91; }
+.about-glance-tile.theme-teal .about-glance-icon { background: rgba(36, 140, 145, 0.1); color: #248C91; }
+
+.about-glance-tile.theme-gold { border-top: 3px solid #D5A43A; }
+.about-glance-tile.theme-gold .about-glance-icon { background: rgba(213, 164, 58, 0.15); color: #A87A1E; }
+
+.about-glance-tile.theme-rust { border-top: 3px solid #A84E2B; }
+.about-glance-tile.theme-rust .about-glance-icon { background: rgba(168, 78, 43, 0.1); color: #A84E2B; }
+
+.about-glance-tile.theme-navy { border-top: 3px solid #0F2B48; }
+.about-glance-tile.theme-navy .about-glance-icon { background: rgba(15, 43, 72, 0.1); color: #0F2B48; }
+
+.about-glance-tile.theme-emerald { border-top: 3px solid #0D9488; }
+.about-glance-tile.theme-emerald .about-glance-icon { background: rgba(13, 148, 136, 0.1); color: #0D9488; }
+
+.about-glance-tag {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+.about-glance-val {
+  font-family: var(--serif);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 0.35rem;
+}
+
+.about-glance-label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--slate);
+  margin-bottom: 0.5rem;
+}
+
+.about-glance-sub {
+  font-size: 0.82rem;
+  color: #4B5563;
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Meet Our CEO - Executive Section */
+.about-ceo-card {
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05);
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  align-items: stretch;
+}
+
+.about-ceo-photo-wrap {
+  position: relative;
+  background: #0F2B48;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 480px;
+}
+
+.about-ceo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.about-ceo-badge-floating {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  background: rgba(15, 43, 72, 0.94);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(213, 164, 58, 0.5);
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.about-ceo-content {
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-ceo-eyebrow {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #D5A43A;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.about-ceo-name {
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 3.5vw, 2.85rem);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.1;
+  margin: 0 0 0.4rem;
+}
+
+.about-ceo-designation {
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #174A70;
+  margin-bottom: 1.75rem;
+  display: block;
+}
+
+.about-ceo-quote {
+  background: rgba(23, 74, 112, 0.05);
+  border-left: 3px solid #D5A43A;
+  padding: 1.15rem 1.4rem;
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 1.5rem;
+}
+
+.about-ceo-quote p {
+  font-family: var(--serif);
+  font-size: 1.08rem;
+  font-style: italic;
+  color: #1F2937;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.about-ceo-bio {
+  font-size: 0.94rem;
+  color: var(--slate);
+  line-height: 1.65;
+  margin-bottom: 2rem;
+}
+
+.about-ceo-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.about-ceo-pillar {
+  font-size: 0.82rem;
+}
+
+.about-ceo-pillar strong {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--ink);
+  margin-bottom: 0.2rem;
+}
+
+.about-ceo-pillar span {
+  color: var(--slate);
+  line-height: 1.35;
+  display: block;
+}
+
+/* ISO Certificates Gallery */
+.about-cert-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.about-cert-card {
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-cert-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+}
+
+.about-cert-preview-frame {
+  position: relative;
+  background: #F8FAFC;
+  padding: 1.75rem 1.5rem;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-cert-image {
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+  display: block;
+  border: 1px solid #E2E8F0;
+}
+
+.about-cert-body {
+  padding: 1.75rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.about-cert-standard-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  margin-bottom: 0.65rem;
+  width: fit-content;
+}
+
+.about-cert-standard-badge.qms {
+  background: rgba(23, 74, 112, 0.1);
+  color: #174A70;
+  border: 1px solid rgba(23, 74, 112, 0.2);
+}
+
+.about-cert-standard-badge.ems {
+  background: rgba(36, 140, 145, 0.1);
+  color: #248C91;
+  border: 1px solid rgba(36, 140, 145, 0.2);
+}
+
+.about-cert-title {
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 1rem;
+}
+
+.about-cert-specs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-cert-specs-table tr {
+  border-bottom: 1px solid #F3F4F6;
+}
+
+.about-cert-specs-table tr:last-child {
+  border-bottom: none;
+}
+
+.about-cert-specs-table td {
+  padding: 0.55rem 0;
+}
+
+.about-cert-specs-table td.label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: var(--slate);
+  font-weight: 600;
+  width: 42%;
+}
+
+.about-cert-specs-table td.val {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.about-cert-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.about-cert-action-btn.qms {
+  background: #174A70;
+  color: #FFFFFF;
+}
+
+.about-cert-action-btn.qms:hover {
+  background: #0F324E;
+}
+
+.about-cert-action-btn.ems {
+  background: #248C91;
+  color: #FFFFFF;
+}
+
+.about-cert-action-btn.ems:hover {
+  background: #1B6C70;
+}
+
+/* Quality Assurance Process Infographic & Chips */
+.about-process-infographic {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  position: relative;
+  margin: 2.5rem 0 3rem;
+}
+
+.about-process-step {
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1.5rem 1.15rem;
+  position: relative;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.about-process-step:hover {
+  transform: translateY(-2px);
+  border-color: #174A70;
+}
+
+.about-step-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #174A70;
+  color: #FFFFFF;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.85rem;
+}
+
+.about-process-step:nth-child(2) .about-step-badge { background: #248C91; }
+.about-process-step:nth-child(3) .about-step-badge { background: #D5A43A; color: #1F2937; }
+.about-process-step:nth-child(4) .about-step-badge { background: #A84E2B; }
+.about-process-step:nth-child(5) .about-step-badge { background: #0F2B48; }
+
+.about-step-title {
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 0.45rem;
+}
+
+.about-step-desc {
+  font-size: 0.8rem;
+  color: var(--slate);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.about-params-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.about-param-card {
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1.75rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+}
+
+.about-param-card.mineral { border-top: 3px solid #174A70; }
+.about-param-card.chemical { border-top: 3px solid #248C91; }
+
+.about-param-title {
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.about-param-chips-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.about-param-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--fog);
+  border: 1px solid #E5E7EB;
+  padding: 0.45rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.about-param-chip svg {
+  color: #174A70;
+}
+
+/* Industries Graphic Cards */
+.about-industries-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.about-industry-card-v2 {
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1.75rem 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.about-industry-card-v2:hover {
+  transform: translateY(-3px);
+  border-color: #174A70;
+}
+
+.about-ind-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.about-ind-title {
+  font-family: var(--sans);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 0.5rem;
+}
+
+.about-ind-desc {
+  font-size: 0.85rem;
+  color: var(--slate);
+  line-height: 1.5;
+  margin: 0 0 1.25rem;
+}
+
+.about-ind-link {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #174A70;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Infrastructure & Operations 6-Card Grid */
+.about-ops-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.about-ops-card {
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1.6rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+  transition: transform 0.2s ease;
+}
+
+.about-ops-card:hover {
+  transform: translateY(-2px);
+  border-color: #248C91;
+}
+
+.about-ops-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 6px;
+  background: rgba(36, 140, 145, 0.08);
+  color: #248C91;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.about-ops-title {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 0.45rem;
+}
+
+.about-ops-desc {
+  font-size: 0.84rem;
+  color: var(--slate);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Why Deepali Minerals 6-Tile Section */
+.about-why-v2-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.about-why-v2-card {
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1.75rem 1.5rem;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.about-why-v2-card:hover {
+  transform: translateY(-3px);
+  border-color: #D5A43A;
+}
+
+.about-why-v2-num {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #D5A43A;
+  margin-bottom: 0.65rem;
+}
+
+.about-why-v2-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 0.45rem;
+}
+
+.about-why-v2-desc {
+  font-size: 0.84rem;
+  color: var(--slate);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Closing Enquiry Section */
+.about-cta-banner {
+  background: linear-gradient(135deg, #0F2B48 0%, #174A70 50%, #0E243A 100%);
+  color: #FFFFFF;
+  border-radius: 8px;
+  padding: 3.5rem 3rem;
+  box-shadow: 0 12px 40px rgba(15, 43, 72, 0.25);
+  margin-top: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-cta-banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: radial-gradient(circle at 80% 30%, rgba(36, 140, 145, 0.25) 0%, transparent 60%);
+  pointer-events: none;
+}

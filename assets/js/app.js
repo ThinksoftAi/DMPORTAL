@@ -652,7 +652,7 @@
             </div>
 
             <div>
-              <label>Target Application / Manufacturing Process</label>
+              <label>Application/Manufacturing</label>
               <input type="text" name="application" value="${esc(defaultApp)}" placeholder="e.g. Rigid PVC Pipes, Wall Putty, EVA Soles">
             </div>
 
