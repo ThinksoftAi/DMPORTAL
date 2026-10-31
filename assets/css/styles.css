@@ -1343,6 +1343,163 @@ section {
   clip-path: polygon(50% 0, 100% 26%, 78% 100%, 15% 84%, 0 32%);
 }
 
+/* =========================================================================
+ * B2B PRODUCT VISUAL & IMAGE DISPLAY SYSTEM (ZERO-BROKEN-IMAGE ARCHITECTURE)
+ * ========================================================================= */
+.product-card-visual {
+  height: 145px;
+  margin: -1.3rem -1.3rem 1.1rem;
+  position: relative;
+  overflow: hidden;
+  background-color: #F8F9FA;
+  border-bottom: 1px solid var(--line);
+}
+
+.product-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform .35s ease;
+}
+
+.product-card:hover .product-card-img {
+  transform: scale(1.04);
+}
+
+.product-card-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .85rem;
+  padding: 1rem 1.25rem;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+
+.product-card-fallback::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 16px 16px;
+  pointer-events: none;
+}
+
+.fallback-icon-wrap {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.fallback-info {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+  position: relative;
+  z-index: 1;
+}
+
+.fallback-cat {
+  display: block;
+  font: 700 .62rem var(--mono);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  opacity: .8;
+}
+
+.fallback-title {
+  display: block;
+  font: 700 .95rem var(--serif);
+  color: #1F2937;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+  margin: .1rem 0;
+}
+
+.fallback-sub {
+  display: block;
+  font: 500 .68rem var(--sans);
+  color: #4B5563;
+  line-height: 1.2;
+}
+
+/* Categorized Mineral Swatches */
+.fallback-mineral {
+  background: linear-gradient(135deg, #F9F8F6 0%, #EFEBE4 50%, #E3DCCE 100%);
+  color: #5C5242;
+}
+.fallback-mineral .fallback-icon-wrap {
+  color: #8C7355;
+}
+
+.fallback-chemical {
+  background: linear-gradient(135deg, #F0F7FF 0%, #E0EFFE 50%, #CFE5FE 100%);
+  color: #1E40AF;
+}
+.fallback-chemical .fallback-icon-wrap {
+  color: #2563EB;
+}
+
+.fallback-aggregate {
+  background: linear-gradient(135deg, #F8FAFC 0%, #EEF2F6 50%, #E2E8F0 100%);
+  color: #475569;
+}
+.fallback-aggregate .fallback-icon-wrap {
+  color: #475569;
+}
+
+/* Special plant-based treatment for Starch */
+.fallback-starch {
+  background: linear-gradient(135deg, #FBFDEB 0%, #F4F8D3 50%, #E8F0B8 100%);
+  color: #3F6212;
+  border-left: 3px solid #65A30D;
+}
+.fallback-starch .fallback-icon-wrap {
+  color: #15803D;
+  background: rgba(255, 255, 255, 0.95);
+  border-color: #86EFAC;
+}
+.fallback-starch .fallback-cat {
+  color: #166534;
+}
+.fallback-starch .fallback-sub {
+  color: #15803D;
+  font-weight: 600;
+}
+
+.product-card-badge {
+  position: absolute;
+  top: .65rem;
+  right: .65rem;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  font: 700 .62rem var(--mono);
+  text-transform: uppercase;
+  color: var(--ink);
+  padding: .2rem .5rem;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  border-radius: 2px;
+  z-index: 2;
+}
+
 .product-card h3 {
   font: 700 1.5rem var(--serif);
   letter-spacing: -.035em;
@@ -1557,6 +1714,169 @@ section {
   inset: 20% 15%;
   background: rgba(255, 255, 255, .55);
   clip-path: polygon(50% 0, 100% 26%, 78% 100%, 15% 84%, 0 32%);
+}
+
+/* =========================================================================
+ * PRODUCT DETAIL PAGE GALLERY & SPECIMEN DISPLAY
+ * ========================================================================= */
+.product-gallery-container {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.product-gallery-frame {
+  position: relative;
+  height: 380px;
+  background: #F8F9FA;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.product-gallery-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;
+  position: relative;
+  text-align: center;
+}
+
+.product-gallery-fallback::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
+.gallery-fallback-center {
+  position: relative;
+  z-index: 1;
+  max-width: 360px;
+}
+
+.gallery-fallback-icon {
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 1.25rem;
+  border-radius: 50%;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.gallery-fallback-title {
+  font: 700 1.6rem var(--serif);
+  color: #1F2937;
+  margin: 0 0 .5rem;
+  line-height: 1.2;
+}
+
+.gallery-fallback-desc {
+  font-size: .84rem;
+  line-height: 1.5;
+  color: #4B5563;
+  margin: 0 0 1rem;
+}
+
+.gallery-fallback-tag {
+  display: inline-block;
+  font: 700 .7rem var(--mono);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  padding: .3rem .75rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+
+.product-gallery-pill-overlay {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  gap: .4rem;
+  z-index: 2;
+}
+
+.gallery-pill {
+  font: 700 .65rem var(--mono);
+  text-transform: uppercase;
+  padding: .25rem .6rem;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  color: var(--ink);
+}
+
+.gallery-pill.plant {
+  background: #DCFCE7;
+  color: #166534;
+  border-color: #86EFAC;
+}
+
+.gallery-pill.iso {
+  background: #EFF6FF;
+  color: #1E40AF;
+  border-color: #BFDBFE;
+}
+
+.product-gallery-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .6rem .8rem;
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  font: 500 .75rem var(--sans);
+  color: var(--slate);
+}
+
+.toolbar-item {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+}
+
+.toolbar-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10B981;
+}
+
+.toolbar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  color: var(--blue);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.toolbar-link:hover {
+  color: var(--terracotta);
 }
 
 .detail-meta {

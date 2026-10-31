@@ -38,7 +38,7 @@
       rootEl.style.backgroundColor = '#FFFFFF';
     }
     const applyBody = () => {
-      if (document.body) {
+      if (document.body && document.body.style) {
         document.body.style.backgroundColor = '#FFFFFF';
         document.body.style.color = '#25241F';
       }
@@ -526,26 +526,80 @@
     initBackToTop();
   }
 
-  const productCard = (p, industryCtx, appCtx, routeCtx) => `
-    <article class="product-card">
-      <div class="product-visual" aria-hidden="true"></div>
-      <span class="eyebrow">${esc(p.category)}</span>
-      <h3>${esc(p.name)}</h3>
-      <p>${esc(p.shortDescription)}</p>
-      
-      ${p.applications && p.applications.length ? `
-        <div style="margin-top: .5rem; font-size: .78rem; color: var(--slate); line-height: 1.4;">
-          <strong style="color: var(--ink); font-family: var(--mono); font-size: .7rem; text-transform: uppercase;">Key Uses:</strong>
-          <span style="display: block; margin-top: .2rem;">${esc(p.applications.slice(0, 2).join(' • '))}</span>
-        </div>
-      ` : ''}
+  const resolveProductImg = (img) => {
+    if (!img) return '';
+    const clean = img.replace(/^\/+/, '');
+    if (root && root !== '.') {
+      return `${root}/${clean}`;
+    }
+    return `${root === '.' ? './' : '/'}${clean}`;
+  };
 
-      <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid var(--line);">
-        <a class="text-link" href="${productUrl(p, industryCtx, appCtx, routeCtx)}">View specs <span aria-hidden="true">→</span></a>
-        <a class="button alt" style="padding: .4rem .75rem; font-size: .7rem;" href="${productUrl(p, industryCtx, appCtx, routeCtx)}#rfq">Quotation</a>
-      </div>
-    </article>
-  `;
+  const getProductCategoryIcon = (p) => {
+    if (p.slug === 'starch') {
+      return `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a10 10 0 0 1 10 10c0 5.5-4.5 10-10 10S2 17.5 2 12A10 10 0 0 1 12 2z"/><path d="M12 6v12"/><path d="M8 10c2-2 4-2 4 0s2 2 4 0"/><path d="M8 14c2-2 4-2 4 0s2 2 4 0"/></svg>`;
+    }
+    if (p.category === 'Functional Chemicals') {
+      return `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2v7.31L4.62 18.2A2 2 0 0 0 6.36 21h11.28a2 2 0 0 0 1.74-2.8L14 9.31V2"/><line x1="8.5" y1="2" x2="15.5" y2="2"/><path d="M14 9.3h-4"/><path d="M7 16h10"/></svg>`;
+    }
+    if (p.category === 'Grains & Aggregates' || p.category === 'Industrial Materials') {
+      return `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>`;
+    }
+    return `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12l4 6-10 12L2 9z"/><path d="M11 3 8 9l4 12 4-12-3-6"/><path d="M2 9h20"/></svg>`;
+  };
+
+  const productCard = (p, industryCtx, appCtx, routeCtx) => {
+    const isStarch = p.slug === 'starch';
+    const fallbackTheme = isStarch ? 'fallback-starch' : (
+      p.category === 'Functional Chemicals' ? 'fallback-chemical' : (
+        p.category === 'Industrial Materials' || p.category === 'Grains & Aggregates' ? 'fallback-aggregate' : 'fallback-mineral'
+      )
+    );
+    const imgSrc = resolveProductImg(p.image);
+    const altText = esc(p.alt || `${p.name} - Deepali Minerals Industrial Supply`);
+
+    return `
+      <article class="product-card" data-slug="${esc(p.slug)}">
+        <div class="product-card-visual">
+          ${imgSrc ? `
+            <img 
+              src="${imgSrc}" 
+              alt="${altText}" 
+              class="product-card-img" 
+              loading="lazy" 
+              onerror="this.style.display='none'; var fb = this.parentElement.querySelector('.product-card-fallback'); if (fb) fb.style.display='flex';" 
+            />
+          ` : ''}
+          <div class="product-card-fallback ${fallbackTheme}" style="${imgSrc ? 'display:none;' : 'display:flex;'}">
+            <div class="fallback-icon-wrap">
+              ${getProductCategoryIcon(p)}
+            </div>
+            <div class="fallback-info">
+              <span class="fallback-cat">${esc(p.category)}</span>
+              <span class="fallback-title">${esc(p.name)}</span>
+              <span class="fallback-sub">${isStarch ? 'Plant-Derived Industrial Grade' : 'Laboratory Certified Specimen'}</span>
+            </div>
+          </div>
+          <span class="product-card-badge">${isStarch ? 'Plant-Derived' : esc(p.category)}</span>
+        </div>
+        <span class="eyebrow">${esc(p.category)}</span>
+        <h3>${esc(p.name)}</h3>
+        <p>${esc(p.shortDescription)}</p>
+        
+        ${p.applications && p.applications.length ? `
+          <div style="margin-top: .5rem; font-size: .78rem; color: var(--slate); line-height: 1.4;">
+            <strong style="color: var(--ink); font-family: var(--mono); font-size: .7rem; text-transform: uppercase;">Key Uses:</strong>
+            <span style="display: block; margin-top: .2rem;">${esc(p.applications.slice(0, 2).join(' • '))}</span>
+          </div>
+        ` : ''}
+
+        <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid var(--line);">
+          <a class="text-link" href="${productUrl(p, industryCtx, appCtx, routeCtx)}">View specs <span aria-hidden="true">→</span></a>
+          <a class="button alt" style="padding: .4rem .75rem; font-size: .7rem;" href="${productUrl(p, industryCtx, appCtx, routeCtx)}#rfq">Quotation</a>
+        </div>
+      </article>
+    `;
+  };
 
   const applicationCard = (app) => {
     const productsHtml = (app.products || []).map(slug => {
@@ -2028,7 +2082,64 @@
                 </a>
               </div>
             </div>
-            <div class="product-large-visual" role="img" aria-label="Abstract mineral specimen graphic for ${esc(p.name)}"></div>
+            <div class="product-gallery-container">
+              <div class="product-gallery-frame">
+                ${p.image ? `
+                  <img 
+                    id="main-product-img"
+                    src="${resolveProductImg(p.image)}" 
+                    alt="${esc(p.alt || `${p.name} - Deepali Minerals Industrial Supply`)}" 
+                    class="product-gallery-img" 
+                    onerror="this.style.display='none'; var fb = this.parentElement.querySelector('.product-gallery-fallback'); if (fb) fb.style.display='flex';"
+                  />
+                ` : ''}
+                <div class="product-gallery-fallback ${p.slug === 'starch' ? 'fallback-starch' : (p.category === 'Functional Chemicals' ? 'fallback-chemical' : (p.category === 'Industrial Materials' || p.category === 'Grains & Aggregates' ? 'fallback-aggregate' : 'fallback-mineral'))}" style="${p.image ? 'display:none;' : 'display:flex;'}">
+                  <div class="gallery-fallback-center">
+                    <div class="gallery-fallback-icon">
+                      ${getProductCategoryIcon(p)}
+                    </div>
+                    <h3 class="gallery-fallback-title">${esc(p.name)}</h3>
+                    <p class="gallery-fallback-desc">
+                      ${p.slug === 'starch' 
+                        ? 'Natural polymeric carbohydrate material derived from plant sources (corn/cassava). Non-mineral biological starch formulation.' 
+                        : (p.composition || 'Controlled industrial mineral grade with verified physical and chemical parameters.')}
+                    </p>
+                    <span class="gallery-fallback-tag">${p.slug === 'starch' ? 'Plant-Derived Industrial Grade' : 'Laboratory Inspected Specimen'}</span>
+                  </div>
+                </div>
+                <div class="product-gallery-pill-overlay">
+                  <span class="gallery-pill">${esc(p.category)}</span>
+                  ${p.slug === 'starch' ? '<span class="gallery-pill plant">Plant-Derived Polymer</span>' : '<span class="gallery-pill iso">ISO 9001:2015 QA</span>'}
+                </div>
+              </div>
+              ${p.gallery && p.gallery.length > 1 ? `
+                <div class="product-gallery-thumbnails" style="display: flex; gap: 0.6rem; margin-top: 0.75rem; align-items: center; flex-wrap: wrap;">
+                  ${p.gallery.map((g, idx) => `
+                    <button 
+                      type="button" 
+                      class="product-thumb-btn ${idx === 0 ? 'active' : ''}" 
+                      onclick="var m = document.getElementById('main-product-img'); if (m) { m.src = '${resolveProductImg(g.src)}'; m.alt = '${esc(g.alt)}'; } document.querySelectorAll('.product-thumb-btn').forEach(function(b){ b.style.borderColor = 'var(--line)'; b.style.boxShadow = 'none'; }); this.style.borderColor = 'var(--blue)'; this.style.boxShadow = '0 0 0 2px rgba(11,83,148,0.3)';" 
+                      style="cursor: pointer; border: 2px solid ${idx === 0 ? 'var(--blue)' : 'var(--line)'}; border-radius: 6px; overflow: hidden; width: 68px; height: 68px; padding: 0; background: #fff; transition: all .2s; box-shadow: ${idx === 0 ? '0 0 0 2px rgba(11,83,148,0.3)' : 'none'};"
+                      title="${esc(g.alt)}"
+                    >
+                      <img src="${resolveProductImg(g.src)}" alt="${esc(g.alt)}" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                    </button>
+                  `).join('')}
+                  <span style="font-size: 0.75rem; color: var(--slate); margin-left: 0.35rem;">
+                    Click thumbnail to switch product angle (${p.gallery.length} verified photos)
+                  </span>
+                </div>
+              ` : ''}
+              <div class="product-gallery-toolbar">
+                <div class="toolbar-item">
+                  <span class="toolbar-dot"></span>
+                  <span>Industrial Supply Grade</span>
+                </div>
+                <a href="${getWhatsAppUrl(`Hello Deepali Minerals, please share high-resolution batch photos and test reports for ${p.name}.`)}" target="_blank" rel="noopener noreferrer" class="toolbar-link">
+                  ${whatsappIconSvg(13, 13)} Request Batch Photos &amp; COA &rarr;
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
