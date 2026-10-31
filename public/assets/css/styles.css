@@ -2178,7 +2178,7 @@ section {
   display: none;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 991px) {
   .shell {
     width: min(100% - 32px, 1180px);
   }
@@ -2188,12 +2188,12 @@ section {
     padding: .5rem 0;
   }
   .brand-logo {
-    max-width: 150px;
+    max-width: 155px;
     height: auto;
   }
   .nav-links,
   .header-cta {
-    display: none;
+    display: none !important;
   }
   .header-actions {
     gap: 0.5rem;
@@ -2204,16 +2204,16 @@ section {
   .header-whatsapp {
     padding: 0.45rem;
     border-radius: 50%;
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     justify-content: center;
   }
   .dm-floating-whatsapp {
     right: 18px;
-    bottom: 18px;
+    bottom: calc(18px + env(safe-area-inset-bottom, 0px));
     padding: 0;
-    width: 46px;
-    height: 46px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     justify-content: center;
   }
@@ -2221,18 +2221,18 @@ section {
     display: none;
   }
   .dm-floating-whatsapp svg {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
   }
   .back-to-top-btn {
     right: 18px;
-    bottom: 74px;
+    bottom: calc(76px + env(safe-area-inset-bottom, 0px));
     width: 40px;
     height: 40px;
   }
   .contact-float {
     right: 18px;
-    bottom: 124px;
+    bottom: calc(126px + env(safe-area-inset-bottom, 0px));
     width: auto;
     min-width: 40px;
     height: 36px;
@@ -2240,7 +2240,21 @@ section {
     font-size: .65rem;
   }
   .menu-toggle {
-    display: block;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0.45rem 0.85rem;
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: #FFFFFF;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    cursor: pointer;
+    color: var(--ink);
   }
   .hero {
     min-height: auto;
@@ -2298,7 +2312,7 @@ section {
     width: 100%;
   }
   section {
-    padding: 4.5rem 0;
+    padding: 4rem 0;
   }
   .section-head,
   .cta-inner {
@@ -2310,11 +2324,10 @@ section {
   }
   .category-grid,
   .product-grid,
-  .resource-grid {
-    grid-template-columns: 1fr;
-  }
+  .resource-grid,
   .industry-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
   }
   .why-grid {
     grid-template-columns: 1fr;
@@ -3759,3 +3772,353 @@ section {
   background: radial-gradient(circle at 80% 30%, rgba(36, 140, 145, 0.25) 0%, transparent 60%);
   pointer-events: none;
 }
+
+/* =========================================================================
+ * COMPREHENSIVE TABLET & MOBILE RESPONSIVE OPTIMIZATIONS
+ * Deepali Minerals B2B Portal
+ * Supports: Tablets (iPad Mini/Air/Pro, Android tablets: 641px - 1024px)
+ *           Mobile phones (iPhone SE, iPhone 14/15/16, Samsung Galaxy, Pixel: 320px - 640px)
+ * ========================================================================= */
+
+/* General Mobile/Tablet Ergonomics & Safe Area */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Base Responsive Elements */
+.about-rfq-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1.35fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.about-form-row-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+}
+
+/* TABLETS & MEDIUM SCREENS (641px to 1024px) */
+@media (max-width: 1024px) {
+  .about-hero-v2 {
+    padding: 3.5rem 0 3rem;
+  }
+  .about-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .about-hero-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .about-glance-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+  .about-industries-grid,
+  .about-ops-grid,
+  .about-why-v2-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+  .about-process-infographic {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .about-rfq-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .about-cta-banner {
+    padding: 2.75rem 2.25rem;
+  }
+}
+
+/* TABLET PORTRAIT & INTERMEDIATE BREAKPOINT (<= 900px) */
+@media (max-width: 900px) {
+  .about-ceo-card {
+    grid-template-columns: 1fr;
+  }
+  .about-ceo-photo-wrap {
+    min-height: 360px;
+    max-height: 440px;
+  }
+  .about-ceo-content {
+    padding: 2.5rem 2rem;
+  }
+  .about-cert-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+  .detail-intro {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .product-gallery-frame {
+    height: 320px;
+  }
+  .detail-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* SMALL TABLETS & LARGE PHONES (<= 768px) */
+@media (max-width: 768px) {
+  .about-hero-highlights {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+  .about-section {
+    padding: 3.5rem 0;
+  }
+  .about-section-head {
+    margin-bottom: 2rem;
+  }
+  .about-params-wrap {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .about-process-infographic {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+  }
+  .spec-box {
+    padding: 1.25rem 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .spec-table {
+    min-width: 280px;
+  }
+}
+
+/* MOBILE DEVICES (<= 640px) */
+@media (max-width: 640px) {
+  .shell {
+    width: min(100% - 24px, 1180px);
+    padding: 0;
+  }
+
+  /* Typography Scales */
+  .display {
+    font-size: clamp(2rem, 9vw, 2.75rem) !important;
+    line-height: 1.15 !important;
+  }
+  .section-title {
+    font-size: clamp(1.55rem, 6.8vw, 2.1rem) !important;
+    line-height: 1.2 !important;
+  }
+  .lede {
+    font-size: 0.95rem !important;
+    line-height: 1.55 !important;
+  }
+
+  /* Grids: Clean 1-Column Layout */
+  .category-grid,
+  .product-grid,
+  .resource-grid,
+  .industry-grid,
+  .about-glance-grid,
+  .about-industries-grid,
+  .about-ops-grid,
+  .about-why-v2-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .about-glance-tile,
+  .about-industry-card-v2,
+  .about-ops-card,
+  .about-why-v2-card {
+    padding: 1.35rem 1.15rem;
+  }
+
+  .about-glance-val {
+    font-size: 1.45rem;
+  }
+
+  /* Redesigned CEO Profile on Mobile */
+  .about-ceo-photo-wrap {
+    min-height: 280px;
+    max-height: 350px;
+  }
+  .about-ceo-badge-floating {
+    bottom: 0.75rem;
+    left: 0.75rem;
+    right: 0.75rem;
+    padding: 0.6rem 0.85rem;
+  }
+  .about-ceo-content {
+    padding: 1.6rem 1.15rem;
+  }
+  .about-ceo-name {
+    font-size: 1.95rem;
+  }
+  .about-ceo-pillars {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+  .about-ceo-pillar {
+    padding-bottom: 0.75rem;
+    border-bottom: 1px dashed var(--line);
+  }
+  .about-ceo-pillar:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  /* ISO Certificates Card on Mobile */
+  .about-cert-preview-frame {
+    padding: 1.25rem 0.85rem;
+  }
+  .about-cert-body {
+    padding: 1.4rem 1.15rem;
+  }
+  .about-cert-title {
+    font-size: 1.25rem;
+  }
+
+  /* Quality Lab 5-Step Process on Mobile */
+  .about-process-infographic {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem;
+  }
+  .about-process-step {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.95rem;
+    padding: 1.15rem 1rem;
+  }
+  .about-step-badge {
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  /* Subnav Sticky Carousel */
+  .about-subnav-sticky {
+    padding: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  .about-subnav-inner {
+    padding: 0.65rem 0.5rem;
+    gap: 0.4rem;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .about-subnav-inner::-webkit-scrollbar {
+    display: none;
+  }
+  .about-subnav-link {
+    font-size: 0.7rem;
+    padding: 0.45rem 0.75rem;
+    min-height: 38px;
+  }
+
+  /* Banner & Direct Enquiry Form */
+  .about-cta-banner {
+    padding: 2rem 1.25rem;
+    border-radius: 6px;
+  }
+  .about-cta-banner h2 {
+    font-size: 1.6rem !important;
+  }
+  .about-cta-banner p {
+    font-size: 0.9rem !important;
+  }
+  .about-form-row-2col {
+    grid-template-columns: 1fr !important;
+    gap: 0.85rem;
+  }
+  .rfq-grid-layout {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem;
+  }
+
+  /* Touch Ergonomics & Form Elements: Prevent iOS Safari Auto-Zoom */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="search"],
+  select,
+  textarea {
+    font-size: 16px !important;
+    min-height: 44px;
+    border-radius: 4px;
+  }
+  textarea {
+    min-height: 80px;
+  }
+
+  /* Button Touch Targets */
+  .button,
+  .button.alt,
+  .about-cert-action-btn,
+  .whatsapp-btn,
+  .footer-whatsapp-btn {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.82rem;
+  }
+  .detail-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .detail-actions .button,
+  .detail-actions a {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Product Gallery on Mobile */
+  .product-gallery-frame {
+    height: 240px;
+  }
+
+  /* Floating Quick Action Buttons on Mobile */
+  .dm-floating-whatsapp {
+    right: 14px;
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+    width: 50px;
+    height: 50px;
+    z-index: 99;
+  }
+  .back-to-top-btn {
+    right: 14px;
+    bottom: calc(74px + env(safe-area-inset-bottom, 0px));
+    width: 42px;
+    height: 42px;
+    z-index: 99;
+  }
+  .contact-float {
+    display: none !important; /* Concealed on mobile to eliminate screen occlusion */
+  }
+}
+
+/* EXTRA SMALL PHONES (<= 380px) */
+@media (max-width: 380px) {
+  .shell {
+    width: min(100% - 16px, 1180px);
+  }
+  .brand-logo {
+    max-width: 125px;
+  }
+  .about-hero-hl-text strong {
+    font-size: 0.92rem;
+  }
+  .about-glance-val {
+    font-size: 1.3rem;
+  }
+  .about-ceo-name {
+    font-size: 1.7rem;
+  }
+  .about-cert-specs-table td.label {
+    width: 48%;
+  }
+}
+

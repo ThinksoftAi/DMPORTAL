@@ -1050,7 +1050,7 @@
               </div>
               <p class="lede">Explore mineral materials relevant to specialized industrial applications. Deepali Minerals' application-discovery section helps buyers identify materials and enquire about technical specifications and availability.</p>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
               ${(data.getApplicationCategories ? data.getApplicationCategories() : []).map(app => applicationCard(app)).join('')}
             </div>
           </div>
@@ -1669,7 +1669,7 @@
             <p class="lede">Explore mineral materials relevant to specialized industrial formulations and manufacturing applications. Deepali Minerals' application-discovery section helps buyers identify materials and enquire about technical specifications and availability.</p>
           </div>
 
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; margin-top: 1.75rem;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1.5rem; margin-top: 1.75rem;">
             ${(data.getApplicationCategories ? data.getApplicationCategories() : []).map(app => applicationCard(app)).join('')}
           </div>
         </div>
@@ -1699,7 +1699,7 @@
             </div>
           </div>
 
-          <div id="sector-cards-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem;">
+          <div id="sector-cards-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 1.5rem;">
             ${summary.map((item, idx) => {
               const prof = item.profile;
               return `
@@ -1798,7 +1798,7 @@
             <p class="lede">In addition to our standard catalogue, Deepali Minerals sources, qualifies, and supplies specialty mineral grades and custom formulation additives for specialized industrial applications. Commercial availability, particle size distribution, and technical specifications are confirmed upon direct business enquiry.</p>
           </div>
 
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; margin-top: 1.75rem;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1.5rem; margin-top: 1.75rem;">
             ${uncatalogued.map(item => `
               <article style="background: var(--paper); border: 1px solid var(--line); padding: 1.5rem; display: flex; flex-direction: column;">
                 <div style="display: flex; justify-content: space-between; align-items: baseline; gap: .5rem; margin-bottom: .5rem; flex-wrap: wrap;">
